@@ -1,27 +1,28 @@
-# ScorePlay — 預測積分遊戲
+# 海洋 · 估波遊戲 (Ocean — Sports Prediction Game)
 
-純積分波經遊戲（**唔涉及任何金錢交易或真實投注** / virtual points only, no real money, 18+）。
-前台俾玩家預測賽果贏積分，後台俾管理員管賽事、賠率、賽果同玩家積分。
+A points-only sports **prediction** game. Players predict match winners, earn points for correct picks, and climb a leaderboard.
 
-## 快速開始
-```bash
-npm install
-npm start
+> **Not gambling / 唔係賭博:** points are a game score only — they cannot be bought, cannot be cashed out, and are not connected to any money. Predicting is free; a correct pick **earns** points and a wrong pick **deducts nothing** (gain-only). Real odds are used only to weight scoring difficulty (a correct underdog pick is worth more) and for display — there is no staking and no odds-based payout on a wager.
+
+## Status
+- **v1 prototype** — single file `海洋.html`, runs in any browser, mobile-first.
+- Accounts + points currently stored client-side (localStorage) for demo.
+- Uses **sample fixtures** so you can see the flow.
+
+## Screens
+- **Login / Register** — players self-register (name + password).
+- **賽事 (Matches)** — real fixtures; tap to predict a winner; correct picks earn `round(odds × 10)` points, wrong picks earn 0.
+- **排行榜 (Leaderboard)** — ranked by total points (game score only).
+
+## Run it
+Open `海洋.html` in a browser. Add `?demo=1` to preview gameplay without logging in.
+
+## Next: live data (betsapi)
+`fetchMatches()` in `海洋.html` is the single integration point. Plug a betsapi (or the-odds-api / api-sports.io) call there to return live fixtures, odds, and results — everything else already works off that shape:
+```js
+{ id, lg, t, h:{n,f}, a:{n,f}, o:{home,draw,away}, result }
 ```
-- 玩家：http://localhost:3000
-- 後台：http://localhost:3000/admin  （預設 `admin` / `admin123`，登入後請改密碼）
+`result` is used only to grade predictions after a match finishes.
 
-## 技術
-- Node.js + Express
-- 資料存 `data.json`（JSON 檔案，零資料庫設定；首次啟動自動建立 + 種子）
-- 真實賽程來自免費數據源 TheSportsDB（賠率為自動生成嘅亞洲讓球盤）
-- 即場比分/賠率為伺服器端模擬，營造真實感
-
-## 結構
-- `server.js` — API + 伺服器
-- `public/index.html` — 玩家前台
-- `public/admin.html` — 管理後台（淺藍主題 + 儀表板）
-- `README.txt` — 詳細中文說明
-
-## 合作
-歡迎一齊 fork / branch / PR。賠率模型、版面、盤口種類都可以再擴充。
+## Theme
+Ocean — deep blue / light blue / white.
