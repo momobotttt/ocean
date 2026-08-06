@@ -1,3 +1,5 @@
+<%@ Language=VBScript CodePage=65001 %>
+<% Response.CodePage = 65001 : Response.Charset = "utf-8" %>
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -30,7 +32,6 @@
       linear-gradient(180deg,#08203a 0%,#051426 46%,#02070f 100%);
     background-attachment:fixed;
   }
-  /* ambient light orbs */
   .bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
   .orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;}
   .orb.a{width:420px;height:420px;left:-140px;top:-120px;background:radial-gradient(circle,rgba(38,124,190,.55),transparent 70%);animation:drift 22s ease-in-out infinite alternate;}
@@ -42,14 +43,12 @@
   .app{position:relative;z-index:1;max-width:480px;margin:0 auto;padding:0 20px 130px;min-height:100dvh;}
   @media(min-width:768px){.app{max-width:540px;}}
 
-  /* ─ brand ─ */
   header.brand{display:flex;align-items:center;gap:13px;padding:26px 2px 16px;}
   .logo{width:46px;height:46px;flex:0 0 46px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.45));}
   .brand h1{margin:0;font-family:var(--serif);font-weight:900;font-size:23px;letter-spacing:.42em;text-indent:.1em;background:linear-gradient(180deg,#ffffff,#c9e2f2);-webkit-background-clip:text;background-clip:text;color:transparent;}
   .brand .tag{font-size:10.5px;color:var(--gold);letter-spacing:.3em;margin-top:4px;opacity:.9;}
   .brand-rule{height:1px;background:linear-gradient(90deg,transparent,rgba(231,197,132,.4) 30%,rgba(231,197,132,.4) 70%,transparent);margin:0 2px 4px;}
 
-  /* ─ glass card ─ */
   .card{
     position:relative;
     background:linear-gradient(160deg,rgba(255,255,255,.075),rgba(255,255,255,.02) 55%),rgba(9,26,46,.55);
@@ -60,7 +59,6 @@
   }
   @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 
-  /* ─ auth ─ */
   .auth-wrap{padding-top:7vh;}
   .auth-hero{text-align:center;margin-bottom:20px;animation:rise .6s cubic-bezier(.22,.8,.3,1) both;}
   .auth-hero .big{font-family:var(--serif);font-weight:900;font-size:46px;letter-spacing:.38em;text-indent:.38em;background:linear-gradient(180deg,#ffffff 20%,#bfdff5);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 20px 50px rgba(63,167,221,.25);}
@@ -90,7 +88,6 @@
   .switch a{color:var(--gold);font-weight:700;text-decoration:none;cursor:pointer;border-bottom:1px solid rgba(231,197,132,.35);padding-bottom:1px;}
   .err{color:#ff9a9a;font-size:12.5px;text-align:center;margin-top:12px;min-height:16px;}
 
-  /* ─ userbar / points ─ */
   .userbar{display:flex;align-items:center;justify-content:space-between;margin:12px 0 6px;}
   .userbar .hi{font-size:14px;color:var(--muted);} .userbar .hi b{color:#fff;font-weight:700;}
   .pts{display:flex;align-items:center;gap:8px;background:linear-gradient(160deg,rgba(231,197,132,.16),rgba(231,197,132,.05));border:1px solid rgba(231,197,132,.4);padding:7px 14px;border-radius:999px;color:var(--gold-2);box-shadow:0 6px 18px rgba(0,0,0,.25);}
@@ -104,7 +101,6 @@
   .sect-t{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--gold);letter-spacing:.24em;margin:22px 2px 4px;font-weight:700;}
   .sect-t::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(231,197,132,.35),transparent);}
 
-  /* ─ match card ─ */
   .match .lg{font-size:11px;color:var(--faint);display:flex;justify-content:space-between;letter-spacing:.08em;margin-bottom:14px;}
   .match .lg span:last-child{color:var(--muted);}
   .teams{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;margin-bottom:16px;}
@@ -124,7 +120,6 @@
   .mstat{font-size:11.5px;margin-top:12px;color:var(--faint);text-align:center;letter-spacing:.03em;}
   .mstat.done{color:var(--good);} .mstat.lost{color:var(--bad);} .mstat.mine b{color:var(--gold-2);}
 
-  /* ─ leaderboard ─ */
   .lb-row{display:flex;align-items:center;gap:14px;padding:12px 4px;border-bottom:1px solid var(--line-soft);}
   .lb-row:last-child{border-bottom:none;}
   .rk{width:30px;height:30px;flex:0 0 30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--num);font-weight:700;font-size:15px;color:var(--faint);}
@@ -136,10 +131,8 @@
   .lb-name .meb{font-size:10px;background:linear-gradient(180deg,#dfba74,#c89b52);color:#2a1d07;padding:2px 7px;border-radius:7px;margin-left:7px;font-weight:800;vertical-align:1px;}
   .lb-pts{font-family:var(--num);font-weight:700;font-size:18px;color:var(--gold);}
 
-  /* ─ profile rows ─ */
   .foam-line{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:8px 0;}
 
-  /* ─ floating dock nav ─ */
   nav.tabs{position:fixed;left:0;right:0;bottom:calc(14px + env(safe-area-inset-bottom));display:flex;justify-content:center;z-index:5;pointer-events:none;}
   nav.tabs .in{pointer-events:auto;display:flex;gap:4px;background:rgba(7,20,37,.78);border:1px solid var(--line);backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%);border-radius:24px;padding:8px;box-shadow:0 20px 50px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.07);width:min(430px,calc(100% - 40px));}
   .tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 0 8px;border-radius:17px;color:var(--muted);font-size:11px;letter-spacing:.1em;cursor:pointer;transition:color .2s,background .2s;}
@@ -237,11 +230,11 @@
 </div></nav>
 
 <script>
-let TOKEN = localStorage.getItem('ocean_token') || null;
+/* ASP 版：用 session cookie 登入，API 係 api_*.asp，POST 用表單格式 */
 let ME = null, MATCHES = [], MYPICKS = {}, mode = 'login', poll = null;
 
-async function api(pathn, opts = {}) {
-  opts.headers = Object.assign({ 'Content-Type': 'application/json' }, opts.headers || {}, TOKEN ? { Authorization: 'Bearer ' + TOKEN } : {});
+async function api(pathn, data) {
+  const opts = data ? { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(data).toString() } : {};
   const r = await fetch(pathn, opts);
   const j = await r.json().catch(() => ({}));
   if (!r.ok) throw new Error(j.error || ('錯誤 ' + r.status));
@@ -258,11 +251,15 @@ async function doAuth() {
   const username = u.value.trim(), password = p.value;
   if (!username || !password) { authErr.textContent = '請填帳號同密碼'; return; }
   try {
-    const j = await api('/api/' + (mode === 'register' ? 'register' : 'login'), { method: 'POST', body: JSON.stringify({ username, password }) });
-    TOKEN = j.token; localStorage.setItem('ocean_token', TOKEN); ME = j.user; enter();
+    const j = await api(mode === 'register' ? 'api_register.asp' : 'api_login.asp', { username, password });
+    ME = j.user; enter();
   } catch (e) { authErr.textContent = e.message; }
 }
-function logout() { TOKEN = null; localStorage.removeItem('ocean_token'); if (poll) clearInterval(poll); location.reload(); }
+async function logout() {
+  if (poll) clearInterval(poll);
+  try { await api('api_logout.asp', { bye: 1 }); } catch (e) {}
+  location.reload();
+}
 
 function enter() {
   auth.classList.add('hidden'); main.classList.remove('hidden'); nav.classList.remove('hidden');
@@ -271,12 +268,12 @@ function enter() {
 }
 async function refresh() {
   try {
-    const me = await api('/api/me'); ME = me.user; renderTop();
-    const md = await api('/api/matches'); MATCHES = md.matches; ann.textContent = md.announcement || '';
-    const mp = await api('/api/mypicks'); MYPICKS = {}; mp.picks.forEach(p => MYPICKS[p.matchId] = p);
+    const me = await api('api_me.asp'); ME = me.user; renderTop();
+    const md = await api('api_matches.asp'); MATCHES = md.matches; ann.textContent = md.announcement || '';
+    const mp = await api('api_mypicks.asp'); MYPICKS = {}; mp.picks.forEach(p => MYPICKS[p.matchId] = p);
     renderMatches(); if (!document.getElementById('view-lb').classList.contains('hidden')) renderLB();
     renderProfile();
-  } catch (e) { if (String(e.message).includes('登入')) logout(); }
+  } catch (e) { if (String(e.message).includes('登入')) { if (poll) clearInterval(poll); location.reload(); } }
 }
 function renderTop() { upts.textContent = ME.points; }
 function ptsFor(o) { return Math.round((+o || 1) * 10); }
@@ -307,12 +304,12 @@ function renderMatches() {
 }
 async function predict(matchId, sel) {
   if (MYPICKS[matchId]) return;
-  try { await api('/api/predict', { method: 'POST', body: JSON.stringify({ matchId, sel }) }); await refresh(); }
+  try { await api('api_predict.asp', { matchId, sel }); await refresh(); }
   catch (e) { alert(e.message); }
 }
 async function renderLB() {
   try {
-    const j = await api('/api/leaderboard'); const box = lbBox; box.innerHTML = '';
+    const j = await api('api_leaderboard.asp'); const box = lbBox; box.innerHTML = '';
     if (!j.leaderboard.length) { box.innerHTML = '<div style="text-align:center;color:var(--muted);padding:8px">未有排名，快啲估波上分！</div>'; return; }
     j.leaderboard.forEach((r, i) => {
       const cls = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
@@ -332,9 +329,9 @@ function go(v) {
   document.getElementById('view-me').classList.toggle('hidden', v !== 'me');
   if (v === 'lb') renderLB(); if (v === 'me') renderProfile(); window.scrollTo(0, 0);
 }
-/* boot */
+/* boot：有 session 就直接入 */
 renderAuthMode();
-(async () => { if (TOKEN) { try { const me = await api('/api/me'); ME = me.user; enter(); } catch (e) { logout(); } } })();
+(async () => { try { const me = await api('api_me.asp'); ME = me.user; enter(); } catch (e) {} })();
 </script>
 </body>
 </html>

@@ -93,7 +93,7 @@ async function login() {
   } catch (e) { le.textContent = e.message; }
 }
 function logout() { TOKEN = null; sessionStorage.removeItem('ocean_admin'); location.reload(); }
-function show() { login.classList.add('hidden'); panel.classList.remove('hidden'); loadFeeds(); loadAll(); }
+function show() { document.getElementById('login').classList.add('hidden'); document.getElementById('panel').classList.remove('hidden'); loadFeeds(); loadAll(); }
 
 async function loadAll() { await Promise.all([loadStats(), loadMatches(), loadUsers(), loadAnn()]); }
 async function loadStats() {
