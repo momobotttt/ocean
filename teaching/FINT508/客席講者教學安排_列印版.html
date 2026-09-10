@@ -321,18 +321,44 @@ tr { break-inside: avoid; page-break-inside: avoid; }
 <p><span class="tag">AT4 掛鈎位</span>（同 Dr Lee 確認）一條用成本論證的門檻，加上一個關於查閱與披露的明確立場 —— 這就是強報告與弱報告的分別。<br>
 <span class="tag">要準備</span>40 行印刷表．以 2025 年 5 月 1 日後基礎計的流失成本工作紙．第一堂的試算表，準備好當場重跑．一版投影寫住私隱條例保障資料第 6 原則</p>
 
-<h2>十、分工：你 vs Dr Lee</h2>
-<p>科技歸 Dr Lee。這是一份禮物 —— 你可以講「唔係我嗰忽」而不會顯得心虛。</p>
+<h2>十、技術部分：你講連繫，Dr Lee 講機制</h2>
+<div class="warn"><b>這一章已修正。</b>先前寫成「科技歸 Dr Lee」—— 那個寫法會令你交走自己最好的內容。四堂裡最強的幾個教學時刻全部都是技術連繫位。</div>
 <table>
-<thead><tr><th style="width:50%">你的</th><th>他的</th></tr></thead>
-<tr><td>那個決定，以及誰來做</td><td>演算法怎樣運作</td></tr>
-<tr><td>模型是<b>為了什麼</b>、以及絕對不可以用來做什麼</td><td>怎樣建立、調校、驗證一個模型</td></tr>
-<tr><td>香港法例、規管與市場實務</td><td>軟件、程式、統計</td></tr>
-<tr><td>成本、公平、管治、員工反應</td><td>讀 confusion matrix 以外的模型評估</td></tr>
-<tr><td>真實 HR 會議裡實際發生什麼</td><td>一切技術問題</td></tr>
+<tr><th style="width:16%">層</th><th style="width:14%">誰講</th><th>內容</th></tr>
+<tr><td><b>一　個決定</b></td><td>你，全部</td><td>這個模型為了答哪條 HR 問題？誰要據此行動？做錯的成本是多少？誰有權看？</td></tr>
+<tr><td><b>二　個連繫</b><br><b>← 重點在這層</b></td><td><b>你，一定要講到</b></td><td>模型實際做什麼、輸出是什麼形狀、為什麼會錯、答不到什麼。<b>概念層，不用數學，不用程式</b></td></tr>
+<tr><td><b>三　個機制</b></td><td>Dr Lee</td><td>演算法怎樣運作、訓練、調參、驗證、統計推導</td></tr>
 </table>
-<p><b>三種站得住腳的交棒方式（英文原話見附錄一）：</b>（一）<b>拉返去決策</b> —— 「我沒法告訴你它怎樣加權那一項。我可以告訴你，當一個經理收到那個數字、而且要據此行動時會發生什麼 —— 而那才是出問題的地方。」（二）<b>交給 Dr Lee</b> —— 「那是建模問題，他比我適合。先擱住。」（三）<b>講唔知</b> —— 「我不知道。我的直覺是 X，但不要引用我。」</p>
-<div class="warn"><b>技術和法律都不要扮識。</b>在 13 個研究生的房間裡你一定會被拆穿，而代價是你在香港內容上的權威 —— 而那正正是他們在其他地方拿不到的部分。</div>
+<p>第二層是你的價值所在：Dr Lee 教得到第三層，教科書寫了第一層 —— 而<b>由第三層走回第一層那條路</b>，要同時知道 HR 會議裡實際發生什麼、和模型實際交了什麼出來。全課程只有你兩樣都知。</p>
+<div class="note"><b>界線不在「技術／非技術」，在深度。</b><br>
+「模型給你一個 0 至 1 的分數，你要自己決定在哪裡切」→ <b>你講</b>　　「它用 gradient boosting，learning rate 0.1」→ <b>Dr Lee 講</b></div>
+<h3>六個不要交出去的時刻</h3>
+<p>每一個都是技術問題，但答案都在 HR 那邊 —— 交出去，Dr Lee 也答不到，因為他沒有你那些知識。</p>
+<table>
+<tr><th style="width:30%">時刻</th><th style="width:10%">哪堂</th><th>為什麼是你的</th></tr>
+<tr><td><b>Threshold 是管理決定</b></td><td>第四堂</td><td>取捨兩邊都是港元和人，不是數學。全系列最重要的一句</td></tr>
+<tr><td><b>Proxy variable</b>：刪走欄位不會刪走資訊</td><td>第二堂</td><td>要答它，你要知道履歷實際有哪些欄、香港會問什麼。數據科學家不知道</td></tr>
+<tr><td><b>Data leakage</b></td><td>第四堂</td><td>純粹是流程知識。懂 HR 的人才挑得出來</td></tr>
+<tr><td><b>兩種錯的港元價</b></td><td>第四堂</td><td>重置成本、招聘前置期、能力損失 —— 全是你的專業</td></tr>
+<tr><td><b>Unexplained gap 是 residual</b></td><td>第三堂</td><td>統計是簡單的；難的是「控制了什麼、為什麼」，那是職級架構問題</td></tr>
+<tr><td><b>假設 vs 結構、model risk</b></td><td>第一堂</td><td>那些假設全是 HR 假設。你是房裡唯一有資格質疑它們的人</td></tr>
+</table>
+<h3>交棒要兩段式，不是迴避</h3>
+<p>先答 HR 那一半，再交機器那一半 —— 這樣你不是退，你是劃界：</p>
+<div class="say en">"For this decision the algorithm matters far less than where you set the threshold — and that one is ours. Which algorithm, and why, is Dr Lee's, and he will take it further than I can."</div>
+<div class="say en">"Accuracy is the wrong question here, and I can show you why in thirty seconds. The right question is what each kind of error costs you. How to measure it properly — Dr Lee."</div>
+<div class="say en">"I don't know. My instinct is X, but don't quote me — I'll check and come back to you next Sunday."</div>
+<p><b>下星期真的要回來答。</b>四堂之間隔一星期，這是你最抵用的資產：查完，下一堂開場三十秒答回上星期那條問題。全班會記住這件事，多過記住答案本身。</p>
+<table>
+<tr><th style="width:50%">你的</th><th>他的</th></tr>
+<tr><td>那個決定，以及誰來做</td><td>演算法怎樣運作</td></tr>
+<tr><td><b>模型在概念上做什麼、為什麼會錯、答不到什麼</b></td><td>怎樣建立、調校、驗證一個模型</td></tr>
+<tr><td>香港法例、規管與市場實務</td><td>軟件、程式、統計</td></tr>
+<tr><td>成本、公平、管治、員工反應</td><td>AUC／ROC、cross-validation、hyperparameter</td></tr>
+<tr><td>真實 HR 會議裡實際發生什麼</td><td>一切實作問題</td></tr>
+</table>
+<div class="warn"><b>不要扮識的是「深度」，不是「技術」。</b>在 13 個研究生的房間裡扮識演算法一定會被拆穿；但如果連 threshold 是什麼都講不出，你失去的更多。<br>
+<b>每堂的確實落點、十個必備術語的英文原話、給 Dr Lee 的協調電郵：見另一份《技術連繫指南》。</b></div>
 
 <h2>十一、要同 Dr Lee 敲定</h2>
 <ul class="ck">
@@ -340,7 +366,7 @@ tr { break-inside: avoid; page-break-inside: avoid; }
 <li><b>次序。</b>既然由你介紹四層分析法，你應該排得比較前。要確認 —— 如果他已經教過，第五章縮到三分鐘。</li>
 <li><b>實驗室後勤。</b>可否推連結去他們部機？有沒有課室管理軟件？張椅識唔識轉？有沒有可用的白板，還是共享文件就是你唯一的板？</li>
 <li><b>參與紀錄。</b>提出每堂之後給他三行，講邊幾個有貢獻。13 個人你真係知。</li>
-<li><b>重疊。</b>有沒有他會講、你應該避開的東西。</li>
+<li><b>銜接（不是避開重疊）。</b>告訴他你會用非技術語言 set 起哪幾個概念 —— 模型結構 vs 假設、甄選效度、proxy variable、confusion matrix、threshold、class imbalance、data leakage、predictive ≠ cause —— 他可以直接接住往下講，不用從頭來過。電郵範本見《技術連繫指南》第六節。</li>
 </ul>
 
 <h2>十二、準備清單</h2>
