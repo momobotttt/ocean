@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>FINT 508 教科書章節對應</title>
+<style>
+@page { size:A4; margin:9mm 8mm 10mm 8mm; }
+* { box-sizing:border-box; }
+html { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+body { font-family:"WenQuanYi Zen Hei","Noto Sans CJK TC",sans-serif;
+       font-size:8.2pt; line-height:1.38; color:#000; margin:0; }
+h1 { font-size:14.5pt; margin:0 0 1mm 0; }
+h1 .sub { font-size:9.4pt; font-weight:normal; display:block; margin-top:1mm; }
+h2 { font-size:9.8pt; margin:3.2mm 0 1.4mm 0; padding:.7mm 1.5mm;
+     background:#1f3864; color:#fff; break-after:avoid; page-break-after:avoid; }
+h3 { font-size:8.9pt; margin:2.4mm 0 1mm 0; color:#1f3864;
+     border-bottom:.5pt solid #1f3864; padding-bottom:.4mm; break-after:avoid; page-break-after:avoid; }
+p { margin:0 0 1.1mm 0; }
+ul,ol { margin:0 0 1.2mm 0; padding-left:4.2mm; }
+li { margin:0 0 .5mm 0; }
+table { width:100%; border-collapse:collapse; margin:0 0 1.8mm 0; font-size:7.6pt; line-height:1.3; }
+thead { display:table-header-group; }
+th { background:#e4e9f2; text-align:left; font-weight:bold; }
+th,td { border:.4pt solid #9aa5b8; padding:.7mm 1.05mm; vertical-align:top; }
+tr { break-inside:avoid; page-break-inside:avoid; }
+.hdr { border:.8pt solid #1f3864; padding:2mm 2.5mm; margin-bottom:2mm; }
+.meta { font-size:8.2pt; } .meta b { color:#1f3864; }
+.note { background:#f0f2f6; border-left:1.4pt solid #1f3864; padding:1.2mm 1.8mm; margin:0 0 1.6mm 0; }
+.warn { background:#fff4e0; border-left:1.4pt solid #b06000; padding:1.2mm 1.8mm; margin:0 0 1.6mm 0; }
+.stop { background:#fdecec; border:.9pt solid #a02020; padding:1.6mm 2mm; margin:0 0 2mm 0; }
+.fix { background:#eaf3ea; border:.8pt solid #2d6a2d; padding:1.6mm 2mm; margin:0 0 2mm 0; }
+.say { border-left:1.4pt solid #7d8aa0; padding:1mm 1.8mm; margin:0 0 1.4mm 0; background:#fafafa; }
+.en { font-family:Georgia,"Times New Roman",serif; font-style:italic; }
+.cite { font-family:Georgia,"Times New Roman",serif; font-size:7.3pt; }
+.S { color:#1a6b1a; font-weight:bold; }
+.U { color:#8a3a00; font-weight:bold; }
+.tag { display:inline-block; background:#1f3864; color:#fff; padding:.25mm 1.1mm; font-size:6.9pt;
+       margin-right:.8mm; font-style:normal; font-weight:normal; }
+.foot { border-top:.5pt solid #999; margin-top:2mm; padding-top:1mm; font-size:7pt; color:#444; }
+</style>
+</head>
+<body>
+
+<div class="hdr">
+<h1>FINT 508 教科書章節對應
+<span class="sub">Diez, Bussin &amp; Lee (2019) <span class="en">Fundamentals of HR Analytics: A Manual on Becoming HR Analytical</span> (Emerald) · 章節 ↔ 八堂 ↔ 客席四個星期日 · 八步法融入六步課堂</span></h1>
+<div class="meta"><b>課程</b> FINT 508 Human Resource Analytics for FinTech Management（香港樹仁大學，2026–27 第一學期）　·
+<b>本書地位</b> 大綱 essential reading 內唯一一本專書　·　<b>本文件性質</b> 對《課程重新設計》同《客席講者教學安排》嘅補充；兩份文件嘅理論配對<b>不變</b></div>
+</div>
+
+<div class="stop">
+<b>先講清楚：我仲未收到本書。</b>你貼過嚟嘅三行係 ProQuest Ebook Central 每一頁底部嘅水印文字（「Created from undip-ebooks on 2021-10-19…」），唔係附件。呢個環境上唔到 Emerald、Google Books、Amazon、ResearchGate、任何書商同圖書館頁面（全部被出口代理封鎖）。<br>
+<b>所以以下全部建自公開目錄同搜尋摘要：</b>章節標題可信（多個獨立來源一致）；章內細節、頁碼、個案名稱、練習題<b>一律未核</b>。八步法嘅步驟名稱來自轉述文章（LinkedIn、Teamlease、HRO Today），字眼可能同原書有出入 —— <b>未對照 Ch.1 之前唔好印上投影片</b>。<br>
+<b>要升級呢份文件，請把 PDF 上載到呢個對話</b>（唔係貼文字）。我會用嚟備課，<b>唔會放入 git repo</b> —— 本書係圖書館授權內容，唔可以隨教材一齊分發。
+</div>
+
+<h2>一、核心發現：大綱八個課題就係本書嘅章節結構</h2>
+<div class="note">大綱嘅八個教學課題，有<b>七個</b>同本書章名逐字或近乎逐字對應（第 1、3 堂連標題都係直接借用）。即係 Dr Lee 嘅課程係<b>按本書起嘅</b>：本書係骨架，32 篇期刊係證據層。呢個發現改變咗兩件事：（一）學生「book knowledge」有咗一個具體對象 —— AT4 原文要求學生「compare the <b>book</b> knowledge with the actual FinTech HRM… by interviewing senior FinTech management staff」，「the book」就係呢本；（二）先前審計把本書標為「當工具書，唔好當理論來源」—— <b>維持</b>，但要補一句：本書提供嘅係<b>框架同術語</b>（八步法、分析類型、各章嘅實作流程），可考理論仍然由期刊承載。</div>
+
+<table>
+<thead><tr><th style="width:4%">堂</th><th style="width:27%">大綱課題（原文）</th><th style="width:27%">本書章節</th><th style="width:6%">對應</th><th>備註</th></tr></thead>
+<tr><td>1</td><td>HR Analytics and Data-analytic Thinking</td><td>Ch.1 Basics of Finance, Statistics and Data-analytic Thinking（Part I: The Basics of HR Analytics）</td><td class="S">強</td><td>標題直接借用。搜尋摘要見到嘅章內小節：HR 嘅變化、為何要做分析、<b>分析類型</b>、HR 分析師作為「architect」、<b>八步法</b>。「分析類型」極可能就係大綱 AT4 用嘅四層（描述／診斷／預測／處方）—— 待原文核</td></tr>
+<tr><td>2</td><td>HR System and Big Data Collection</td><td>Ch.3 Data Collection；工具部分對應 Ch.2 Tools for HR Analytics</td><td class="S">強</td><td>Ch.2 講邊啲工具未知（Excel？R？）—— 決定三個工具實驗室（Excel／Power BI／Orange）同本書係咪同一套之前要睇原文</td></tr>
+<tr><td>3</td><td>HR Analytics Modelling　· Case study: HR analytics for the Chile International Bank training needs analysis</td><td>Ch.4 HR Analytics Modelling</td><td class="S">強</td><td>章名完全相同。<b>「Chile International Bank」個案 = Cotes &amp; Ugarte (2021) JBR</b>：論文寫明係一間國際銀行嘅智利分部（約 12,000 員工），標題只寫「the International Bank」。本書 Ch.4 或 Ch.6 有冇同一個案 —— <span class="U">未核</span></td></tr>
+<tr><td>4</td><td>Predicting Turnover in FinTech</td><td>Ch.5 Turnover</td><td class="S">強</td><td>客席星期日 4</td></tr>
+<tr><td>5</td><td>Predicting Work Performance in FinTech</td><td><span class="U">無同名章。</span>候選：Ch.6 Training and Development／Ch.10 Career Planning／Ch.11 HR Policies vs. Profits</td><td class="U">待定</td><td>唯一一堂大綱冇借用章名。<b>要原文先定得到</b>；我嘅猜測係 Ch.6（訓練→績效係最常見寫法），但唔會照猜落投影片</td></tr>
+<tr><td>6</td><td>Enhancing Strategic Resourcing in FinTech</td><td>Ch.7 Strategic Resourcing</td><td class="S">強</td><td>客席星期日 1</td></tr>
+<tr><td>7</td><td>Enhancing Recruitment in FinTech　· Case study: Recruitment and selection analytics</td><td>Ch.8 Recruitment</td><td class="S">強</td><td>客席星期日 2</td></tr>
+<tr><td>8</td><td>The Use of Compensation and Benefits　· Case study: Monitoring the impact of interventions</td><td>Ch.9 Compensation and Benefits</td><td class="S">強</td><td>客席星期日 3。搜尋摘要：本章講 pay plans 同<b>福利計劃嘅感知價值</b>。大綱個案「monitoring the impact of interventions」= 八步法第 8 步（Execute &amp; Evaluate）嘅直接應用</td></tr>
+<tr><td>—</td><td>（大綱未用）</td><td>Ch.6 Training and Development · Ch.10 Career Planning · Ch.11 HR Policies vs. Profits · Ch.12 Conclusions and Thoughts on the Future</td><td>—</td><td>其中一章大概係第 5 堂；Ch.12 可作第 1 堂或最後一堂嘅收尾讀物。Ch.11 嘅「policies vs profits」同第 1 堂 EBM 鏈式中介（HR 分析 → 決策 → 組織績效）同一個問題</td></tr>
+</table>
+
+<h2>二、客席四個星期日 ↔ 章節 ↔ 理論配對（理論不變，章節係新增嘅共同底線）</h2>
+<table>
+<thead><tr><th style="width:9%">星期日</th><th style="width:13%">課前讀</th><th style="width:30%">堂上點用本章</th><th style="width:26%">理論配對（不變，出自期刊）</th><th>本書 ↔ 期刊嘅接口</th></tr></thead>
+<tr><td><b>1 規劃</b><br>= 第 6 堂</td><td><b>Ch.7</b> Strategic Resourcing<br><span class="cite">頁碼待定</span></td><td>第 2 步「HR 術語」八個預填詞入面，<b>至少四個取自本章</b>（用書嘅字眼，唔用我嘅）；第 4 步驗證：把 Kestrel Pay 人力規劃跑一次八步法，投影一條「而家喺第幾步」嘅橫條</td><td>A RBV／VRIO（Gerhart &amp; Feng 2021）<br>B 人力資本：一般 vs 公司專屬（Gerhart &amp; Feng；Campanella et al. 2023）</td><td>本章大概係「做法」，期刊係「點解」。投影片出處標記加第三種：<b>[FROM THE TEXTBOOK Ch.7]</b>，同 [FROM THE PAPER]／[INSTRUCTOR CONSTRUCTION] 並列</td></tr>
+<tr><td><b>2 招聘</b><br>= 第 7 堂</td><td><b>Ch.8</b> Recruitment</td><td>同上。代理變項四分鐘（第 7 堂擁有）—— 如本章有講「邊啲欄位唔應該入模型」，用書嘅例，再加香港履歷慣例（相片、年齡、婚姻狀況）</td><td>A 角色理論／能力指標（Ding et al. 2023）<br>B ASA（Schneider 1987，外借）</td><td>Köchling &amp; Wehner (2020) 嘅算法歧視係本章嘅「壞處」欄現成材料</td></tr>
+<tr><td><b>3 薪酬</b><br>= 第 8 堂</td><td><b>Ch.9</b> Compensation and Benefits</td><td>本書 Ch.1 嘅示範假設正正係「<span class="en">An incentive system increases branch profitability</span>」（銀行分行花紅制度）—— 同 Ahammad et al. (2015) 以色列商業銀行季度數據係<b>同一條問題</b>。第 4 步驗證直接用呢對：書提出假設，論文係一次真實檢驗</td><td>A 組織／情境雙元性：ex-ante vs ex-post 激勵（Ahammad et al. 2015）<br>B 文化維度：不確定性規避（Llanos &amp; Bin Ahmad 2016）</td><td>大綱個案「monitoring the impact of interventions」= 第 8 步。金管局 CG-5 讀作被強制施加嘅 ex-post 制度，係「書冇寫、香港有」嘅位</td></tr>
+<tr><td><b>4 流失</b><br>= 第 4 堂</td><td><b>Ch.5</b> Turnover</td><td>本章係全書最貼「預測模型」嘅一章；第 4 步驗證用 IBM 開放數據跑門檻拖曳練習（技術連繫指南嗰個）時，用本章嘅術語命名兩種錯誤</td><td>A 流失過程模型（March &amp; Simon；Mobley；Lee &amp; Mitchell，外借）<br>B 流失風險量化（Ma et al. 2020）</td><td>DPP6 查閱權收尾（星期日 4 獨有）係書冇、香港有嘅第二個位。Al Akasheh et al. (2023) 十年綜述可作本章嘅「文獻延伸」</td></tr>
+<tr><td colspan="5"><b>四堂共用：Ch.1 嘅八步法</b>（下節）。客席安排原有嘅「十二分鐘四層分析法樓梯」<b>保留</b>，加一句定位：四層答「呢條係邊類問題」，八步答「一個項目按咩次序行」—— 兩者唔係競爭，係一橫一直</td></tr>
+</table>
+
+<h2>三、八步法點樣落入六步課堂模板（唔加時間，只換內容）</h2>
+<div class="warn"><b>八步（轉述版，待核）：</b>1 Define the business problem → 2 Formulate a hypothesis → 3 Collect data → 4 Clean / analyse data → 5 Derive insights → 6 Build recommendations → 7 Visualise and tell a story → 8 Execute and evaluate。<b>本書原則：</b>「solve <em>business</em> problems with HR means, not HR problems with HR means」—— 第 1 步要定義嘅係生意問題（利潤、分行收入），唔係 HR 問題（「減流失」只係手段）。</div>
+<table>
+<thead><tr><th style="width:16%">六步課堂嘅邊一步</th><th style="width:42%">八步法落喺邊度</th><th>點解係呢度</th></tr></thead>
+<tr><td>第 1 堂（Dr Lee，Ch.1）</td><td>八步<b>只完整教一次</b>，之後每堂只「指」唔「教」</td><td>第 1 堂本來就係 Ch.1；八步同四層分析法一齊釘落共享文件頂部，全學期唔刪</td></tr>
+<tr><td>第 2 步　HR 術語（8 個預填）</td><td>每堂八個詞入面，<b>一個係當堂個案所在嘅八步法步驟名</b>（例：星期日 3 → 「Execute &amp; evaluate」）</td><td>術語數量唔加；只係其中一格由我嘅字眼換成書嘅字眼</td></tr>
+<tr><td>第 4 步　驗證（你嘅個案 + 一篇期刊）</td><td>個案講完之後，投影一條八格橫條，<b>問全班：呢間公司死喺第幾步？</b>（多數係第 1 步 —— 一開始就定義咗 HR 問題）</td><td>呢個問題正正係 HRM 背景講者最強嘅位：你坐過嗰啲「brief 係減流失」嘅會議。技術連繫指南嘅六個「不可交出」時刻，有三個就係第 1、5、6 步</td></tr>
+<tr><td>第 5 步　學生實例（四組）</td><td>每組交件加一行：「我哋嘅例喺八步法邊一步出事」</td><td>同「每份交件寫明坐喺四層分析法邊一級」係同一個動作，一行搞掂</td></tr>
+<tr><td>第 6 步　好處同壞處</td><td>「壞處」欄固定第一條：<b>本書冇寫、香港有嘅嘢</b>（第 57 章通知期／簽證掛鈎／CG-5／DPP6／受保護理由）</td><td>呢個就係「假設與香港」帳嘅入口，亦係 AT4「book knowledge vs actual」嘅演練</td></tr>
+<tr><td>AT4 訪談題（每堂 1–3 條）</td><td><b>改為按本書章節出題</b>：每堂嘅訪談題問受訪者「你間公司喺本章講嘅嗰件事上，實際做到八步法第幾步？」</td><td>AT4 原文就係要學生比較「book knowledge」同實況；訪談大綱按書嘅章節結構行，報告自然對得返評分標準</td></tr>
+</table>
+
+<h2>四、收到 PDF 之後我會做嘅升級（按次序）</h2>
+<table>
+<thead><tr><th style="width:5%">#</th><th style="width:38%">升級</th><th>影響邊份文件</th></tr></thead>
+<tr><td>1</td><td>核實章節清單同<b>頁碼範圍</b>；定案第 5 堂用邊一章</td><td>本文件第一節；《課程重新設計》每堂讀物欄</td></tr>
+<tr><td>2</td><td>逐章抽出<b>學習目標同關鍵詞</b> → 八堂嘅「八個預填術語」凡書有定義嘅一律改用書嘅定義（AT2 同本書要講同一套字）</td><td>《理論骨幹與每堂結構》；四個星期日流程表</td></tr>
+<tr><td>3</td><td>核對 Ch.1「分析類型」係咪就係四層（描述／診斷／預測／處方）；核對八步嘅原文字眼</td><td>客席安排嘅十二分鐘樓梯；所有投影片</td></tr>
+<tr><td>4</td><td>搵出本書自己嘅<b>個案同練習</b>：Ch.4 有冇銀行 TNA 個案；Ch.5／7／8／9 各有咩例 —— 有嘅話第 4 步驗證優先用書嘅例，再加香港位</td><td>個案故事指南嘅十一個故事位</td></tr>
+<tr><td>5</td><td>Ch.2 講嘅工具 vs 三個工具實驗室（Excel／Power BI／Orange）—— 如唔同，向 Dr Lee 提出跟書定跟實驗室</td><td>《課程重新設計》第 15 週表</td></tr>
+<tr><td>6</td><td>核對本書有冇任何理論主張同八堂理論配對<b>衝突</b>（例：本書對流失嘅解釋 vs March &amp; Simon）—— 有就寫入「理論 vs 證據」帳，當場示範</td><td>四本帳</td></tr>
+<tr><td>7</td><td>閱讀負荷重算：每堂一章（實務手冊，讀得快）+ 一篇必讀期刊；對照大綱 20 小時閱讀時數</td><td>《課程重新設計》修正 13</td></tr>
+</table>
+
+<h2>五、而家就可以做嘅三件事（唔使等 PDF）</h2>
+<ol>
+<li><b>問 Dr Lee 兩條：</b>（a）學生有冇本書嘅電子版取用權（樹仁圖書館 Emerald／ProQuest）？冇嘅話「課前讀一章」行唔通，要改為堂上發章節要點；（b）AT4 嘅「book knowledge」係咪就係指本書 —— 係嘅話訪談大綱按章節出題（第三節最後一行）。</li>
+<li><b>四個星期日嘅課前讀物改為：</b>本章（Ch.7／8／9／5）+ 原定嗰篇必讀期刊。其他期刊全部標選讀，唔變。</li>
+<li><b>投影片出處標記加第三種</b> [FROM THE TEXTBOOK Ch.x]。三種標記令學生一眼分到：書講嘅、論文證明嘅、我加嘅（香港位）。</li>
+</ol>
+
+<div class="foot">
+<b>本文件用過嘅公開來源（全部只係搜尋摘要，頁面本身開唔到）：</b>
+Emerald Books Gateway, monograph 10821（章節清單）；bookstore.emerald.com 9781789739640（書介、Ch.1 小節）；Sriram Iyer, “8-Step approach to being HR Analytical” (LinkedIn)；Teamlease Digital, “8 Steps to becoming HR Analytical”；HRO Today, “Data-Driven Strategy”（八步法轉述、示範假設）；Cotes &amp; Ugarte (2021), <span class="en">J. of Business Research</span> 127, 464–473, ScienceDirect 摘要（智利分部、約 12,000 員工）。
+<b>冇用嘅來源：</b>網上流傳嘅全文 PDF（pdfcoffee 等）—— 侵權，唔會用。
+　·　與本文件相關嘅先前文件：《大綱文獻理論總表》（本書條目：「當工具書，唔好當理論來源」—— 維持）；《課程重新設計》（八堂理論表、六步模板、修正 13）；《客席講者教學安排》（四個星期日、十二分鐘樓梯）。
+</div>
+
+</body>
+</html>

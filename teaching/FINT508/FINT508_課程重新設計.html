@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>FINT 508 課程重新設計</title>
+<style>
+@page { size:A4; margin:9mm 8mm 10mm 8mm; }
+* { box-sizing:border-box; }
+html { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+body { font-family:"WenQuanYi Zen Hei","Noto Sans CJK TC",sans-serif;
+       font-size:8.2pt; line-height:1.38; color:#000; margin:0; }
+h1 { font-size:14.5pt; margin:0 0 1mm 0; }
+h1 .sub { font-size:9.4pt; font-weight:normal; display:block; margin-top:1mm; }
+h2 { font-size:9.8pt; margin:3.2mm 0 1.4mm 0; padding:.7mm 1.5mm;
+     background:#1f3864; color:#fff; break-after:avoid; page-break-after:avoid; }
+h3 { font-size:8.9pt; margin:2.4mm 0 1mm 0; color:#1f3864;
+     border-bottom:.5pt solid #1f3864; padding-bottom:.4mm; break-after:avoid; page-break-after:avoid; }
+h4 { font-size:8.2pt; margin:1.8mm 0 .7mm 0; break-after:avoid; page-break-after:avoid; }
+p { margin:0 0 1.1mm 0; }
+ul,ol { margin:0 0 1.2mm 0; padding-left:4.2mm; }
+li { margin:0 0 .5mm 0; }
+table { width:100%; border-collapse:collapse; margin:0 0 1.8mm 0; font-size:7.6pt; line-height:1.3; }
+thead { display:table-header-group; }
+th { background:#e4e9f2; text-align:left; font-weight:bold; }
+th,td { border:.4pt solid #9aa5b8; padding:.7mm 1.05mm; vertical-align:top; }
+tr { break-inside:avoid; page-break-inside:avoid; }
+.hdr { border:.8pt solid #1f3864; padding:2mm 2.5mm; margin-bottom:2mm; }
+.meta { font-size:8.2pt; } .meta b { color:#1f3864; }
+.note { background:#f0f2f6; border-left:1.4pt solid #1f3864; padding:1.2mm 1.8mm; margin:0 0 1.6mm 0; }
+.warn { background:#fff4e0; border-left:1.4pt solid #b06000; padding:1.2mm 1.8mm; margin:0 0 1.6mm 0; }
+.stop { background:#fdecec; border:.9pt solid #a02020; padding:1.6mm 2mm; margin:0 0 2mm 0; }
+.fix { background:#eaf3ea; border:.8pt solid #2d6a2d; padding:1.6mm 2mm; margin:0 0 2mm 0; }
+.say { border-left:1.4pt solid #7d8aa0; padding:1mm 1.8mm; margin:0 0 1.4mm 0; background:#fafafa; }
+.en { font-family:Georgia,"Times New Roman",serif; font-style:italic; }
+.cite { font-family:Georgia,"Times New Roman",serif; font-size:7.3pt; }
+.V { color:#1a6b1a; font-weight:bold; }
+.I { color:#8a3a00; font-weight:bold; }
+.tag { display:inline-block; background:#1f3864; color:#fff; padding:.25mm 1.1mm; font-size:6.9pt;
+       margin-right:.8mm; font-style:normal; font-weight:normal; }
+.foot { border-top:.5pt solid #999; margin-top:2mm; padding-top:1mm; font-size:7pt; color:#444; }
+.two { column-count:2; column-gap:4mm; }
+</style>
+</head>
+<body>
+
+<div class="hdr">
+<h1>FINT 508 課程重新設計
+<span class="sub">八堂理論骨幹 · 六步課堂模板 · 四本帳 · 全部 40 接觸小時分配 · 引用紀律</span></h1>
+<div class="meta"><b>課程</b> FINT 508 Human Resource Analytics for FinTech Management（香港樹仁大學，2026–27 第一學期）　·　
+<b>性質</b> 向課程主任 Dr LEE 提交的重新設計建議；客席四堂為其中子集　·　<b>授課語言</b> 全英文</div>
+</div>
+
+<div class="stop">
+<b>更正通告 —— 請先讀。呢一節推翻我先前交過嘅材料入面四樣嘢。</b>
+<table style="margin-top:1.4mm">
+<tr><th style="width:22%">我先前寫錯</th><th style="width:38%">正確版本（已查證）</th><th>影響</th></tr>
+<tr><td><b>《僱傭條例》連續性合約「4·18」</b></td>
+<td><b>已被取代。由 2026 年 1 月 18 日起為「4·17／4·68」</b>：連續受僱於同一僱主四週或以上，且（i）每週工作 ≥17 小時，或（ii）某週不足 17 小時但該週連同前三週合計 ≥68 小時。立法會 2025 年 6 月 18 日通過，2025 年 6 月 27 日刊登憲報。<span class="cite">出處：labour.gov.hk/eng/news/EAO2025.htm；1823.gov.hk「468 Rule」FAQ</span></td>
+<td>你十一月教嘅時候新規已生效十個月。連續性合約係遣散費、長期服務金、通知期、有薪病假、法定假日薪酬、產假／侍產假嘅資格閘 —— 呢個係承重點。<b>而且比舊規則更好教</b>：一條喺學生自己嗰年生效、擴大咗資格範圍嘅修訂，係現成嘅「法規會變」實例</td></tr>
+<tr><td><b>「平機會只管性別、殘疾、家庭崗位、種族」</b></td>
+<td><b>講法有誤。要講受保護理由，唔好講條例名。</b>《性別歧視條例》（第 480 章）實際涵蓋<b>性別、懷孕、餵哺母乳、婚姻狀況</b>；殘疾（487）；家庭崗位（527）；種族（602）。<b>唔受保護嘅係：年齡、宗教、性取向。</b><span class="cite">出處：eoc.org.hk；elegislation.gov.hk/hk/cap480</span></td>
+<td>舊講法暗示婚姻狀況同懷孕唔受保護 —— 錯，而且係喺你最鋒利、重複三次嘅教學點上出錯。<b>新版更狠</b>：真空唔止年齡，仲有宗教同性取向</td></tr>
+<tr><td><b>JD-R 放喺流失堂（星期日 4）</b></td>
+<td><b>應放喺工作表現堂。</b>審計核實 Lesener et al. (2020) 嘅係動機路徑「工作資源 → 敬業度 → <b>績效</b>」，唔係流失。放喺流失堂會令一個「出自書目」嘅標籤落喺一個書目冇支持嘅結論上</td>
+<td>八堂版已改：JD-R 係第 5 堂（表現）嘅 Theory A。第 4 堂（流失）Theory A 改為外借嘅流失過程模型，Theory B 用核實嘅 Ma et al. 風險量化</td></tr>
+<tr><td><b>AT4 當成數據分析專案</b></td>
+<td><b>大綱寫明係訪談研究。</b>原文：學生要「compare the book knowledge with the actual FinTech HRM, willingness and actual adoption of HR analytics… by <b>interviewing senior FinTech management staff worldwide</b>」</td>
+<td>我先前每堂標嘅「AT4 掛鈎位」多數係虛構公司嘅分析產物 —— 嗰啲<b>唔係</b>AT4 報告嘅組件。真正嘅組件係<b>累積出嚟嘅訪談問題</b>。八堂版改為每堂加 1–3 條訪談題，第 5 週交訪談大綱</td></tr>
+</table>
+</div>
+
+<h2>一、呢次重新設計係點做出嚟嘅，同埋佢嘅誠信邊界</h2>
+<table>
+<tr><th style="width:20%">環節</th><th>做法</th></tr>
+<tr><td><b>過程</b></td><td>32 個並行子代理．先逐字抽出大綱硬性條件同已查證嘅引用索引 → <b>三份互相唔知情</b>嘅八堂理論地圖（分別由評核倒推／由學科正統倒推／由書目倒推）→ 五維評分後嫁接成一份 → 八堂各自設計 → <b>每堂兩個對抗式審查員</b>（理論忠實度／可行性與對齊）→ 全課程連貫性審查 → 完整性批判</td></tr>
+<tr><td><b>對抗審查揀到嘅嘢</b></td><td>其中一份地圖<b>印咗六個索引從未查核過嘅卷期頁碼</b>（一邊承認未核實、一邊照印 locator）；另一份把 JD-R 放錯堂；三份都把 Cotes &amp; Ugarte 當成大綱所寫嘅「Chile International Bank」而冇註明論文標題其實係「…for the International Bank」；三份都冇為香港法律主張設立獨立嘅出處類別。全部已修正</td></tr>
+<tr><td><b>誠信邊界（三層）</b></td><td><b>（一）</b>「核實」只代表<b>出版社頁面或摘要</b>支持，唔代表通讀全文 —— 期刊付費牆呢個環境上唔到。<br>
+<b>（二）</b>所有經典理論嘅卷期頁碼<b>一律未核</b>，開課前要用圖書館清一次（清單見第十一節）。<br>
+<b>（三）</b>影片包四條片<b>冇人睇過</b>（YouTube／TED／archive.org 全部被封）。連 Strack 嘅 BCG 職銜同流傳嘅 189 國／20 萬人／六成數字都未核。</td></tr>
+</table>
+
+<h2>二、大綱本身有五個問題，要同 Dr Lee 敲定</h2>
+<table>
+<tr><th style="width:26%">問題</th><th>原文情況</th><th>要點</th></tr>
+<tr><td><b>AT3 權重矛盾</b></td><td>評核表寫 <b>20%</b>，AT3 評分準則標題寫 <b>30%</b>。文件自己嘅總計行（個人 70%）只有 30% 對得上</td><td><b>發任何 brief 之前要同課程／學系定案。</b>唔好喺第一堂讀出一個未定嘅數字</td></tr>
+<tr><td><b>TLA2 寫住要請業界人分享</b></td><td>「Senior management staff of FinTech companies <b>will be invited to share their experiences and viewpoints</b>」，並映射到四個 CILO</td><td><b>你嘅角色寫喺大綱裏面。</b>但一個 120 分鐘嘅講學唔等於 TLA2 —— 建議另設 25–30 分鐘「業界分享 + 學生用累積訪談題現場提問」，順便解決 AT4 訪談門路問題</td></tr>
+<tr><td><b>TLA3 冇落實</b></td><td>「preparing the assigned chapters and other relevant materials for presentation/discussion during classes」，映射 CILO2–4、AT1–4</td><td>八堂設計冇一堂真正安排學生預備並主講指定章節。新架構把佢放喺導修</td></tr>
+<tr><td><b>AT4 係訪談研究</b></td><td>見更正通告</td><td>訪談門路要課程層面解決：13 名學生要接觸「worldwide」嘅高管</td></tr>
+<tr><td><b>TLA2 用詞</b></td><td>原文寫「<b>prescriptive</b>, diagnostic, predictive, and <b>prescriptive</b>」—— <b>prescriptive 出現兩次，冇 descriptive</b></td><td>明顯手誤。AT4 條文本身寫得正確（descriptive, diagnostic, predictive, prescriptive）。<b>照 AT4 教四層，並且喺堂上講明大綱嗰處手誤</b>，唔好等學生自己撞到</td></tr>
+</table>
+
+<h2>三、最大結構問題：我一路以來嘅時數假設係錯嘅</h2>
+<div class="warn"><b>八堂 × 120 分鐘 = 16 小時。大綱給嘅係 24 小時講授 + 12 小時導修 + 2 小時測驗 + 2 小時諮詢 = <u>40 小時</u>。</b>
+即係<b>有 20 個接觸小時一直冇分配</b>，而我之前所有材料都當成「八堂就係全個課程」。<br>
+連鎖後果（連貫性審查獨立喺八堂全部驗到）：每堂實際內容都係 130–150 分鐘塞入 120 分鐘嘅房；超時永遠落喺流程表最後；而最後嗰幾格正好係<b>承載評核證據</b>嘅 —— 理論帳、匯報（AT1 口頭證據同 AT4 答問排練）、講出口嘅出處聲明。所以四本帳、八次演練嘅三段式、計時提案，<b>喺文件上全部真實，喺課室裏面全部第一個被刪</b>。<br>
+<b>CILO4 冇家、四層分析法喺第 3 堂之後消失、TLA3 跑唔到、AT3 冇里程碑、AT4 冇全長排練 —— 全部係同一個原因：冇位。</b></div>
+
+<h2>四、學期架構（新）—— 40 小時全部落地</h2>
+<table>
+<tr><th style="width:7%">週</th><th style="width:30%">講授（24 小時）</th><th style="width:30%">導修（12 小時）</th><th>評核里程碑</th></tr>
+<tr><td>1</td><td><b>L1</b> 為何分析本身唔改變任何事</td><td>—</td><td>AT1 規則、出席與遲到定義、缺席補救機制、<b>課程資料通知</b>發出</td></tr>
+<tr><td>2</td><td><b>L2</b> 為何你間公司做唔到／數據量度到啲乜</td><td>工具實驗室 1：Excel／Power Query</td><td>AT4 分組確認（<b>四組，每組 3–4 人</b>）</td></tr>
+<tr><td>3</td><td><b>L3</b> 先揀問題，後揀模型</td><td>—</td><td>AT3 brief 發出（含 APA、Turnitin、AI 使用規則）</td></tr>
+<tr><td>4</td><td><b>L4</b> 想走與走得到，同埋代價</td><td>APA + Turnitin + AT3 診所</td><td><b>AT3 里程碑：題目 + 兩篇期刊文章</b></td></tr>
+<tr><td>5</td><td><b>L5</b> 到底預測緊乜？準則問題</td><td>工具實驗室 2：Power BI／Tableau</td><td><b>AT4 訪談大綱交初稿</b>；同意書與私隱簡介</td></tr>
+<tr><td>6</td><td><b>L6</b> 自建、外購、借用 —— 邊個付培訓費</td><td>—</td><td>AT4 受訪者確認</td></tr>
+<tr><td>7</td><td><b>L7</b> 選擇甚麼，與實際選中甚麼</td><td>AT4 訪談技巧與同意書工作坊</td><td>AT2 測驗簡介</td></tr>
+<tr><td>8</td><td><b>L8</b> 一套花紅制度係一個賭注</td><td>工具實驗室 3：Orange Data Mining</td><td>AT3 大綱回饋</td></tr>
+<tr><td>9</td><td><b>TLA2 業界分享 + 學生提問</b>（用累積訪談題）</td><td>AT2 技術課（含<b>多項選擇題</b>練習）</td><td>—</td></tr>
+<tr><td>10</td><td colspan="2"><b>AT2 測驗（2 小時，閉卷）</b></td><td>—</td><td></td></tr>
+<tr><td>11</td><td>AT3 寫作診所</td><td>—</td><td><b>諮詢 1 小時</b></td></tr>
+<tr><td>12</td><td>AT4 指導</td><td>—</td><td><b>AT3 論文截止</b></td></tr>
+<tr><td>13</td><td>—</td><td>AT4 <b>全長 20 分鐘</b>排練 + 同儕回饋</td><td>簡報初稿</td></tr>
+<tr><td>14</td><td>—</td><td>評分標準逐項講解</td><td><b>諮詢 1 小時</b>；報告初稿</td></tr>
+<tr><td>15</td><td colspan="2"><b>AT4 小組簡報 + 報告提交</b></td><td>—</td><td></td></tr>
+</table>
+<div class="note"><b>三個關鍵決定：</b>
+<b>（一）八堂放喺第 1–9 週</b> —— 咁 L7、L8 嘅內容才趕得上第 10 週閉卷測驗；否則兩堂最理論密集嘅課完全冇 AT2 證據，而 CILO1 就只剩參與分做證據。
+<b>（二）CILO4 嘅家係三個工具實驗室</b>，唔係散落八堂 —— 「比較分析工具以形成決策」要真正動手比較過才算。八堂只保留一句：每份交件要寫明「你會用邊個工具做長期監測，為甚麼」。
+<b>（三）客席四堂</b>（十一月四個星期日）＝ L6 → L7 → L8 → L4，人才生命週期順序，與前述週次並行安排。<b>但四層分析法要釘喺共享文件頂部全程唔刪</b> —— 否則客席子集嘅唯一一次階梯教學正好係最易被鐘刪走嗰格。</div>
+
+<h2>五、六步課堂模板（120 分鐘，八堂同一結構）</h2>
+<table>
+<tr><th style="width:8%">分鐘</th><th style="width:8%">步</th><th style="width:24%">做咩</th><th>設計規則</th></tr>
+<tr><td>0–8</td><td>0</td><td>入門小測 + 呼應 + 路線圖</td><td>五題回顧上週（同時充當出席與 AT1 紀錄）．把今日六步投出．螢幕規矩</td></tr>
+<tr><td>8–20</td><td>1</td><td><b>影片</b></td><td>播 6–8 分鐘 + 即時反應。<b>呢步唔解釋</b>，只收</td></tr>
+<tr><td>20–28</td><td>2</td><td><b>HR 術語</b></td><td><b>八個，預先填好</b>（原本 10–12 個係超時主因之一）</td></tr>
+<tr><td>28–42</td><td>3</td><td><b>Theory A</b></td><td>≤14 分鐘。一個機制、一個例、然後停</td></tr>
+<tr><td>42–50</td><td>4</td><td><b>驗證 A</b></td><td>你嘅個案 + 一個大綱文獻嘅具體發現</td></tr>
+<tr><td>50–60</td><td>—</td><td>小休</td><td>回來時間以<b>鐘面時間</b>顯示</td></tr>
+<tr><td>60–73</td><td>3</td><td><b>Theory B</b></td><td>≤13 分鐘</td></tr>
+<tr><td>73–80</td><td>4</td><td><b>驗證 B</b></td><td>同上</td></tr>
+<tr><td>80–100</td><td>5</td><td><b>學生實例＝活動</b></td><td><b>四組，每組 3–4 人</b>（13 人、AT4 上限四人 → 四組，唔係三組五人）</td></tr>
+<tr><td>100–110</td><td>—</td><td><b>匯報（有分鐘，唔係零）</b></td><td>四組 × 2 分鐘。AT1 口頭證據 + AT4 答問排練。<b>輪流指定角色：主講／質疑／記錄</b></td></tr>
+<tr><td>110–116</td><td>6</td><td><b>好處同壞處</b></td><td>共享文件開兩欄，學生自己填。理論帳兩行寫入固定位置</td></tr>
+<tr><td>116–120</td><td>—</td><td><b>一分鐘紙（個人書面）</b></td><td>「講出今日理論名／一個佢失效嘅條件／套用落呢個新情境」——<b>呢個就係 AT2 題型演練、CILO1 證據、同安靜學生嘅 AT1 證據，三合一</b></td></tr>
+</table>
+<div class="fix"><b>兩樣復原返嘅嘢（先前版本掉咗，而佢哋正好補三個缺口）：</b>開場<b>入門小測</b>同收尾<b>一分鐘紙</b>。呢兩樣係全課程唯一嘅<b>個人書面</b>裝置。冇佢哋：AT1 對安靜／非母語學生冇個人證據、宣稱每週演練嘅 AT2 題型從來冇人真正寫過一次、CILO1 冇評核出口。</div>
+
+<h2>六、八堂理論骨幹</h2>
+<p><span class="V">V</span> ＝ 大綱書目核實帶住（可以喺投影片寫「出自你嘅讀物清單」）　·　<span class="I">I</span> ＝ 外借，附經典出處（必須用兩行投影片）　·　類別要標明：<b>理論 / 框架 / 方法論立場</b></p>
+<table>
+<tr><th style="width:4%">#</th><th style="width:19%">課題與主要 CILO</th><th style="width:36%">Theory A ／ Theory B</th><th>香港錨（攻擊理論假設的位置）</th></tr>
+<tr><td><b>1</b></td><td>分析為何不改變任何事；你就是那條管道<br><span class="cite">CILO1 主</span></td>
+<td><b>A</b> <span class="V">V</span> <b>Evidence-Based Management</b>（理論）—— 鏈式中介：HR 科技 → HR 分析 → <b>EBM</b> → 組織績效；中間一環是決策實踐，不是工具<br><span class="cite">McCartney &amp; Fu (2022), Management Decision 60(13), 25–47；155 間愛爾蘭組織 SEM</span><br>
+<b>B</b> <span class="V">V</span> <b>Neo-correspondence theory</b>（理論）—— 高等教育供給與業界技能需求的（不）對齊<br><span class="cite">Doherty &amp; Stephens (2023), J. of Education and Work 36(3), 186–201；愛爾蘭 28 位僱主</span></td>
+<td>技能需求的一部分由監管者寫，不是僱主：<b>金管局 ECF</b>（能力框架，<b>不是法律</b>）與<b>證監會適當人選</b>（發牌閘，《證券及期貨條例》第 571 章）—— <b>兩者要分開講</b></td></tr>
+<tr><td><b>2</b></td><td>為何你公司做不到；數據量度到甚麼<br><span class="cite">CILO2 主</span></td>
+<td><b>A</b> <span class="V">V</span> <b>TOE 框架</b>（框架）—— 技術／組織／環境預測預測性 HR 分析能力，<b>數據驅動文化為調節變項</b><br><span class="cite">Gurusinghe, Arachchige &amp; Dayarathna (2021), J. of Mgmt Analytics 8(2), 195–221；TOE + resource-based theory</span><br>
+<b>B</b> <span class="V">V</span> <b>「big data → deep data」</b>（<b>方法論立場，不是理論</b>）—— 重質不重量，以<b>代理變項問題</b>為運作機制：變項不是構念；刪走欄位不會刪走它承載的資訊<br><span class="cite">Yahia, Hlel &amp; Colomo-Palacios (2021), IEEE Access 9</span></td>
+<td><b>私隱公署《人力資源管理實務守則》</b>（《個人資料（私隱）條例》第 486 章下）是「應否收集」的約束性答案。<b>另加兩份先前完全缺席的文件</b>：PCPD《人工智能：個人資料保護模範框架》（2024 年 6 月）與《僱員使用生成式 AI 的指引清單》（2025 年 3 月）—— 全課程最對題的香港工具</td></tr>
+<tr><td><b>3</b></td><td>先揀問題，後揀模型<br><span class="cite">CILO4 主（在工具實驗室完成）</span></td>
+<td><b>A</b> <span class="V">V</span> <b>策略性訓練需求分析</b>（理論，且是一個被爭議的模型 —— 這正是它的教學價值）—— 既有 TNA 模型把<b>能力分析</b>放核心，本文主張放<b>策略目標</b><br><span class="cite">Cotes &amp; Ugarte (2021), JBR 127, 464–473。<b>注意：大綱稱「Chile International Bank」，論文標題為「…for the International Bank」</b></span><br>
+<b>B</b> <span class="V">V</span> <b>處方式分析</b>（框架 / 方法論設計）—— 預測 + 數學規劃兩階段：單一職位安置成功的局部預測，再全局招聘最佳化（Variable-Order Bayesian Network）<br><span class="cite">Pessach et al. (2020), Decision Support Systems 134</span></td>
+<td>在香港認可機構，部分訓練需求<b>根本不用診斷</b> —— ECF 已為指定職系寫好能力目標。策略性 TNA 的「自由選擇」假設在此被制度先行佔據</td></tr>
+<tr><td><b>4</b></td><td>想走與走得到，同代價<br><span class="cite">CILO3 主</span></td>
+<td><b>A</b> <span class="I">I</span> <b>流失過程模型</b>（理論，<b>外借</b>）—— 離職 = 意願 × <b>流動可能性</b>（March &amp; Simon 1958）；withdrawal 序列（Mobley 1977）；<b>震撼觸發、跳過不滿階段</b>的 unfolding model（Lee &amp; Mitchell 1994，留給限制步驟）<br>
+<b>B</b> <span class="V">V</span> <b>流失風險量化</b>（框架）—— 風險 = 不確定性 × 損失；員工重要性由 commit 日誌<b>計算</b>得出而非由職稱假設 → 把預測變成有價錢的決定<br><span class="cite">Ma et al. (2020), Soft Computing 24</span></td>
+<td><b>同一條軸、同一間辦公室、兩個相反方向</b>（全課程最好的單一錨）：（1）第 57 章一個月通知期 → 流動成本極低；（2）IANG／GEP 等<b>簽證與僱傭掛鈎</b> → 對同一批人流動成本極高。<b>模型看不到這一層</b></td></tr>
+<tr><td><b>5</b></td><td>到底預測緊乜？準則問題<br><span class="cite">CILO3 主；CILO2 咬得最深</span></td>
+<td><b>A</b> <span class="V">V</span> <b>Job Demands–Resources</b>（理論）—— <b>只取動機路徑</b>：工作資源 → 敬業度 → <b>績效</b>，資源分團隊／領導／組織三層<br><span class="cite">Lesener, Gusy, Jochmann &amp; Wolter (2020), Work &amp; Stress 34(3), 259–278；55 項縱貫研究 meta-analytic SEM。<b>放這裏而非流失堂，因為書目核實的結果變項是績效</b></span><br>
+<b>B</b> <span class="V">V</span> <b>解釋力 vs 預測力</b>（方法論立場）—— 兩者存在內在張力；用以引出本堂真正論點：<b>準則問題</b> —— 一個績效評分模型是一個<b>評分者</b>的模型；準則可以缺陷（漏掉組織公民行為）或污染（吸收了經理年資、團隊運氣、評分文化）<br><span class="cite">Sarstedt &amp; Danks (2022), HRMJ 32(2)</span></td>
+<td>香港<b>沒有年齡歧視法例</b>（受保護理由見更正通告）—— 所以一個績效模型可以合法地把年齡代理物寫進去。合法與正確在此分開</td></tr>
+<tr><td><b>6</b></td><td>自建、外購、借用 —— 邊個付培訓費<br><span class="cite">CILO4 主</span></td>
+<td><b>A</b> <span class="V">V</span> <b>資源基礎觀（RBV）</b>（理論）—— HR 造成的公司異質性、最佳實務的價值、<b>模仿難度</b>；以可操作的 VRIO 四問形式教<br><span class="cite">Gerhart &amp; Feng (2021), J. of Management 47(7), 1796–1819（引 Barney）＋ Gurusinghe et al. (2021) 第二個獨立錨</span><br>
+<b>B</b> <span class="V">V</span> <b>人力資本：一般 vs 公司專屬</b>（理論）—— 一般資本可攜、主要由員工承擔；公司專屬資本只在此值錢、僱主才肯付錢建 → <b>這條軸決定 build／buy／borrow／bot</b><br><span class="cite">Gerhart &amp; Feng (2021) ＋ Campanella et al. (2023), JBR 155（歐盟 1,250 間銀行；人力資本效率與密集度）</span></td>
+<td><b>四個錨各攻一個假設：</b>（1）第 57 章一個月通知期 → 公司專屬投資回本期極短，理論預測香港僱主少投資培訓（<b>問全班：你哋見到嘅係咪咁？</b>）；（2）簽證掛鈎 → 流動性假設被制度違反；（3）ECF／適當人選 → 稀缺性由監管造成而非市場；（4）無薪酬透明度 → 資訊對稱假設失效</td></tr>
+<tr><td><b>7</b></td><td>選擇甚麼，與實際選中甚麼<br><span class="cite">CILO3 主</span></td>
+<td><b>A</b> <span class="V">V</span> <b>角色理論</b>（理論；指標體系另標為<b>工具</b>）—— 適任性是對照多方角色期望而判斷的，所以能力要求是<b>角色的操作化</b>，因而可以被建立、被爭議、被重建。本行業操作版：FinTech 人才能力評價指標 <b>5 個一級 + 17 個二級</b>，附灰色優化模型<br><span class="cite">Ding et al. (2023), SAGE Open 13(4)；明確「based on role theory」；上海 112 間金融企業</span><br>
+<b>B</b> <span class="I">I</span> <b>吸引—選擇—流失（ASA）</b>（理論，<b>外借</b>）—— 組織隨時間同質化；<b>一個用現職員工訓練的甄選模型就是 ASA 的自動化版本</b><br><span class="cite">Schneider, B. (1987), Personnel Psychology。作者年份可信，卷期頁碼未核</span></td>
+<td>年齡（連同宗教、性取向）在香港<b>不是受保護理由</b>，而本地履歷慣例（相片、年齡、婚姻狀況、身分證）供給更多可用訊號 → <b>ASA 在此有更多同質化材料</b>。<span class="cite">「ASA 在香港跑得更快」是未量度的速率主張 —— 不要照講</span></td></tr>
+<tr><td><b>8</b></td><td>一套花紅制度係一個賭注；嗰筆錢有冇效<br><span class="cite">CILO3 主</span></td>
+<td><b>A</b> <span class="V">V</span> <b>組織／情境雙元性（Ambidexterity）</b>（理論）—— HRM 系統作為同時追求 exploitation 與 exploration 的前置條件，承載於 <b>ex-ante（按過去績效）vs ex-post（按未來績效）</b>激勵之分。<b>發現：高能力員工能同時利用兩種，低能力員工兩者都用不到</b><br><span class="cite">Ahammad, Lee, Malul &amp; Shoham (2015), HRM 54, s45–s62；以色列商業銀行真實季度資料</span><br>
+<b>B</b> <span class="V">V</span> <b>文化維度：不確定性規避</b>（理論）—— 調節按功績付酬是否有效<br><span class="cite">Llanos &amp; Bin Ahmad (2016), C&amp;BR 48(5–6), 155–170。<b>注意：這不是公平理論論文</b></span></td>
+<td><b>金管局《監管政策手冊》CG-5</b> 最好讀作一個<b>被強制施加的 ex-post 激勵制度</b>（遞延、malus、clawback）—— 即係監管者已經幫你選咗雙元性其中一邊。<span class="cite">「遞延一般不少於三年」這個數字要核現行版本才可講</span></td></tr>
+</table>
+<div class="note"><b>計數：</b>16 個可考理論槽位中 <b>14 個核實出自書目</b>，2 個外借（L4 的 A、L7 的 B）。外借的兩個都在 CILO3 的核心堂，所以<b>兩行投影片規則</b>在那兩堂是強制的。</div>
+
+<h2>七、四本帳（學生自己寫，寫喺共享文件固定位置）</h2>
+<table>
+<tr><th style="width:12%">帳</th><th style="width:30%">每堂寫甚麼</th><th>用途</th></tr>
+<tr><td><b>1 理論帳</b></td><td>理論名／作者年份／<b>類別</b>（理論 / 框架 / 方法論立場）／<b>狀態</b>（核實出自書目 / 外借 / 引用未核）／機制一句／<b>一個佢失效嘅條件</b></td><td><b>AT2 溫習表</b>。八堂累積 16 行（另有四行宣告式外借，<b>不要對學生講「剛好十六行」</b>）。測驗題型第一週公佈、每週演練：講出理論、機制、一個失效條件、套用新情境</td></tr>
+<tr><td><b>2 假設與香港</b></td><td>每個理論一行：哪個香港條件違反了它的哪個假設</td><td>本課程最有特色的智力產物。<b>每次使用都要重述出處：講師添加，非大綱要求</b></td></tr>
+<tr><td><b>3 理論 vs 證據</b></td><td>每個外借理論用兩行投影片入場（上：理論＋經典出處；下：書目證據）</td><td><b>先前版本宣告了這本帳卻從未寫過一行 —— 已修正為每堂必寫。</b>另外八個誤配陷阱（下節）要當場示範，唔好迴避</td></tr>
+<tr><td><b>4 香港法律出處</b></td><td>工具／主張／一手來源網址／<b>查核日期</b>／穩定或易變標記</td><td>一張主卡，一個負責人。<b>先前把這張表拆散成八個「不確定事項」欄，結果就是「4·18」被廢止十個月都冇人發現。</b>並且把「年齡真空」由穩定改為<b>易變</b> —— 它是三堂的承重主張</td></tr>
+</table>
+
+<h2>八、八個誤配陷阱 —— 當場示範，唔好避開</h2>
+<p>每一個都係「同題材文獻 ≠ 理論出處」的活教材，而且直接保護學生喺 AT3 唔會引錯：</p>
+<div class="two" style="font-size:7.8pt">
+<div>1. <b>Sajjadiani et al. (2019) 唔係 signalling 論文</b> —— 它建構工作史量度（經驗相關性、「追求更好工作」vs「逃避壞工作」史）</div>
+<div>2. <b>Köchling &amp; Wehner (2020) 冇 ASA 框架</b> —— 它是 36 篇文獻的演算法歧視回顧（開放取用）</div>
+<div>3. <b>Llanos &amp; Bin Ahmad (2016) 唔係公平理論</b> —— 它是文化維度（不確定性規避）</div>
+<div>4. <b>Sharma &amp; Stol (2020) 唔係 job embeddedness</b> —— 而且它發現<b>關係品質不中介</b>，正好係 embeddedness 的 links 維度的反例</div>
+<div>5. <b>Agnihotri &amp; Zhang (2021) 冇點名代理理論</b> —— 指向目標設定（基準的合理與可達成）</div>
+<div>6. <b>Bhuvanaiah &amp; Raya (2016) 冇點名任何敬業度框架</b></div>
+<div>7. <b>Bhutto et al. (2023) 冇點名 RBV 或動態能力</b> —— 它測服務創新的中介作用</div>
+<div>8. <b>Santoso et al. (2021) 的八項能力措辭無可確認出處</b></div>
+</div>
+<div class="say en" style="margin-top:1.4mm">"Notice what just happened. The reading is about the right topic. It is not the source of the theory. On your slide those go on two different lines, and in your essay they go in two different sentences. Get that wrong in AT3 and a marker will find it."</div>
+
+<h2>九、必須修正嘅事項（按後果排序）</h2>
+<table>
+<tr><th style="width:5%">#</th><th>修正</th></tr>
+<tr><td>1</td><td><b>把另外 20 個接觸小時寫落紙（見第四節）。</b>其他所有修正都靠佢供養：三個工具實驗室（CILO4 真正嘅家）、AT3 工作坊（APA／Turnitin／里程碑）、AT2 技術課（含多項選擇題）、TLA2 業界分享、AT4 全長排練</td></tr>
+<tr><td>2</td><td><b>定案學期次序：八堂喺第 1–9 週。</b>一個決定同時解決 AT2 覆蓋風險、令 CILO1 唯一嘅評核路徑有效、並且定死 L3→L4 嘅「薪酬／工時」橋嘅方向（<b>目前 L4 同 L8 兩邊都寫住「今日講第一個」，必有一個係錯</b>）</td></tr>
+<tr><td>3</td><td><b>按內容而非按標籤削到 120 分鐘</b>：術語由 10–12 減到<b>八個預填</b>；匯報要有真分鐘；一分鐘紙要有真分鐘</td></tr>
+<tr><td>4</td><td><b>每張理論投影片加句級出處標記</b>：<span class="en">[FROM THE PAPER]</span> vs <span class="en">[INSTRUCTOR CONSTRUCTION]</span> —— 標喺內文，唔係只標喺頁首</td></tr>
+<tr><td>5</td><td><b>由五堂刪走 CILO4 宣稱</b>，改為工具實驗室；八堂只保留一句「你會用邊個工具做長期監測，為甚麼」</td></tr>
+<tr><td>6</td><td><b>四層分析法釘喺共享文件頂部全程</b>，每份交件加一行寫明每個動作坐喺邊一級。AT4 評分要用佢，而佢目前喺 L3 之後消失</td></tr>
+<tr><td>7</td><td><b>解決三個跨堂歸屬問題</b>：Ding et al. 只做一堂嘅工具 + L7 嘅可考理論；<b>代理變項四分鐘由 L7 擁有</b>，L2 只講 60 秒（咁客席子集才企得住）；Pessach 屬 L3</td></tr>
+<tr><td>8</td><td><b>Kestrel Pay 連續性</b>：<b>目前有四個人頭數（300／200／約 180／擴充到 500）同兩個牌照狀態</b>。統一為一個人頭、一個牌照狀態、一張組織圖、一本共用資料字典</td></tr>
+<tr><td>9</td><td><b>香港法律帳先改再做投影片</b>：4·17／4·68（不是 4·18）；受保護<b>理由</b>（不是條例名）；ECF 係能力框架<b>不是法律</b>，與證監會適當人選（第 571 章）<b>分開</b>；補上第 57 章的法定例外（懷孕與產假、有薪病假、工傷、工會活動，以及僱傭保障補救及其資格期）；DPP1 是<b>兩個</b>測試不是一個；DPP6 的「相關程序」豁免（為判斷聘任或晉升適合性而持有的資料）<b>要先核</b>—— 全課程收尾就係靠佢</td></tr>
+<tr><td>10</td><td><b>去重複</b>：DPP6 只收尾<b>一次</b>（客席順序中係星期日 4），其餘三堂四個字帶過；Giermindl 由四次減到兩次且功能不同；Garg 由五次減到兩次；年齡真空喺 L5 同 L7 第二次出現時只作引述</td></tr>
+<tr><td>11</td><td><b>補評核腳手架</b>：AT3 里程碑（第 4 堂交題目 + 兩篇期刊文章）；AT4 同意書／私隱／不得使用真實員工數據簡介（書面）；Turnitin、捏造、未披露 AI 生成文字嘅規則；三分類法印喺理論帳表頭</td></tr>
+<tr><td>12</td><td><b>分組與發言算術</b>：13 人、AT4 上限四人 → <b>四組 3–4 人</b>（目前六堂都寫三組 4–5 人，五人組直接違反 AT4 上限）；明確講清堂上小組是否等於 AT4 小組；輪流指定主講／質疑／記錄</td></tr>
+<tr><td>13</td><td><b>讀物重新標籤與攤平</b>：<b>每堂一篇必讀</b>，其餘明確標為選讀；第 1–2 週由八篇減到三篇（原本兩週佔咗全學期 20 小時閱讀嘅一半）；「全讀／略讀／只在堂上引用」四堂未標</td></tr>
+<tr><td>14</td><td><b>復原一分鐘紙、入門小測、課後十分鐘常規</b>（交件連兩句評語下堂發還）、<b>三堂降級應變計劃</b>（含犧牲次序）、<b>英語授課八條規則</b>（結構化輪流發言取代舉手）、共享文件匿名規則、名牌與跨週點名回扣</td></tr>
+<tr><td>15</td><td><b>寫一頁課程資料通知並喺第一堂教返佢</b>：本課程會收集出席、遲到、發言紀錄、打字內容、交件 —— 目的、保留期、誰可查閱、學生自己嘅 DPP6 查閱權。<b>課程收尾講「第 47 行嗰個人有權睇」，就唔可以自己跑一個無文件嘅學生資料集</b></td></tr>
+</table>
+
+<h2>十、其他未解決事項（要同 Dr Lee 敲定）</h2>
+<table>
+<tr><th style="width:26%">事項</th><th>問題</th></tr>
+<tr><td><b>邊個教邊堂</b></td><td>先前所有文件都寫給<b>客席</b>講者，而 Dr Lee 擁有技術部分。八堂全寫成一個聲音 → <b>技術連繫嘅六個「不可交出」時刻喺四堂冇主人</b>。要書面定案，並寫入每堂頁首</td></tr>
+<tr><td><b>AT4 訪談門路</b></td><td>13 名學生要接觸「worldwide」高管，課程冇提供任何機制。建議：客席講者做「零號受訪者」並為每組給一個轉介；第 7 週工作坊教接觸信與同意書</td></tr>
+<tr><td><b>四堂影片</b></td><td><b>四條都冇人睇過</b>，而 L2、L3、L5、L6 完全冇片。影片包已有四條後備（Amazon 2018 路透報道、HireVue、薪酬透明度、離職原因）—— 先用後備，唔好另外委製</td></tr>
+<tr><td><b>同儕貢獻／搭便車</b></td><td>AT4 佔 30%、小組、十週田野工作、六堂交件轉入報告 —— 而冇同儕評核、冇貢獻聲明、冇角色紀錄</td></tr>
+<tr><td><b>缺席政策</b></td><td>AT1 評分帶按「無合理理由」缺席與遲到計分，而「合理理由」冇定義、冇證明要求、冇補救機制。<b>客席星期日堂同公眾假期、私人事務衝突嘅機會更高</b></td></tr>
+<tr><td><b>無障礙與工具公平</b></td><td>多份交件用<b>顏色編碼</b>表達判斷（綠／黃／紅）—— 要加形狀或字母；<b>Power BI Desktop 冇 macOS 版</b>，要明文提供 Tableau Public 作替代（Orange 亦跨平台）</td></tr>
+<tr><td><b>印刷交付物</b></td><td>只有 L1 有一頁 A4 流程表。<b>一份超額 15–30% 嘅流程表，只有睇得到下一格鐘面時間嘅老師才守得住時間</b>。要八堂各一頁 A4、灰階安全、附削減次序</td></tr>
+</table>
+
+<h2>十一、開課前要清嘅三張單</h2>
+<table>
+<tr><th style="width:22%">單</th><th>內容</th></tr>
+<tr><td><b>A 全文（圖書館）</b></td><td>九篇單一錨點文獻要親自讀過：Doherty &amp; Stephens、Gurusinghe、Cotes &amp; Ugarte、Pessach、Ding、Lesener、Ahammad、Llanos &amp; Bin Ahmad、Ma。<b>審計全部建自摘要 —— 「已指派全文」對其中幾篇係未經測試嘅主張</b></td></tr>
+<tr><td><b>B 卷期頁碼</b></td><td>全部外借經典出處：March &amp; Simon (1958)、Mobley (1977)、Lee &amp; Mitchell (1994)、Schneider (1987)、Barney (1991)（並解決 <b>VRIN vs VRIO</b>）、Adams（<b>1963 定 1965</b>）。另加四分之五法則嘅工具（US Uniform Guidelines 1978, 29 CFR Part 1607）—— 核一次，堂上就答得出而唔使講「下次覆你」</td></tr>
+<tr><td><b>C 香港易變數字</b></td><td>4·17／4·68 過渡條文；第 57 章法定例外與僱傭保障補救；強積金供款率、有關入息水平上下限、對沖取消後補貼分期；PCPD 守則現行版本與保留期字眼、AI 模範框架、生成式 AI 清單；<b>平機會各條例現行受保護理由</b>（由穩定改為易變）；ECF 現行單元與職系；CG-5 現行版本與遞延字眼；證監會適當人選指引與第 571 章；IANG／GEP／高才通／優才現行條款；法定最低工資水平；八間持牌數字銀行是否仍全部營運；<b>2026–27 學年校曆</b>（第 10 週位置、第 15 週是否避開考試期、十一月四個星期日是否全部無假期）；樹仁現行 Turnitin 與 AI 使用政策原文</td></tr>
+</table>
+
+<div class="foot">FINT 508 課程重新設計　|　16 個可考理論槽位：14 核實出自書目、2 外借　|　「核實」＝出版社摘要層面，非全文　|　經典出處卷期頁碼一律未核　|	影片四條無人看過　|　更正：4·17／4·68、受保護理由、JD-R 位置、AT4 為訪談研究</div>
+
+</body>
+</html>
