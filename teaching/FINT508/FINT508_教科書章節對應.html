@@ -34,6 +34,7 @@ tr { break-inside:avoid; page-break-inside:avoid; }
 .cite { font-family:Georgia,"Times New Roman",serif; font-size:7.3pt; }
 .S { color:#1a6b1a; font-weight:bold; }
 .U { color:#8a3a00; font-weight:bold; }
+.pg { color:#1f3864; font-size:7pt; white-space:nowrap; }
 .tag { display:inline-block; background:#1f3864; color:#fff; padding:.25mm 1.1mm; font-size:6.9pt;
        margin-right:.8mm; font-style:normal; font-weight:normal; }
 .foot { border-top:.5pt solid #999; margin-top:2mm; padding-top:1mm; font-size:7pt; color:#444; }
@@ -42,80 +43,151 @@ tr { break-inside:avoid; page-break-inside:avoid; }
 <body>
 
 <div class="hdr">
-<h1>FINT 508 教科書章節對應
-<span class="sub">Diez, Bussin &amp; Lee (2019) <span class="en">Fundamentals of HR Analytics: A Manual on Becoming HR Analytical</span> (Emerald) · 章節 ↔ 八堂 ↔ 客席四個星期日 · 八步法融入六步課堂</span></h1>
+<h1>FINT 508 教科書章節對應（已核實版）
+<span class="sub">Diez, Bussin &amp; Lee (2019) <span class="en">Fundamentals of HR Analytics: A Manual on Becoming HR Analytical</span> (Emerald) · 章節 ↔ 八堂 ↔ 客席四個星期日 · 八步法融入六步課堂 · 每堂術語、書內個案、AT4 訪談題</span></h1>
 <div class="meta"><b>課程</b> FINT 508 Human Resource Analytics for FinTech Management（香港樹仁大學，2026–27 第一學期）　·
-<b>本書地位</b> 大綱 essential reading 內唯一一本專書　·　<b>本文件性質</b> 對《課程重新設計》同《客席講者教學安排》嘅補充；兩份文件嘅理論配對<b>不變</b></div>
+<b>本書地位</b> 大綱 essential reading 內唯一一本專書　·　<b>本文件性質</b> 對《課程重新設計》同《客席講者教學安排》嘅補充；兩份文件嘅理論配對<b>不變</b>　·　<b>頁碼</b> 全部係印刷頁碼（唔係 PDF 頁）</div>
 </div>
 
-<div class="stop">
-<b>先講清楚：我仲未收到本書。</b>你貼過嚟嘅三行係 ProQuest Ebook Central 每一頁底部嘅水印文字（「Created from undip-ebooks on 2021-10-19…」），唔係附件。呢個環境上唔到 Emerald、Google Books、Amazon、ResearchGate、任何書商同圖書館頁面（全部被出口代理封鎖）。<br>
-<b>所以以下全部建自公開目錄同搜尋摘要：</b>章節標題可信（多個獨立來源一致）；章內細節、頁碼、個案名稱、練習題<b>一律未核</b>。八步法嘅步驟名稱來自轉述文章（LinkedIn、Teamlease、HRO Today），字眼可能同原書有出入 —— <b>未對照 Ch.1 之前唔好印上投影片</b>。<br>
-<b>要升級呢份文件，請把 PDF 上載到呢個對話</b>（唔係貼文字）。我會用嚟備課，<b>唔會放入 git repo</b> —— 本書係圖書館授權內容，唔可以隨教材一齊分發。
+<div class="fix">
+<b>核實狀態：本書已收到，全書讀完。</b>你上載嘅三份 PDF（p.1–94、95–188、189–280，合共 280 頁）有完整文字層；十二章（p.3–246）、導論、圖表清單、參考書目全部核過。以下每一個頁碼、個案、術語都係從原文抽出嚟，冇一項係轉述。<br>
+<b>上一版有五處要更正：</b>（1）八步法嘅原文字眼而家核實咗（第三節），可以印上投影片；（2）Ch.1 嘅「分析類型」係<b>三層</b>（描述／診斷／預測），<b>唔係四層</b> —— 「處方」一詞全書只喺 Ch.6 p.124 出現一次，而且書話「earlier chapter 講過」其實冇講過；（3）第 5 堂定為 <b>Ch.11</b>（下面有理由）；（4）上一版話「Ch.1 嘅示範假設係『花紅制度提高分行利潤』」係<b>錯</b>嘅 —— 分行利潤個案喺 <b>Ch.3 章末 caselet p.64–67</b>，假設之一係「pay mix 愈高變動薪酬，利潤愈高」；Ch.1 嘅示範（Fig 1.4 p.16）係薪酬與流失；（5）全書<b>冇</b>「Chile」、冇「International Bank」個案，亦冇「FinTech」呢個詞（只有 p.65 一句「fintech training」）。<br>
+<b>版權：</b>PDF 只用嚟備課，<b>唔入 git repo</b>，唔隨教材分發。投影片引書用「[FROM THE TEXTBOOK Ch.x p.y]」加短引文即可。書嘅版權頁寫「First edition 2020 / © 2020」，大綱同 ProQuest 都寫 2019 —— 引用跟大綱寫 2019，唔使改。
 </div>
 
-<h2>一、核心發現：大綱八個課題就係本書嘅章節結構</h2>
-<div class="note">大綱嘅八個教學課題，有<b>七個</b>同本書章名逐字或近乎逐字對應（第 1、3 堂連標題都係直接借用）。即係 Dr Lee 嘅課程係<b>按本書起嘅</b>：本書係骨架，32 篇期刊係證據層。呢個發現改變咗兩件事：（一）學生「book knowledge」有咗一個具體對象 —— AT4 原文要求學生「compare the <b>book</b> knowledge with the actual FinTech HRM… by interviewing senior FinTech management staff」，「the book」就係呢本；（二）先前審計把本書標為「當工具書，唔好當理論來源」—— <b>維持</b>，但要補一句：本書提供嘅係<b>框架同術語</b>（八步法、分析類型、各章嘅實作流程），可考理論仍然由期刊承載。</div>
+<h2>一、核心發現（已核）：大綱八個課題就係本書嘅章節結構</h2>
+<div class="note">八個課題有<b>七個</b>同章名逐字或近乎逐字對應。本書自己嘅導論（p.xxiii–xxv）講明結構：Part I（Ch.1–4）基礎 —— 資料分析思維、工具、資料管理、建模；Part II（Ch.5–11）應用，「由簡單分析去到複雜」。全書 68,759 字（平均每頁 280 字）。參考書目只有 11 條，全部係書或白皮書；<b>大綱嘅 32 篇期刊冇一篇喺書內出現</b> —— 所以先前審計「當工具書，唔好當理論來源」<b>維持</b>，而且而家係讀完全文之後嘅判斷。</div>
 
 <table>
-<thead><tr><th style="width:4%">堂</th><th style="width:27%">大綱課題（原文）</th><th style="width:27%">本書章節</th><th style="width:6%">對應</th><th>備註</th></tr></thead>
-<tr><td>1</td><td>HR Analytics and Data-analytic Thinking</td><td>Ch.1 Basics of Finance, Statistics and Data-analytic Thinking（Part I: The Basics of HR Analytics）</td><td class="S">強</td><td>標題直接借用。搜尋摘要見到嘅章內小節：HR 嘅變化、為何要做分析、<b>分析類型</b>、HR 分析師作為「architect」、<b>八步法</b>。「分析類型」極可能就係大綱 AT4 用嘅四層（描述／診斷／預測／處方）—— 待原文核</td></tr>
-<tr><td>2</td><td>HR System and Big Data Collection</td><td>Ch.3 Data Collection；工具部分對應 Ch.2 Tools for HR Analytics</td><td class="S">強</td><td>Ch.2 講邊啲工具未知（Excel？R？）—— 決定三個工具實驗室（Excel／Power BI／Orange）同本書係咪同一套之前要睇原文</td></tr>
-<tr><td>3</td><td>HR Analytics Modelling　· Case study: HR analytics for the Chile International Bank training needs analysis</td><td>Ch.4 HR Analytics Modelling</td><td class="S">強</td><td>章名完全相同。<b>「Chile International Bank」個案 = Cotes &amp; Ugarte (2021) JBR</b>：論文寫明係一間國際銀行嘅智利分部（約 12,000 員工），標題只寫「the International Bank」。本書 Ch.4 或 Ch.6 有冇同一個案 —— <span class="U">未核</span></td></tr>
-<tr><td>4</td><td>Predicting Turnover in FinTech</td><td>Ch.5 Turnover</td><td class="S">強</td><td>客席星期日 4</td></tr>
-<tr><td>5</td><td>Predicting Work Performance in FinTech</td><td><span class="U">無同名章。</span>候選：Ch.6 Training and Development／Ch.10 Career Planning／Ch.11 HR Policies vs. Profits</td><td class="U">待定</td><td>唯一一堂大綱冇借用章名。<b>要原文先定得到</b>；我嘅猜測係 Ch.6（訓練→績效係最常見寫法），但唔會照猜落投影片</td></tr>
-<tr><td>6</td><td>Enhancing Strategic Resourcing in FinTech</td><td>Ch.7 Strategic Resourcing</td><td class="S">強</td><td>客席星期日 1</td></tr>
-<tr><td>7</td><td>Enhancing Recruitment in FinTech　· Case study: Recruitment and selection analytics</td><td>Ch.8 Recruitment</td><td class="S">強</td><td>客席星期日 2</td></tr>
-<tr><td>8</td><td>The Use of Compensation and Benefits　· Case study: Monitoring the impact of interventions</td><td>Ch.9 Compensation and Benefits</td><td class="S">強</td><td>客席星期日 3。搜尋摘要：本章講 pay plans 同<b>福利計劃嘅感知價值</b>。大綱個案「monitoring the impact of interventions」= 八步法第 8 步（Execute &amp; Evaluate）嘅直接應用</td></tr>
-<tr><td>—</td><td>（大綱未用）</td><td>Ch.6 Training and Development · Ch.10 Career Planning · Ch.11 HR Policies vs. Profits · Ch.12 Conclusions and Thoughts on the Future</td><td>—</td><td>其中一章大概係第 5 堂；Ch.12 可作第 1 堂或最後一堂嘅收尾讀物。Ch.11 嘅「policies vs profits」同第 1 堂 EBM 鏈式中介（HR 分析 → 決策 → 組織績效）同一個問題</td></tr>
+<thead><tr><th style="width:4%">堂</th><th style="width:25%">大綱課題（原文）</th><th style="width:27%">本書章節（印刷頁碼；頁數；字數）</th><th style="width:5%">對應</th><th>已核備註</th></tr></thead>
+<tr><td>1</td><td>HR Analytics and Data-analytic Thinking</td><td><b>Ch.1</b> Basics of Finance, Statistics and Data-analytic Thinking <span class="pg">p.3–36 · 34 頁 · 9,302 字</span></td><td class="S">強</td><td>1.4 三種分析類型 p.6–8；1.5 分析師作為 architect p.9–12；<b>1.6 八步法 p.12–20（Fig 1.3 p.13）</b>；1.7 項目失敗五大原因 p.20–21；1.8 財務術語 p.21–23；1.9 統計回顧 p.23–27；章末個案：Merck 集團設立 people analytics 團隊 p.30–35</td></tr>
+<tr><td>2</td><td>HR System and Big Data Collection</td><td><b>Ch.3</b> Data Collection <span class="pg">p.47–68 · 22 頁 · 5,784 字</span>；工具用 <b>Ch.2</b> Tools for HR Analytics <span class="pg">p.37–46 · 10 頁 · 2,461 字</span></td><td class="S">強</td><td>Ch.3：資料來源（HR／HRIS／非 HR）、資料審計、結構化 vs 非結構化、四種資料問題（缺失／過時／冇／離群）、tidy data；<b>章末 caselet p.64–67：銀行分行利潤嘅 HR 驅動因素</b>。Ch.2：六個分析技術組件 p.40–44（見第四節第 5 項）</td></tr>
+<tr><td>3</td><td>HR Analytics Modelling　· Case study: HR analytics for the Chile International Bank training needs analysis</td><td><b>Ch.4</b> HR Analytics Modelling <span class="pg">p.69–100 · 32 頁 · 9,222 字</span>；第二讀物 <b>Ch.6</b> Training and Development <span class="pg">p.121–142 · 22 頁 · 7,104 字</span></td><td class="S">強</td><td>章名相同。<b>書內冇 Chile 個案</b> —— 大綱個案 = Cotes &amp; Ugarte (2021) JBR，維持先前判斷。Ch.4 有「A Global Bank」個案 p.96–98（人力資本分析起步、GPA 倒 U、訓練 ROI）。Ch.6 係書內唯一講「prescriptive analytics」同「optimisation」嘅一章（p.124），正正係第 3 堂 Theory B 處方式分析；Kirkpatrick 四層 p.137–140；訓練 ROI 計法 p.122–123、p.136</td></tr>
+<tr><td>4</td><td>Predicting Turnover in FinTech</td><td><b>Ch.5</b> Turnover <span class="pg">p.101–120 · 20 頁 · 5,761 字</span></td><td class="S">強</td><td>客席星期日 4。兩個完整個案：印度半導體公司 p.102–112；<b>新加坡銀行</b> p.112–116。六條結論 p.116–118</td></tr>
+<tr><td>5</td><td>Predicting Work Performance in FinTech</td><td><b>Ch.11</b> HR Policies vs Profits <span class="pg">p.223–236 · 14 頁 · 3,413 字</span>（定案）</td><td class="S">定</td><td>大綱唯一冇借章名嘅一堂。三個候選讀完之後定 Ch.11，理由：（a）本章嘅 y 變項係<b>績效</b>（門店利潤、門店銷售、自願流失機率），用多元迴歸 —— 同第 5 堂 Theory B「解釋力 vs 預測力」係同一個工具；（b）11.2 嘅「HR metrics → talent metrics → business outcomes」鏈（Fig 11.3–11.4 p.225–226）就係「準則問題」嘅實務版；（c）GrocerCo（超市）p.226–232 同 RetailCo（鞋店）p.232–235 兩個個案都係「預測員工／門店表現」。Ch.6 歸第 3 堂（訓練 ROI + 處方）；Ch.10（職涯決策樹）做第 6 堂選讀（build vs buy 嘅個人版）</td></tr>
+<tr><td>6</td><td>Enhancing Strategic Resourcing in FinTech</td><td><b>Ch.7</b> Strategic Resourcing <span class="pg">p.143–166 · 24 頁 · 6,820 字</span></td><td class="S">強</td><td>客席星期日 1。導論叫呢章「Workforce Planning」。章末 caselet p.160–165：新加坡公營機構做全國 IT 人力十年預測</td></tr>
+<tr><td>7</td><td>Enhancing Recruitment in FinTech　· Case study: Recruitment and selection analytics</td><td><b>Ch.8</b> Recruitment <span class="pg">p.167–186 · 20 頁 · 5,757 字</span></td><td class="S">強</td><td>客席星期日 2。開場個案：金融服務跨國公司揀銷售員 p.167–168；8.3 三個實務框架（DDI）p.177–184</td></tr>
+<tr><td>8</td><td>The Use of Compensation and Benefits　· Case study: Monitoring the impact of interventions</td><td><b>Ch.9</b> Compensation and Benefits <span class="pg">p.187–206 · 20 頁 · 5,609 字</span></td><td class="S">強</td><td>客席星期日 3。全章以<b>福利</b>為主（conjoint analysis p.190–196；MANOVA p.197–198）；9.3 薪酬分析題目清單 p.197–200 內有作者自己做嘅 <b>pay mix 對照組試驗</b> p.199–200 —— 就係「monitoring the impact of interventions」；章末 caselet p.201–205：酒店集團用 conjoint 重整獎酬</td></tr>
+<tr><td>—</td><td>（大綱未用）</td><td>Ch.10 Career Planning <span class="pg">p.207–222</span> · Ch.12 Conclusions <span class="pg">p.237–246</span></td><td>—</td><td>Ch.10：決策樹、職涯路徑機率、新加坡 ICT 跨職系路徑 caselet p.218–221 → 第 6 堂選讀。Ch.12：<b>12.3.1–12.3.7 按 HR 範疇列出「可以問嘅分析問題」p.240–242 —— 直接係 AT4 訪談題庫</b>（第七節）；12.2 「減 HR 成本 10% vs 提高生產力 1%」p.238–239 係第 1 堂 EBM 嘅開場數字</td></tr>
 </table>
 
-<h2>二、客席四個星期日 ↔ 章節 ↔ 理論配對（理論不變，章節係新增嘅共同底線）</h2>
+<h2>二、客席四個星期日：每堂用書嘅邊啲嘢（術語、個案、理論接口、香港位）</h2>
+<div class="note">格式：<b>課前讀</b>＝本章 + 原定嗰篇必讀期刊；<b>八個預填術語</b>＝第 2 步「HR 術語」嘅八格，全部用書嘅字眼同頁碼（AT2 同本書講同一套字）；<b>書內個案</b>＝第 4 步驗證優先用，講完之後投影八步橫條問「呢間公司死喺第幾步」；<b>接口</b>＝書講「做法」、期刊講「點解」嘅接駁位；<b>香港位</b>＝第 6 步「壞處」欄固定第一條：書冇寫、香港有嘅嘢。理論配對照《課程重新設計》第六節，不變。</div>
+
+<h3>星期日 1　規劃　＝ 第 6 堂　· 課前讀 Ch.7 Strategic Resourcing（p.143–166；約 35 分鐘）+ Gerhart &amp; Feng (2021)</h3>
 <table>
-<thead><tr><th style="width:9%">星期日</th><th style="width:13%">課前讀</th><th style="width:30%">堂上點用本章</th><th style="width:26%">理論配對（不變，出自期刊）</th><th>本書 ↔ 期刊嘅接口</th></tr></thead>
-<tr><td><b>1 規劃</b><br>= 第 6 堂</td><td><b>Ch.7</b> Strategic Resourcing<br><span class="cite">頁碼待定</span></td><td>第 2 步「HR 術語」八個預填詞入面，<b>至少四個取自本章</b>（用書嘅字眼，唔用我嘅）；第 4 步驗證：把 Kestrel Pay 人力規劃跑一次八步法，投影一條「而家喺第幾步」嘅橫條</td><td>A RBV／VRIO（Gerhart &amp; Feng 2021）<br>B 人力資本：一般 vs 公司專屬（Gerhart &amp; Feng；Campanella et al. 2023）</td><td>本章大概係「做法」，期刊係「點解」。投影片出處標記加第三種：<b>[FROM THE TEXTBOOK Ch.7]</b>，同 [FROM THE PAPER]／[INSTRUCTOR CONSTRUCTION] 並列</td></tr>
-<tr><td><b>2 招聘</b><br>= 第 7 堂</td><td><b>Ch.8</b> Recruitment</td><td>同上。代理變項四分鐘（第 7 堂擁有）—— 如本章有講「邊啲欄位唔應該入模型」，用書嘅例，再加香港履歷慣例（相片、年齡、婚姻狀況）</td><td>A 角色理論／能力指標（Ding et al. 2023）<br>B ASA（Schneider 1987，外借）</td><td>Köchling &amp; Wehner (2020) 嘅算法歧視係本章嘅「壞處」欄現成材料</td></tr>
-<tr><td><b>3 薪酬</b><br>= 第 8 堂</td><td><b>Ch.9</b> Compensation and Benefits</td><td>本書 Ch.1 嘅示範假設正正係「<span class="en">An incentive system increases branch profitability</span>」（銀行分行花紅制度）—— 同 Ahammad et al. (2015) 以色列商業銀行季度數據係<b>同一條問題</b>。第 4 步驗證直接用呢對：書提出假設，論文係一次真實檢驗</td><td>A 組織／情境雙元性：ex-ante vs ex-post 激勵（Ahammad et al. 2015）<br>B 文化維度：不確定性規避（Llanos &amp; Bin Ahmad 2016）</td><td>大綱個案「monitoring the impact of interventions」= 第 8 步。金管局 CG-5 讀作被強制施加嘅 ex-post 制度，係「書冇寫、香港有」嘅位</td></tr>
-<tr><td><b>4 流失</b><br>= 第 4 堂</td><td><b>Ch.5</b> Turnover</td><td>本章係全書最貼「預測模型」嘅一章；第 4 步驗證用 IBM 開放數據跑門檻拖曳練習（技術連繫指南嗰個）時，用本章嘅術語命名兩種錯誤</td><td>A 流失過程模型（March &amp; Simon；Mobley；Lee &amp; Mitchell，外借）<br>B 流失風險量化（Ma et al. 2020）</td><td>DPP6 查閱權收尾（星期日 4 獨有）係書冇、香港有嘅第二個位。Al Akasheh et al. (2023) 十年綜述可作本章嘅「文獻延伸」</td></tr>
-<tr><td colspan="5"><b>四堂共用：Ch.1 嘅八步法</b>（下節）。客席安排原有嘅「十二分鐘四層分析法樓梯」<b>保留</b>，加一句定位：四層答「呢條係邊類問題」，八步答「一個項目按咩次序行」—— 兩者唔係競爭，係一橫一直</td></tr>
+<thead><tr><th style="width:15%">項目</th><th>內容（頁碼係書嘅印刷頁）</th></tr></thead>
+<tr><td>八個預填術語</td><td>① <b>strategic resourcing / workforce planning</b> p.143（書話兩個名互通）　② <b>workforce demand vs supply</b> p.145　③ <b>build / buy / borrow / bind / transform</b> Fig 7.3 p.151（書嘅五選項，比我哋原本「build／buy／borrow／bot」多 bind 同 transform）　④ <b>internal vs external labour market</b> Fig 7.2 p.150　⑤ <b>baseline net internal supply = headcount − (retirements + terminations)</b> Fig 7.4 p.152　⑥ <b>demand scenarios</b>（悲觀 5% vs 樂觀 15% 增長）Fig 7.1 p.148　⑦ <b>leading vs lagging indicators</b> p.153（書嘅例：網絡保安畢業生數目係人手供應嘅領先指標）　⑧ <b>time series 四種成分</b>：random / trend / seasonal / cyclical p.154；對比 <b>causal (econometric) model</b> p.157</td></tr>
+<tr><td>書內個案（第 4 步）</td><td>（a）供應鏈公司中國增長 23%／年，計劃冇計人：只填到三分一職位，而且要加薪 20% —— 舊員工覺得又累又低薪，銷售目標達唔到 p.144 → <b>死喺第 1 步</b>（「HR 會搵到人」）　（b）奢侈品零售商三年開 90 間店（中國、日本、<b>香港</b>、新加坡，加緬甸／老撾／柬埔寨 9 間）：關鍵技能原來係雙語，唔係零售經驗；結果延遲開店、本地聘用再送去菲律賓／馬來西亞培訓 p.146–147 → build vs buy 嘅實例　（c）特殊教育學校：30 個月建成、24 個月要有 300 員工含 100 特教老師，但學位要讀四年 p.151，p.159 → HR 反過來改業務計劃　（d）油公司零售：只用時間做 x，r＝0.68；加入每加侖油價做第二個 x，r²＝0.87 → 決定「聘到低谷用兼職補」定「聘到高峰」視乎策略 p.157–158　（e）<b>章末 caselet</b>：新加坡公營機構預測全國 IT 四個職系（Infrastructure／Data Science／Software Application／Cyber Security）十年供求；因果模型數據唔夠改用時間序列；naïve 模型誤差 1.43% 但係一條平線，唔要；最後揀誤差較高（2.19% 定 2.64%）但專家訪談解釋得通嘅 Holt damped 模型 —— 生產力上升令人手需求放緩 p.160–165 → <b>模型揀法唔係只睇誤差</b>　（f）章末練習：估算泰國市場有幾多精算師（LinkedIn 職稱 + 精算學會 235 名會員 → 107 名合資格）p.165–166 —— 可以照樣叫學生估香港 FinTech 某一職系嘅供應</td></tr>
+<tr><td>Kestrel Pay 演練</td><td>用 Fig 7.3 五個選項逐個問 Kestrel Pay：邊啲職位 build、邊啲 buy、邊啲 borrow（合約／顧問）、邊啲 bind（留人）、邊啲 transform（改工作設計）；再用 Fig 7.4 條式計一次 baseline net internal supply</td></tr>
+<tr><td>本書 ↔ 理論接口</td><td>書 p.147：「市場有人就 buy；產品流程複雜或人才唔存在／太貴就 build」—— 呢句就係 Theory B「一般 vs 公司專屬人力資本」（Gerhart &amp; Feng），書冇引 Becker，只係講做法；VRIO 嘅「稀缺／難模仿」對應 Fig 7.3 嘅 build 同 bind。書 p.145 一段「strategic resourcing <b>唔係</b>乜嘢」（唔係填空缺、唔係繼任計劃、唔係排班、唔係預測未來）可以直接做投影片</td></tr>
+<tr><td>書冇寫、香港有</td><td>書假設可以「隨時改變增長計劃」同「送人去外國培訓」；香港位：第 57 章一個月通知期令 build 嘅回本期極短；IANG／GEP 簽證掛鈎令 borrow 同 bind 嘅成本結構同書相反；ECF 令「稀缺」由監管造成（照《課程重新設計》第 6 堂四個錨）</td></tr>
 </table>
 
-<h2>三、八步法點樣落入六步課堂模板（唔加時間，只換內容）</h2>
-<div class="warn"><b>八步（轉述版，待核）：</b>1 Define the business problem → 2 Formulate a hypothesis → 3 Collect data → 4 Clean / analyse data → 5 Derive insights → 6 Build recommendations → 7 Visualise and tell a story → 8 Execute and evaluate。<b>本書原則：</b>「solve <em>business</em> problems with HR means, not HR problems with HR means」—— 第 1 步要定義嘅係生意問題（利潤、分行收入），唔係 HR 問題（「減流失」只係手段）。</div>
+<h3>星期日 2　招聘　＝ 第 7 堂　· 課前讀 Ch.8 Recruitment（p.167–186；約 30 分鐘）+ Ding et al. (2023)</h3>
 <table>
-<thead><tr><th style="width:16%">六步課堂嘅邊一步</th><th style="width:42%">八步法落喺邊度</th><th>點解係呢度</th></tr></thead>
-<tr><td>第 1 堂（Dr Lee，Ch.1）</td><td>八步<b>只完整教一次</b>，之後每堂只「指」唔「教」</td><td>第 1 堂本來就係 Ch.1；八步同四層分析法一齊釘落共享文件頂部，全學期唔刪</td></tr>
-<tr><td>第 2 步　HR 術語（8 個預填）</td><td>每堂八個詞入面，<b>一個係當堂個案所在嘅八步法步驟名</b>（例：星期日 3 → 「Execute &amp; evaluate」）</td><td>術語數量唔加；只係其中一格由我嘅字眼換成書嘅字眼</td></tr>
-<tr><td>第 4 步　驗證（你嘅個案 + 一篇期刊）</td><td>個案講完之後，投影一條八格橫條，<b>問全班：呢間公司死喺第幾步？</b>（多數係第 1 步 —— 一開始就定義咗 HR 問題）</td><td>呢個問題正正係 HRM 背景講者最強嘅位：你坐過嗰啲「brief 係減流失」嘅會議。技術連繫指南嘅六個「不可交出」時刻，有三個就係第 1、5、6 步</td></tr>
-<tr><td>第 5 步　學生實例（四組）</td><td>每組交件加一行：「我哋嘅例喺八步法邊一步出事」</td><td>同「每份交件寫明坐喺四層分析法邊一級」係同一個動作，一行搞掂</td></tr>
-<tr><td>第 6 步　好處同壞處</td><td>「壞處」欄固定第一條：<b>本書冇寫、香港有嘅嘢</b>（第 57 章通知期／簽證掛鈎／CG-5／DPP6／受保護理由）</td><td>呢個就係「假設與香港」帳嘅入口，亦係 AT4「book knowledge vs actual」嘅演練</td></tr>
-<tr><td>AT4 訪談題（每堂 1–3 條）</td><td><b>改為按本書章節出題</b>：每堂嘅訪談題問受訪者「你間公司喺本章講嘅嗰件事上，實際做到八步法第幾步？」</td><td>AT4 原文就係要學生比較「book knowledge」同實況；訪談大綱按書嘅章節結構行，報告自然對得返評分標準</td></tr>
+<thead><tr><th style="width:15%">項目</th><th>內容</th></tr></thead>
+<tr><td>八個預填術語</td><td>① <b>quality hire</b>：書嘅操作定義＝留滿三年 + 期間評核達標 p.169　② <b>employee profiling and segmentation / success profile</b>：用現職高績效員工建立招聘側寫 p.169　③ <b>employee loyalty analysis</b> p.170（同 Ch.5 對接）　④ <b>sampling plan</b>：objectives / target population / population frame / procedure / tools p.173　⑤ <b>skewed HR data</b>：績效強制分佈、市場薪酬雙峰都唔係常態，中央極限定理喺 HR 靠唔住 p.174–175；<b>2-sigma / 3-sigma rules</b>（任何分佈至少 75% / 88.9% 落喺兩／三個標準差內）p.176　⑥ <b>Sight → Insights → Foresights</b>（DDI 三層人才分析）Fig 8.4 p.177　⑦ <b>hiring formula</b>：P&amp;A × B&amp;C × K&amp;E × MF ＝ Performance on the Job（乘法，唔係加法）p.178–180　⑧ <b>selection funnel</b>：Recruitment → Screening &amp; Testing → Job Simulation → Behavioural Interviews → Job Offer → Onboarding Fig 8.5 p.181；<b>signs vs samples</b> p.182</td></tr>
+<tr><td>書內個案（第 4 步）</td><td>（a）開場：金融服務跨國公司以為名校高分＝好銷售員；分析發現學校、GPA、推薦人幾乎冇預測力；有預測力嘅係<b>履歷文法正確、有任何學位、賣過高價產品、能喺無結構環境工作</b> p.167–168 → 「你間公司嘅招聘準則有冇驗證過？」　（b）Ch.4「A Global Bank」p.96–97：大學成績同解難能力係<b>倒 U</b>，最高 GPA 反而差 → 招聘只設最低門檻 B／B+，高過門檻一律平等 —— 呢個係全書最好嘅代理變項例子　（c）Ch.5 新加坡銀行 p.113–115：主管覆寫心理測驗結果自己揀人，結果嗰啲人走晒；現成心理測驗要按公司文化校準先用得　（d）三個框架：Fig 8.4 三層、p.178 公式、Fig 8.5 漏斗；p.183 測試嘅七個缺點（包括「唔可以做唯一依據，否則有法律風險」）；評估中心五位數／人 vs 測試兩三位數 p.183　（e）<b>章末題 p.185</b>：「AI 系統會唔會比經理招聘得更準？優點同風險？」「點確保機器學習唔學埋現有招聘流程嘅偏見？」—— 同 Köchling &amp; Wehner (2020) 直接接上，可以原句做第 6 步「壞處」欄嘅開題</td></tr>
+<tr><td>代理變項四分鐘</td><td>書冇一節專講「邊啲欄位唔應該入模型」；有嘅係 p.170「distance from home and grades」列作合法輸入、p.178 背景審查與風險。所以呢四分鐘用書嘅 GPA 倒 U（b）做起點，再加香港履歷慣例（相片、年齡、婚姻狀況、身分證）—— 後者係 [INSTRUCTOR CONSTRUCTION]，唔係書</td></tr>
+<tr><td>本書 ↔ 理論接口</td><td>ASA（外借）喺書入面有兩句實務版：p.178「公司想轉型但繼續請同一類人，就轉唔到型」；Ch.4 p.98「經理傾向提拔似自己嘅人」。角色理論：書嘅 hiring formula 係 DDI 實務公式（p.177 註：Desmond Tan, DDI），<b>冇理論出處</b> —— 投影片要標 [FROM THE TEXTBOOK Ch.8 p.178]，唔好標理論</td></tr>
+<tr><td>書冇寫、香港有</td><td>書 p.183 講測試嘅「法律風險」係泛指；香港位：年齡、宗教、性取向唔係受保護理由 → 書講嘅「偏見」有一部分喺香港係合法嘅；合法同正確分開講（照第 7 堂香港錨）</td></tr>
 </table>
 
-<h2>四、收到 PDF 之後我會做嘅升級（按次序）</h2>
+<h3>星期日 3　留人 · 薪酬　＝ 第 8 堂　· 課前讀 Ch.9 Compensation and Benefits（p.187–206；約 30 分鐘）+ Ahammad et al. (2015)</h3>
 <table>
-<thead><tr><th style="width:5%">#</th><th style="width:38%">升級</th><th>影響邊份文件</th></tr></thead>
-<tr><td>1</td><td>核實章節清單同<b>頁碼範圍</b>；定案第 5 堂用邊一章</td><td>本文件第一節；《課程重新設計》每堂讀物欄</td></tr>
-<tr><td>2</td><td>逐章抽出<b>學習目標同關鍵詞</b> → 八堂嘅「八個預填術語」凡書有定義嘅一律改用書嘅定義（AT2 同本書要講同一套字）</td><td>《理論骨幹與每堂結構》；四個星期日流程表</td></tr>
-<tr><td>3</td><td>核對 Ch.1「分析類型」係咪就係四層（描述／診斷／預測／處方）；核對八步嘅原文字眼</td><td>客席安排嘅十二分鐘樓梯；所有投影片</td></tr>
-<tr><td>4</td><td>搵出本書自己嘅<b>個案同練習</b>：Ch.4 有冇銀行 TNA 個案；Ch.5／7／8／9 各有咩例 —— 有嘅話第 4 步驗證優先用書嘅例，再加香港位</td><td>個案故事指南嘅十一個故事位</td></tr>
-<tr><td>5</td><td>Ch.2 講嘅工具 vs 三個工具實驗室（Excel／Power BI／Orange）—— 如唔同，向 Dr Lee 提出跟書定跟實驗室</td><td>《課程重新設計》第 15 週表</td></tr>
-<tr><td>6</td><td>核對本書有冇任何理論主張同八堂理論配對<b>衝突</b>（例：本書對流失嘅解釋 vs March &amp; Simon）—— 有就寫入「理論 vs 證據」帳，當場示範</td><td>四本帳</td></tr>
-<tr><td>7</td><td>閱讀負荷重算：每堂一章（實務手冊，讀得快）+ 一篇必讀期刊；對照大綱 20 小時閱讀時數</td><td>《課程重新設計》修正 13</td></tr>
+<thead><tr><th style="width:15%">項目</th><th>內容</th></tr></thead>
+<tr><td>八個預填術語</td><td>① <b>perceived value vs cost of a benefit</b>：福利嘅成本同員工感知價值無關 p.188（剖腹產保障對 30–35 歲已婚女性 vs 新畢業男性；退休金對 50 歲以上 vs 千禧世代 p.188–189）　② <b>flexible benefits</b> p.189　③ <b>conjoint analysis</b>：「將真實情境同統計技術結合，模擬實際決定」，同問卷嘅分別 p.190；四種做法：two-item trade-off（11 項福利＝55 對）／self-explicated（分 100 分）／maximum difference／adaptive p.192–193　④ <b>utilities / relative importance</b> Fig 9.3 p.196（例：福利 35.2%、表現與認可 20%、薪酬 17%、工作生活平衡 8.4%）　⑤ <b>MANOVA</b>：多個因變項一齊睇；書嘅例：學歷 × 薪酬 × 職級 → 離職意向，單獨睇冇顯著、一齊睇先見到 p.197–198　⑥ <b>pay mix</b>：固定 vs 變動比例 p.199　⑦ <b>merit pay differential</b> 同 <b>target setting</b>（百分位或 sigma）p.199；書嘅反轉問法：「要加幾多先令平均表現者升到高於平均？」　⑧ <b>efficient frontier of total rewards</b>：橫軸成本、縱軸感知價值 Fig 9.5 p.202；<b>strategic alignment</b> 唔喺曲線上，要逐點另測 p.203</td></tr>
+<tr><td>書內個案（第 4 步）</td><td>（a）<b>作者自己嘅 pay mix 對照組試驗</b>：拉丁美洲快消品公司 10 個銷售區，2 個對照，其餘每兩區試一種比例（80/20、70/30、60/40、50/50）；一年後 60/40 最好，全公司由 40/60 轉過去，銷售同留任都升 p.199–200 → 呢個就係大綱「monitoring the impact of interventions」同八步法第 8 步嘅範本；同 Ahammad 以色列銀行季度數據對讀：一個係設計嘅試驗，一個係事後嘅面板數據　（b）<b>章末 caselet</b>：全球酒店集團（賭場、酒店、餐飲）要轉客戶為本；用 TRiO 方法（conjoint 問卷 + 成本／感知儀表板）；12 項獎酬每項計成本；問法係「加薪 6.5% 冇健康計劃」定「加薪 5% 加七五折健康小食」（兩者對公司成本一樣）；總包 2,600 萬；花紅第一、人壽保險第二；兩個設計 —— 成本不變但感知價值 +8%、策略對齊 +51%（採用）vs 成本 +900 萬、感知不變、對齊 −20%（否決）；結果攞去同工會談判 p.201–205　（c）RSU vs 認股權嘅「轉折點」問法（幾多份期權先肯換一股 RSU）p.194 —— 感知價值 vs 真實價值嘅最乾淨例子　（d）<b>Ch.3 caselet 銀行分行利潤 p.64–67</b>：HR 假設之一「pay mix 變動部分愈高利潤愈高」、另一條「fintech training 時數愈多利潤愈高」；HRBP 一句「As we are HR people, we only think of HR things」→ 問埋前線同員工；多元迴歸解釋 70% 以上；出咗一張分行經理 talent scorecard；訓練 40 小時先有分別、80 小時後冇分別 → 政策定 40–80　（e）Ch.4 p.96：Global Bank 嘅人力資本分析團隊接手設計銷售花紅，HR 話「this is a business problem」—— 同一成本、同一 ROI，銷售結果可以差好遠</td></tr>
+<tr><td>本書 ↔ 理論接口</td><td>Ahammad 嘅 ex-ante（按過去績效）vs ex-post（按未來績效）激勵，喺書入面對應 p.203 嘅「strategic alignment 唔喺 efficient frontier 上，要逐點測」—— 即係書承認 conjoint 只答「員工鍾意咩」，答唔到「制度推唔推到探索行為」；呢個缺口就係 Theory A 嘅入口。Llanos &amp; Bin Ahmad 嘅不確定性規避：書 p.194 講「經歷過股價升嘅員工更重視期權」係經驗效應，唔係文化 —— 可以並排講</td></tr>
+<tr><td>書冇寫、香港有</td><td>書假設公司可以自由設計 pay mix 同遞延；香港位：金管局 CG-5 已經幫認可機構揀咗 ex-post（遞延、malus、clawback）；書 p.200 Q5「今日收集嘅薪酬數據有效幾耐」喺香港冇薪酬透明度立法嘅情況下另有答法</td></tr>
 </table>
 
-<h2>五、而家就可以做嘅三件事（唔使等 PDF）</h2>
+<h3>星期日 4　流失　＝ 第 4 堂　· 課前讀 Ch.5 Turnover（p.101–120；約 30 分鐘）+ Ma et al. (2020)</h3>
+<table>
+<thead><tr><th style="width:15%">項目</th><th>內容</th></tr></thead>
+<tr><td>八個預填術語</td><td>① <b>turnover drivers</b> 三類：external（薪酬水平、競爭、海外機會）/ organisational（職位側寫、非自願離職、績效評級、對經理不滿、晉升機會）/ individual（進修、搬遷、低績效、畢業院校、年資、性別）p.106–107　② <b>compa-ratio</b> p.107（頂級評級員工低於 0.9 → 新政策）　③ <b>why do people stay</b>：唔只問走嘅人，用焦點小組問留低嘅人 p.105　④ <b>turnover by manager</b> Fig 5.4 p.109（流失最高嘅 15 個經理，上司俾佢哋嘅評級係 1）　⑤ <b>quick exits / early attrition</b>：新加坡銀行 40% 新銷售員八個月內走 p.112–113　⑥ <b>symptom vs problem</b>：早期流失係徵狀，問題係「銀行有冇損失收入機會」p.114　⑦ <b>small data</b>：「公司可以有一百萬客，但唔會有一百萬員工」，唔好過度工程 p.117　⑧ <b>false positive vs false negative</b>：請錯人＝假陽性；請漏人永遠唔知；書話喺招聘假陰性較可接受 p.118 —— 呢對詞直接用喺 IBM 開放數據門檻拖曳練習</td></tr>
+<tr><td>書內個案（第 4 步）</td><td>（a）<b>印度半導體公司</b> p.102–112：業務問題係投標死線屢次錯過，管理層歸咎印度設計團隊流失（高 20% 幾）同「HR 俾薪唔夠」；HR 透過市場研究公司重新訪問 240 幾個離職者嘅 77%（原本離職面談唔可信），頭三個原因佔 71%（進修、搬遷、工作同招聘時承諾唔符）；<10% 為薪酬走；發現：頂級評級員工薪酬偏低、流失最高嘅經理自己被評為最高級、晉升率低於 15% 指引 → 走咗再返嚟人工反而高（「最好嘅加薪方法係辭職再回來」）、Tier-1 院校畢業生表現冇分別但走得快又貴、年資 1–2 年係流失高峰、女性流失略高但中位年資更長（「奶奶日」）；結果流失減 30%。書自己話呢個分析係「flawed」—— 冇清晰假設就開工　（b）<b>新加坡銀行</b> p.112–116：第一輪「乜都相關一次」搵到住得遠、面試官偏見、新人受訓 1–1.5 個月都冇人講花紅點計，第一日落分行先知；之後重新定義問題、落場觀察、建立 Fig 5.6 p.115 職位分類（GROW / MAINTAIN / PROTECT THE BANK）、假設「招聘質素係咪快速流失嘅原因」；結果：心理測驗要校準、面試題標準化、<b>預測模型</b>標記未達標又有壓力跡象嘅新人 → 暫時抽離花紅制度加支援；快速流失↓、招聘成本↓、銷售↑，而且變成常設流程　（c）六條結論 p.116–118（解決業務問題唔係 HR 徵狀；求因果唔止相關；HR 數據有偏見 —— Fig 5.7 p.117 面試排名同績效排名唔相關；小數據；員工知道被監察會改變行為；先決定容忍邊種錯誤）　（d）章末 Q3 + Fig 5.8 p.118–119：一個 21 項、所有職位同權重、目標 5 分嘅績效評核表 —— 叫學生批評（同第 5 堂準則問題接上）　（e）Ch.11 Fig 11.5 p.227 同 Fig 11.12 p.234「自願流失機率變化 %」：房屋津貼 −55%、全職 −43%、高於市場薪酬 −35%、新員工 +58%、再聘 +45%；每月加班 10 小時 vs 0 小時 −60% —— 呢種圖係學生 AT3 最易模仿嘅輸出格式</td></tr>
+<tr><td>本書 ↔ 理論接口</td><td>流失過程模型（外借）：書 p.106–107 嘅三類驅動因素就係 March &amp; Simon「意願 × 流動可能性」嘅實務版（external＝流動可能性、organisational＋individual＝意願）；Lee &amp; Mitchell 嘅震撼事件對應「奶奶出現話係時候結婚」p.106。Ma et al. 風險量化：書 p.117 話「小數據，唔使完美模型」，但 p.115 又真係起咗預測模型 —— 呢個張力寫入帳（第六節）</td></tr>
+<tr><td>書冇寫、香港有</td><td>DPP6 查閱權（星期日 4 獨有收尾）；第 57 章一個月通知期 vs 簽證掛鈎兩個相反方向；書嘅印度個案入面「搬遷」「結婚」呢類原因，喺香港有另一套 —— 由學生講</td></tr>
+</table>
+
+<h2>三、八步法（原文已核）同分析類型（三層，唔係四層）</h2>
+<div class="fix"><b>八步原文（Fig 1.3 p.13；小節標題 1.6.1–1.6.8 p.12–20）：</b>1 Define Problem（小節標題：Define the <em>Business</em> Problem）→ 2 Formulate Hypotheses → 3 Collect Data → 4 Analyse Data → 5 Derive Insights → 6 Build Recommendations → 7 Visualise and Tell a Story → 8 Execute and Evaluate。同上一版轉述版嘅分別：第 4 步係「Analyse Data」（冇「clean」）；第 2 步係複數 Hypotheses；第 1 步圖上只寫「Define Problem」。<b>而家可以印上投影片，標 [FROM THE TEXTBOOK Ch.1 Fig 1.3 p.13]。</b>書 p.12 補一句：八步係「iterative loops」唔係「sequential steps」。</div>
+<table>
+<thead><tr><th style="width:14%">步</th><th style="width:48%">書嘅要點（可引）</th><th>落入六步課堂邊度</th></tr></thead>
+<tr><td>1 Define Problem <span class="pg">p.12–14</span></td><td>先明白生意；用顧問技巧（提問、聆聽、覆述）；書面記錄並取得 sponsor 背書；<b>寧揀「解決到但影響較細」嘅問題，唔揀「回報高但解決唔到」嘅</b>，先累積信譽</td><td>第 4 步驗證：講完你嘅個案，投影八格橫條問「呢間公司死喺第幾步」—— 書內個案多數係第 1 步（Ch.7 p.144 供應鏈；Ch.5 p.103 「管理層話係薪酬」）</td></tr>
+<tr><td>2 Formulate Hypotheses <span class="pg">p.14–15</span></td><td>差嘅假設：「Our pay for performance differentiation is not right」；好嘅：「<b>The lack of pay differentiation leads to attrition of our staff</b>」（要有 so what）；用文獻、脈搏調查、離職面談、焦點小組；要可測；唔好太多條</td><td>第 5 步學生實例：每組交件加一行「我哋嘅假設寫成邊種」</td></tr>
+<tr><td>3 Collect Data <span class="pg">p.15–16</span></td><td>先畫資料地圖再收；先用現有／開放數據；「<b>少量新嘅高質數據好過大量半有用數據</b>」；Fig 1.4 p.16 分析設計框架（問題 → 三條假設 → 點證 → 要咩數據）</td><td>Fig 1.4 直接係 AT3 計劃書嘅模板</td></tr>
+<tr><td>4 Analyse Data <span class="pg">p.16</span></td><td>方法同工具見 Ch.2、Ch.4</td><td>Dr Lee 嘅範圍；客席堂只「指」</td></tr>
+<tr><td>5 Derive Insights <span class="pg">p.17</span></td><td>每個洞見一句話；用圖；唔展示原始數據；講明點解重要</td><td>技術連繫指南六個「不可交出」時刻之一</td></tr>
+<tr><td>6 Build Recommendations <span class="pg">p.17</span></td><td>一個洞見一條建議；清楚；分主題</td><td>同上</td></tr>
+<tr><td>7 Visualise and Tell a Story <span class="pg">p.17–19</span></td><td>避免「In the beginning…」症候群；<b>由結論開始講</b>（「我哋認為答案係 X、Y、Z；先講點解 X…」）；「Sell it!」；p.19 故事：銷售隊伍側寫報告，CEO 一句「Ok, it's agreed, let's do this!」，12–18 個月後超出預期</td><td>AT4 簡報規則：第一張投影片係建議</td></tr>
+<tr><td>8 Execute and Evaluate <span class="pg">p.19–20</span></td><td>取得背書、變革管理、同 HRBP 合作、設里程碑、<b>project sponsor</b> 定義 p.20（sponsor 參與第 1、2、7、8 步多過第 4 步）</td><td>星期日 3 嘅術語格；大綱個案「monitoring the impact of interventions」</td></tr>
+<tr><td>失敗五大原因 <span class="pg">p.20–21</span></td><td>由數據開始而唔係由問題開始；持份者唔投入；探索式做法；假設弱；數據唔可用 —— 「<b>Data maturity is a prerequisite for analytics maturity</b>」</td><td>第 6 步「壞處」欄第二條（第一條係香港位）</td></tr>
+</table>
+
+<div class="warn"><b>分析類型：書係三層。</b>Ch.1 §1.4 p.6–8 只有 Descriptive（「What happened?」）、Diagnostic（「Why did it happen?」；圖上串錯做「DIAGNOSTIVE」）、Predictive（「What is likely to happen?」，書明言包含因果方向）。Fig 1.2 p.7 嘅成熟度連續體由弱到強：Anecdote → Reactive check → Ongoing report → Segment and comparison（＝描述）→ Correlation（＝診斷）→ Causation → Simulation and forecasting（＝預測）。「Prescriptive」全書只出現喺 Ch.6 §6.3 p.124（「optimisation」＝處方分析，答「What should we do?」），而且嗰段開頭話「In an earlier chapter we discussed the concept of Prescriptive Analytics」—— <b>前面根本冇講過</b>，係書自己嘅漏洞。另外 Ch.4 §4.2 p.85–86 有另一套五類「問題類型」（descriptive / exploratory / inferential / predictive / causal，引 Leek &amp; Peng 2015 <span class="en">Science</span>）。<br>
+<b>教學處理（十二分鐘四層樓梯保留，改標籤）：</b>第 1–3 層標 [FROM THE TEXTBOOK Ch.1 §1.4 p.6–8, Fig 1.2 p.7]；第 4 層標 [FROM THE TEXTBOOK Ch.6 §6.3 p.124]，並且講一句「本書前後唔一致，四層係業界通用講法」—— 呢句本身就係 EBM 嘅示範：連教科書都要核。Fig 1.2 嘅七格連續體比四層更細，可以做學生自評尺（「你間公司喺第幾格」）。</div>
+
+<h2>四、七項升級嘅結果</h2>
+<table>
+<thead><tr><th style="width:4%">#</th><th style="width:30%">升級</th><th style="width:44%">結果</th><th>改咗邊份文件</th></tr></thead>
+<tr><td>1</td><td>核實章節清單同頁碼；定第 5 堂</td><td>十二章頁碼全部核實（第一節）；第 5 堂 ＝ Ch.11；Ch.6 → 第 3 堂第二讀物；Ch.10 → 第 6 堂選讀；Ch.12 → AT4 題庫</td><td>本文件；《課程重新設計》修正 13 加一句</td></tr>
+<tr><td>2</td><td>抽每章關鍵詞換入術語步</td><td>四個星期日各八個術語已用書嘅字眼同頁碼（第二節）；Dr Lee 四堂各列五個（第五節）。<b>注意：書冇「key terms」或詞彙表</b>，只有 Ch.1 §1.1 一段學習目標；術語係我從章內抽，唔係書列</td><td>本文件；四個星期日流程表用時照抄</td></tr>
+<tr><td>3</td><td>核 Ch.1 分析類型 ＝ 四層？八步原文？</td><td><b>三層，唔係四層</b>；八步原文已核（第三節）</td><td>客席安排嘅十二分鐘樓梯改標籤；所有投影片</td></tr>
+<tr><td>4</td><td>搵書內個案同練習</td><td>Ch.4 <b>冇</b>銀行 TNA 個案（有 Global Bank p.96–98，內容係人力資本分析起步）；每章都有 SUMMARY + QUESTIONS；caselet 喺 Ch.3、7、9、10；完整個案喺 Ch.1、4、5、11。四個星期日每堂 5–6 個書內例（第二節）</td><td>個案故事指南嘅故事位：書例先行，你嘅故事係「書冇嘅嗰層」</td></tr>
+<tr><td>5</td><td>Ch.2 工具 vs 三個實驗室</td><td>Ch.2 p.40–44 列六個組件：HRIS / HR data warehouse / reporting &amp; BI / statistical analysis &amp; ML / visualisation / cognitive；點名工具：Workday、Tableau（p.45–46 有專欄）、PeopleSoft、SuccessFactors、Excel、R、Python、SAS、SPSS。<b>冇 Power BI、冇 Orange</b>。對應：實驗室 1 Excel ＝ 書多次提及（Ch.1 統計回顧全部用 Excel 函數 p.24–25；Ch.5 p.101「Excel 已夠」）；實驗室 2 Power BI／Tableau ＝ 組件 3+5（書用 Tableau 做例）；實驗室 3 Orange ＝ 組件 4。<b>結論：唔衝突</b>，只需喺實驗室講義加一句「本書第 2 章嘅六個組件，你哋三個實驗室各佔邊格」。書 p.45 章末問題「Are Excel and Tableau enough?」可以做實驗室 3 嘅開題</td><td>《課程重新設計》第 15 週表不變</td></tr>
+<tr><td>6</td><td>本書 vs 八堂理論配對嘅衝突</td><td>七條寫入「理論 vs 證據」帳（第六節）</td><td>四本帳</td></tr>
+<tr><td>7</td><td>閱讀負荷重算</td><td>八堂必讀章（Ch.1、2+3、4、5、11、7、8、9）合共 <b>54,129 字</b>；以 200 字／分鐘計 4.5 小時，非母語 150 字／分鐘計 6 小時；全書 68,759 字 ＝ 5.7–7.6 小時。對照大綱 20 小時閱讀：書佔 4.5–6 小時，餘 14–15.5 小時俾八篇必讀期刊（每篇 1.5–2 小時）—— <b>行得通</b>，前提係修正 13（每堂一篇必讀）已執行。書係實務手冊，讀速會快過期刊</td><td>《課程重新設計》修正 13</td></tr>
+</table>
+
+<h2>五、Dr Lee 四堂（第 1、2、3、5 堂）：章節要點同五個術語（俾佢參考，唔係我哋嘅堂）</h2>
+<table>
+<thead><tr><th style="width:9%">堂</th><th style="width:36%">五個術語（書嘅字眼 · 頁）</th><th>書內個案／可用材料</th></tr></thead>
+<tr><td>1 · Ch.1</td><td>three types of analysis p.6 · analytics maturity continuum Fig 1.2 p.7 · architect / blueprint（design of analyses）p.9 · use phase（洞見被用先算結果）p.10 · project sponsor p.20</td><td>p.4「gut vs gut」；p.8「rookie mistake：用新工具掘數據」；Deloitte 數字 p.5（77% 話重要、只 9% 知道邊啲人才維度推動績效、逾 80% HR 自評分析能力低）；Merck 個案 p.30–35（五年建隊、兩三年整合數據、「先假設後數據」）；Ch.12 p.238–239 「減 HR 成本 10% ＝ 40 萬 vs 生產力升 1% ＝ 60 萬」；章末七個問題群 p.28–30（Workforce Planning … Talent Retention）—— 直接係 AT3 題目池</td></tr>
+<tr><td>2 · Ch.3 (+Ch.2)</td><td>data audit / one source of truth p.49 · structured vs unstructured data p.50 · <b>big data ＝ 「organisation 以外嘅數據，不論大小」</b> p.51, p.76（書嘅特殊定義，同 Yahia 等人唔同 —— 見第六節）· four data challenges：missing / outdated / no data / outliers p.52–56 · tidy data + code book + recipe（可重複）p.57–58</td><td>p.50 準確度要求分級（人數要準；離職原因 20% 定 23% 唔改變決定）；p.55 冇晉升紀錄 → 用「職稱改 + 薪酬改」做代理；p.61 四組數據同一相關係數同一迴歸線（Anscombe 式）；p.62 讀書時數 vs 分數嘅混淆例；<b>p.63「moment of truth」</b>：薪酬同流失相關 0.17、差經理同流失 0.82，經理話「你嘅薪酬數據一定錯」—— 所以要熟自己嘅數據；章末練習 p.64 六條網上搵數據題（馬來西亞、精算師、新加坡治療師…）；caselet p.64–67 分行利潤（第二節星期日 3 有詳述）。Ch.2 六組件 p.40–44；私隱位喺 Ch.12 p.244–245（情緒辨識、穿戴裝置、個人資料保護立法）</td></tr>
+<tr><td>3 · Ch.4 (+Ch.6)</td><td>scoping：Context / Need / Vision / Outcome Fig 4.2 p.75 · hard vs soft data Fig 4.3 p.77 · <b>「Y 變項永遠係業務變項」</b> p.81 · quick win / pet project / big bet / trivial endeavour Fig 4.5 p.89 · supervised vs unsupervised；classification / regression / similarity matching / clustering p.91；sensitivity / specificity Fig 4.7 p.93。Ch.6：optimisation 五面向 segmentation / mixture / saturation / metric interaction / time line p.124–129；Kirkpatrick 四層 Fig 6.2 p.137</td><td>p.70 Google 免費牛扒 benchmark 謬誤；p.73「減流失」改寫做「提高人力生產力」（y 變項唔同、x 變項就唔同）；p.78 吸煙角故事（軟數據變硬數據）；p.79 EAP 使用量做壓力領先指標；p.83–84 招聘渠道 ROI 例、福利相關 0.14 但整體模型 0.75 → 0.4；p.88 blueprint 七步（售後流失例）；ROI Institute V-model p.89–90；章末題 p.94 TELCO-A i-FAST、B-Corp 網上學習平台（揀算法）；p.95 workforce map（attraction / development / retention）；<b>Global Bank p.96–98</b>。Ch.6：辦公用品公司銷售訓練 —— 底層五分位（多數係資深）得益最多 Fig 6.1 p.126；保險客服中心信用保障訓練「唔係成功」p.128；Kirkpatrick 四層逐層計 ROI p.138–140；<b>Cotes &amp; Ugarte 嘅策略性 TNA 同書嘅 Ch.6 對讀</b>：書由 ROI 出發，論文由策略目標出發 —— 兩者都反對「能力分析放核心」</td></tr>
+<tr><td>5 · Ch.11</td><td>HR metrics（HR 擁有）→ talent metrics（共同擁有）→ business outcomes（業務擁有）Fig 11.3–11.4 p.225–226 · multiple regression：加變項提高解釋力 15%→37%→61% Fig 11.1–11.2 p.223–224 · EVP（employee value proposition）p.226 · quick quits：五分之二新員工一年內走 Fig 11.6 p.228 · % change in voluntary turnover probability Fig 11.5 p.227</td><td>GrocerCo p.226–232：三條假設（招聘入職／整體獎酬／工作設計）+ 兩條途中發現（人才發展、多元共融）Fig 11.11 p.231；<b>反直覺</b>：每月加班超過 5 小時門店利潤反升 Fig 11.9 p.230；全職比例最佳 38%（公司 45%、行業 31%）Fig 11.10 p.231；排班一項多賺 800 萬。RetailCo p.232–235：external / store / individual 三類驅動因素清單 p.233–234（AT3 變項清單範本）；新員工比例高門店銷售升、全職多 10% 銷售跌 1% Fig 11.13 p.235；章末 Q5「你能否令人信服地論證 HR 增值？」p.236。<b>準則問題嘅書內證據</b>：Ch.4 p.97–98 績效評核有 halo、recency 偏差；Ch.5 Fig 5.7 p.117 面試排名同評核排名唔相關；Fig 5.8 p.119</td></tr>
+</table>
+
+<h2>六、「理論 vs 證據」帳：本書同八堂理論配對嘅衝突／接口（當場示範用）</h2>
+<table>
+<thead><tr><th style="width:5%">堂</th><th style="width:33%">本書嘅講法（頁）</th><th style="width:33%">理論配對嘅講法</th><th>帳上寫法</th></tr></thead>
+<tr><td>2</td><td>「Big data, for HR analytics, refers to data <b>outside of the organisation</b>… regardless of the size」p.51；再講一次 p.76；「HR 幾乎全部係 small data」p.47, p.117</td><td>Yahia et al. 嘅 big → deep data 同通用 3V 定義都以量、速、雜為準</td><td><b>定義衝突</b>。書嘅定義係實務上嘅「內／外」分法；學生寫 AT3 要講明用邊一個定義</td></tr>
+<tr><td>3</td><td>「Ideally, the Y-variable is always a business variable」p.81；HR 變項做 y 只有 HR 關心</td><td>Cotes &amp; Ugarte 策略性 TNA：策略目標放核心（同書一致）；但 JD-R（第 5 堂）嘅 y 係敬業度／績效</td><td><b>接口 + 輕微衝突</b>：書自己 Fig 9.4 p.198 都用 engagement score、intent to leave 做因變項。寫法：「業務 y 係目標，HR y 係中介」</td></tr>
+<tr><td>3</td><td>Prescriptive ＝ optimisation，答「What should we do?」p.124；但 Ch.1 三層冇佢</td><td>Pessach et al. 處方式分析：預測 + 數學規劃兩階段</td><td><b>書內不一致</b>（第三節）；Pessach 嘅兩階段正好填書嘅空格</td></tr>
+<tr><td>4</td><td>「Go for causation, rather than exploit the correlation」p.116；「HR data are typically small data… 唔使完美模型」p.117；但 p.115 又起咗預測模型標記高危新人</td><td>Ma et al. 風險量化、Al Akasheh 十年數據挖掘綜述：用 ML 預測，唔要求因果</td><td><b>立場張力</b>：書一半係 EBM 派（要知點解），一半係預測派。示範問題：「Kestrel Pay 要嘅係知點解，定係知邊個會走？」—— 兩個答案要嘅數據唔同</td></tr>
+<tr><td>6</td><td>Build / Buy / Borrow / Bind / Transform Fig 7.3 p.151；「市場有人就 buy，複雜或冇人就 build」p.147；「HR 唔係質疑策略，係質疑執行策略嘅能力」p.148</td><td>RBV／VRIO；一般 vs 公司專屬人力資本（Gerhart &amp; Feng）</td><td><b>接口</b>：書講做法冇引理論；VRIO 嘅「稀缺／難模仿」＝ build + bind；「公司專屬」＝ p.147 嘅「複雜產品流程」。加一句：書嘅 transform（改工作設計）係理論冇提嘅第五條路</td></tr>
+<tr><td>7</td><td>Hiring formula P&amp;A × B&amp;C × K&amp;E × MF p.178（DDI，冇理論出處）；「想轉型但請同一類人就轉唔到型」p.178；「經理提拔似自己嘅人」p.98</td><td>角色理論（Ding et al.）；ASA（Schneider，外借）</td><td><b>接口</b>：p.98 同 p.178 就係 ASA 嘅實務句；hiring formula 係工具唔係理論，投影片唔可以標理論。書 p.185 Q2「點確保 ML 唔學埋偏見」＝ Köchling &amp; Wehner 嘅問題</td></tr>
+<tr><td>8</td><td>Efficient frontier 只有成本 × 感知價值；strategic alignment「唔喺曲線上，要逐點測」p.203；pay mix 對照組試驗 p.199–200</td><td>雙元性 ex-ante vs ex-post 激勵（Ahammad）；不確定性規避（Llanos &amp; Bin Ahmad）</td><td><b>接口</b>：書承認 conjoint 答唔到「制度推咩行為」—— 就係 Theory A 嘅問題。書嘅試驗有對照組，Ahammad 係面板數據 —— 證據強度唔同，寫入帳</td></tr>
+<tr><td>全部</td><td>每章 SUMMARY 都用「we covered…」；冇一章列出理論；參考書目 11 條冇期刊論文</td><td>八堂 16 個理論槽位，14 個核實出自書目期刊</td><td>維持審計判斷：<b>書＝框架同術語，期刊＝可考理論</b>。投影片三種標記缺一不可</td></tr>
+</table>
+
+<h2>七、AT4 訪談題庫（按章出題；受訪者係 FinTech 高層，題目用英文）</h2>
+<div class="note">AT4 原文要學生「compare the book knowledge with the actual FinTech HRM… by interviewing senior FinTech management staff」。書 §12.3.1–12.3.7 p.240–242 本身就係按範疇列出嘅問題清單；下面每堂取兩條書嘅問題改成訪談問法，加一條「八步法第幾步」嘅固定問題。每堂 1–3 條，四堂共 12 條，剛好係一份訪談大綱。</div>
+<table>
+<thead><tr><th style="width:9%">星期日</th><th style="width:38%">書嘅原問題（頁）</th><th>訪談問法（英文，可照用）</th></tr></thead>
+<tr><td>1 規劃</td><td>§12.3.3 p.240–241：build vs buy 嘅成本；外派 vs 本地聘用。Ch.7 p.148：「HR 唔係質疑策略，係質疑執行能力」</td><td>“When your firm last planned a new product or market, at what point did headcount enter the plan — before or after the revenue target was set?”　·　“For your hardest-to-fill role, do you build, buy, borrow, bind or transform — and who pays for the training?”</td></tr>
+<tr><td>2 招聘</td><td>§12.3.4 p.241：外聘 vs 內升嘅成本同產出；推薦計劃試點；問新人點解接受 offer。Ch.8 p.185 Q1–Q2</td><td>“Has your firm ever tested whether its hiring criteria actually predict performance — or are the criteria inherited?”　·　“If a screening tool were trained on your current top performers, what would it never learn to hire?”</td></tr>
+<tr><td>3 薪酬</td><td>§12.3.5 p.241：加花紅有冇加表現；團隊 vs 個人激勵；生產力趨勢（收入 ÷ 人力成本）。Ch.9 p.200 Q5</td><td>“Do you know which of your benefits employees value most — measured, or assumed?”　·　“Has your incentive scheme ever been piloted with a control group, or was it benchmarked to the market and switched on?”</td></tr>
+<tr><td>4 流失</td><td>§12.3.1 p.240：低績效者留得短啲？頂尖走得多？離職三至六個月後再問真正原因。Ch.5 p.118 Q2</td><td>“What is the ‘real’ reason people leave — and how do you know it isn’t the exit-interview reason?”　·　“Which managers lose the most people, and does that appear anywhere in how those managers are rated?”</td></tr>
+<tr><td>四堂固定</td><td>八步法 Fig 1.3 p.13</td><td>“Of the eight steps — define the problem, formulate hypotheses, collect data, analyse, derive insights, build recommendations, tell the story, execute and evaluate — which step does your HR function reliably reach, and where does it stop?”</td></tr>
+</table>
+
+<h2>八、而家要做嘅事</h2>
 <ol>
-<li><b>問 Dr Lee 兩條：</b>（a）學生有冇本書嘅電子版取用權（樹仁圖書館 Emerald／ProQuest）？冇嘅話「課前讀一章」行唔通，要改為堂上發章節要點；（b）AT4 嘅「book knowledge」係咪就係指本書 —— 係嘅話訪談大綱按章節出題（第三節最後一行）。</li>
-<li><b>四個星期日嘅課前讀物改為：</b>本章（Ch.7／8／9／5）+ 原定嗰篇必讀期刊。其他期刊全部標選讀，唔變。</li>
-<li><b>投影片出處標記加第三種</b> [FROM THE TEXTBOOK Ch.x]。三種標記令學生一眼分到：書講嘅、論文證明嘅、我加嘅（香港位）。</li>
+<li><b>問 Dr Lee 三條：</b>（a）學生有冇本書電子版取用權（樹仁圖書館 Emerald／ProQuest）—— 冇嘅話「課前讀一章」改為堂上發章節要點；（b）第 5 堂用 Ch.11、Ch.6 歸第 3 堂、Ch.10 做第 6 堂選讀 —— 佢同唔同意；（c）AT4「book knowledge」係咪指本書 —— 係嘅話第七節題庫可以直接俾學生。</li>
+<li><b>四個星期日課前讀物定案：</b>Ch.7 → Ch.8 → Ch.9 → Ch.5，各加原定一篇必讀期刊；其他期刊全部選讀。</li>
+<li><b>投影片出處三種標記：</b>[FROM THE TEXTBOOK Ch.x p.y] / [FROM THE PAPER] / [INSTRUCTOR CONSTRUCTION]。引書用短引文加頁碼，唔複製圖表（版權）；Fig 1.3 八步、Fig 7.3 五選項、Fig 8.5 漏斗、Fig 9.5 效率前沿呢類框架圖<b>自己重畫</b>，標出處。</li>
+<li><b>十二分鐘四層樓梯改標籤</b>（第三節）：第 1–3 層 Ch.1、第 4 層 Ch.6 p.124，加一句「書前後唔一致」。</li>
+<li><b>下一步可以起：</b>任何一個星期日嘅英文講稿／PowerPoint／工作紙 —— 術語、個案、頁碼而家全部齊，唔使再等。</li>
 </ol>
 
 <div class="foot">
-<b>本文件用過嘅公開來源（全部只係搜尋摘要，頁面本身開唔到）：</b>
-Emerald Books Gateway, monograph 10821（章節清單）；bookstore.emerald.com 9781789739640（書介、Ch.1 小節）；Sriram Iyer, “8-Step approach to being HR Analytical” (LinkedIn)；Teamlease Digital, “8 Steps to becoming HR Analytical”；HRO Today, “Data-Driven Strategy”（八步法轉述、示範假設）；Cotes &amp; Ugarte (2021), <span class="en">J. of Business Research</span> 127, 464–473, ScienceDirect 摘要（智利分部、約 12,000 員工）。
-<b>冇用嘅來源：</b>網上流傳嘅全文 PDF（pdfcoffee 等）—— 侵權，唔會用。
-　·　與本文件相關嘅先前文件：《大綱文獻理論總表》（本書條目：「當工具書，唔好當理論來源」—— 維持）；《課程重新設計》（八堂理論表、六步模板、修正 13）；《客席講者教學安排》（四個星期日、十二分鐘樓梯）。
+<b>本文件嘅來源：</b>你上載嘅本書 PDF（ProQuest Ebook Central, docID 5967831；三部分合共 280 頁，全部有文字層）—— 圖書館授權內容，只用於備課，唔入 repo、唔分發。全部頁碼係書嘅印刷頁碼；引文係原文短句。
+<b>取代上一版嘅內容：</b>上一版建自公開目錄同轉述文章，其中「Ch.1 示範假設＝分行利潤」「分析類型可能係四層」「Chile 個案可能喺書內」三項已按原文更正（見頂部綠框）。
+　·　相關文件：《大綱文獻理論總表》（本書條目：「當工具書，唔好當理論來源」—— 讀完全文後維持，條目已註明）；《課程重新設計》（八堂理論表、六步模板、修正 13 已加閱讀負荷數字）；《客席講者教學安排》（四個星期日、十二分鐘樓梯 —— 標籤按第三節改）。
 </div>
 
 </body>
