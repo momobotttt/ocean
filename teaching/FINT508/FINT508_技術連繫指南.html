@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>FINT 508 客席講者 — 技術連繫指南</title>
+<style>
+@page { size: A4; margin: 9mm 8mm 10mm 8mm; }
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { font-family:"WenQuanYi Zen Hei","Noto Sans CJK TC",sans-serif;
+       font-size:8.4pt; line-height:1.4; color:#000; margin:0; }
+h1 { font-size:14.5pt; margin:0 0 1mm 0; }
+h1 .sub { font-size:9.6pt; font-weight:normal; display:block; margin-top:1mm; }
+h2 { font-size:9.9pt; margin:3.2mm 0 1.4mm 0; padding:.7mm 1.5mm;
+     background:#1f3864; color:#fff; break-after:avoid; page-break-after:avoid; }
+h3 { font-size:9pt; margin:2.4mm 0 1mm 0; color:#1f3864;
+     border-bottom:.5pt solid #1f3864; padding-bottom:.4mm;
+     break-after:avoid; page-break-after:avoid; }
+h4 { font-size:8.4pt; margin:1.8mm 0 .7mm 0; break-after:avoid; page-break-after:avoid; }
+p { margin:0 0 1.1mm 0; }
+ul,ol { margin:0 0 1.2mm 0; padding-left:4.2mm; }
+li { margin:0 0 .5mm 0; }
+table { width:100%; border-collapse:collapse; margin:0 0 1.8mm 0; font-size:8.05pt; line-height:1.35; }
+thead { display:table-header-group; }
+th { background:#e4e9f2; text-align:left; font-weight:bold; }
+th,td { border:.4pt solid #9aa5b8; padding:.85mm 1.3mm; vertical-align:top; }
+tr { break-inside:avoid; page-break-inside:avoid; }
+.hdr { border:.8pt solid #1f3864; padding:2mm 2.5mm; margin-bottom:2mm; }
+.meta { font-size:8.4pt; } .meta b { color:#1f3864; }
+.note { background:#f0f2f6; border-left:1.4pt solid #1f3864; padding:1.2mm 1.8mm; margin:0 0 1.6mm 0; }
+.warn { background:#fff4e0; border-left:1.4pt solid #b06000; padding:1.2mm 1.8mm; margin:0 0 1.6mm 0; }
+.fix { background:#eaf3ea; border:.8pt solid #2d6a2d; padding:1.6mm 2mm; margin:0 0 2mm 0; }
+.say { border-left:1.4pt solid #7d8aa0; padding:1mm 1.8mm; margin:0 0 1.4mm 0; background:#fafafa; }
+.en { font-family:Georgia,"Times New Roman",serif; font-style:italic; }
+.tag { display:inline-block; background:#1f3864; color:#fff; padding:.3mm 1.2mm;
+       font-size:7.3pt; margin-right:1mm; font-style:normal; font-weight:normal; }
+.num { display:inline-block; background:#1f3864; color:#fff; width:4.2mm; height:4.2mm;
+       text-align:center; font-size:7.6pt; margin-right:1mm; }
+.foot { border-top:.5pt solid #999; margin-top:2mm; padding-top:1mm; font-size:7.2pt; color:#444; }
+.k { background:#e4e9f2; padding:0 .8mm; font-weight:bold; }
+</style>
+</head>
+<body>
+
+<div class="hdr">
+<h1>FINT 508 客席講者 — 技術連繫指南
+<span class="sub">你要講到個連繫，唔使講到好深．附最小術語表、四堂落點、英文原話</span></h1>
+<div class="meta"><b>取代</b>《教學安排》第十章原本嘅「分工」寫法　·　<b>授課語言</b> 全英文（下面英文句子照讀）</div>
+</div>
+
+<div class="fix">
+<b>呢份嘢係一個修正。</b>原本《教學安排》第十章寫到好似「技術＝唔關你事，交返俾 Dr Lee」。<b>嗰個寫法唔啱，而且會令你交走自己最好嘅內容。</b>
+四堂入面最強嘅幾個教學時刻 —— <b>proxy variable、threshold、data leakage、unexplained gap</b> —— 全部都係技術連繫位。
+交咗出去，你就淨返講故事。呢份文件重新劃條線。
+</div>
+
+<h2>一、唔係兩邊，係三層</h2>
+<table>
+<tr><th style="width:16%">層</th><th style="width:14%">邊個講</th><th>內容</th></tr>
+<tr><td><b>一　個決定</b></td><td>你，全部</td><td>呢個模型係為咗答邊條 HR 問題？答完之後邊個要做嘢？做錯嘅成本係幾多？邊個有權睇？</td></tr>
+<tr><td><b>二　個連繫</b><br><b>← 重點喺呢層</b></td><td><b>你，一定要講到</b></td><td>個模型實際做緊乜、佢個輸出係咩形狀、佢點解會錯、佢答唔到啲咩。<b>概念層，唔使數學，唔使程式</b></td></tr>
+<tr><td><b>三　個機制</b></td><td>Dr Lee</td><td>演算法點運作、點訓練、點調參、點驗證、統計推導</td></tr>
+</table>
+<p><b>第二層先係你嘅價值所在，而且係最少人教得好嗰層。</b>Dr Lee 教得到第三層，教科書寫咗第一層 —— 但係<b>由第三層行返去第一層嗰條路</b>，邊個教？因為要行呢條路，你要同時知道<b>HR 會議入面實際發生咩事</b>，同埋<b>個模型實際交咗啲乜出嚟</b>。全個課程得你一個人兩樣都知。</p>
+<div class="note"><b>條線唔係劃喺「技術 vs 唔技術」，係劃喺「深度」。</b><br>
+「呢個模型會俾一個 0 到 1 之間嘅分數，你要自己揀喺邊度切」→ <b>你講</b>　　「佢用 gradient boosting，learning rate 0.1」→ <b>Dr Lee 講</b></div>
+
+<h2>二、你要掌握嘅最小術語（十個，就係十個）</h2>
+<p>唔使學統計，唔使學編程。要做到嘅係：<b>每一個都可以用日常英文講清楚，三十秒內，唔睇稿。</b></p>
+<table>
+<tr><th style="width:13%">術語</th><th style="width:44%">你嘅一句話（英文照讀）</th><th style="width:26%">HR 點解要理</th><th>你停喺邊</th></tr>
+<tr><td><b>Model =<br>structure +<br>assumptions</b></td><td class="en">"A model is a structure plus assumptions. The structure is fixed. The assumptions are estimates. When a plan fails, it is almost never the structure."</td><td>佢哋嘅人力規劃就係一個模型 —— 呢句令成件事由「電腦嘢」變成「你份計劃」</td><td>點樣由數據估出嗰啲假設</td></tr>
+<tr><td><b>Point estimate<br>vs range</b></td><td class="en">"This gives you one number. A real forecast gives you a range. If someone hands you a single number with no range, ask what it would take for it to be wrong."</td><td>董事會最鍾意單一數字，而單一數字係最危險嘅輸出</td><td>個 range 點計出嚟</td></tr>
+<tr><td><b>Validity<br>coefficient</b></td><td class="en">"Selection methods can be ranked by how well they predict later performance. That ranking comes from decades of meta-analysis, not from opinion."</td><td>呢個係你揀甄選方法嘅根據 —— <b>你嘅 HRM 主場，係量化嘅</b></td><td>meta-analysis 點做、點修正</td></tr>
+<tr><td><b>Proxy<br>variable</b></td><td class="en">"Remove the protected characteristic and the model rebuilds it from whatever correlates with it. Removing the column does not remove the information."</td><td>公平性審查嘅核心。冇咗呢個，成段討論會停留喺「刪咗佢咪得囉」</td><td>點樣偵測、點樣技術上處理</td></tr>
+<tr><td><b>Confusion<br>matrix</b></td><td class="en">"Four boxes. Put a Hong Kong dollar figure on the two wrong ones and the whole conversation changes."</td><td>令「模型錯」由抽象變成有價錢牌</td><td>precision／recall／AUC 嘅計法</td></tr>
+<tr><td><b>Threshold</b></td><td class="en">"The model gives a score. Where you cut is not a technical decision. It is a management decision with a cost on each side — and it belongs to you."</td><td><b>全系列最重要嘅一句</b></td><td>點樣用數學方法揀最佳切點</td></tr>
+<tr><td><b>Class<br>imbalance</b></td><td class="en">"If twelve per cent leave, a model that predicts nobody leaves is eighty-eight per cent accurate and completely useless. That is why accuracy is the wrong word."</td><td>三十秒拆穿一個好常見嘅管理層錯覺</td><td>sampling、weighting 點做</td></tr>
+<tr><td><b>Data<br>leakage</b></td><td class="en">"Feed it 'exit interview already scheduled' and it will be ninety-nine per cent accurate and worth nothing. Spotting that is a domain problem, not a maths problem — which makes it yours."</td><td><b>你最強嘅技術時刻</b>：識揀出嚟嘅一定係識 HR 流程嗰個</td><td>點樣系統性咁檢查</td></tr>
+<tr><td><b>Feature<br>importance<br>≠ cause</b></td><td class="en">"The model says this variable predicts. It does not say that fixing it will change anything. That is a different question, and it needs a different design."</td><td>接住第四堂個轉折，同第三堂嘅 DiD</td><td>因果推論嘅正式方法</td></tr>
+<tr><td><b>Unexplained<br>gap =<br>residual</b></td><td class="en">"The unexplained gap is what is left after you account for level, tenure and performance. It is not proof of discrimination. It is also not proof of innocence. It is the part your model cannot account for — which is exactly why it is worth looking at."</td><td>第三堂薪酬公平嘅整個支點</td><td>用邊個迴歸設定、點檢定</td></tr>
+</table>
+
+<h2>三、四堂各自嘅技術連繫落點</h2>
+
+<h3>星期日 1　人力規劃　<span class="tag">連繫：份計劃本身就係一個模型</span></h3>
+<p><b>幾時：</b>兩段。活動之前 2 分鐘（立框架）＋ 匯報時 3 分鐘（收成果）。<b>合共 5 分鐘。</b></p>
+<h4>活動之前（第 78 分鐘）</h4>
+<div class="say en">"What you are about to build is a model. The formulas are fixed — that is the structure. The cells you can change are assumptions. Every model in this course has those same two parts. And when a plan fails, it is almost never the structure. It is an assumption nobody wrote down."</div>
+<h4>三組匯報時（第 103–116 分鐘）—— 呢度先係 payoff</h4>
+<div class="say en">"Every group used the same spreadsheet. Look at the spread in your answers. Same structure, different assumptions, completely different plans. That spread has a name — model risk — and it is why the last thing I asked each of you for was the assumption that breaks everything."</div>
+<p><b>學生會問：</b>「咁點樣先估到個啱嘅流失率？」→ 你答：<span class="en">"From your own history, and from the market. How to do that properly is Dr Lee's."</span> 然後留一句：<span class="en">"But notice: nobody in this room asked for a range. You all took a single number."</span></p>
+
+<h3>星期日 2　招聘　<span class="tag">連繫：刪走個欄唔會刪走個資訊</span></h3>
+<p><b>幾時：</b>公平性審查（第 78–100 分鐘）中間，當有組講「咁刪走嗰個特徵咪得囉」嗰刻。<b>4 分鐘。</b>呢個係全堂最好嘅四分鐘。</p>
+<div class="say en">"Someone always says: just delete the field. Here is why that does not work. A model does not need the field — it needs anything that correlates with it. University. Postcode. A gap in the CV. The information is still sitting in your data. It has just changed its name. So deleting the column does not remove the bias. It removes your ability to audit it."</div>
+<p><b>再加一句拉返 HR：</b></p>
+<div class="say en">"Which means the fix is not technical. Somebody has to decide what the process is allowed to look at, write it down, and then check. That is not a data scientist's job."</div>
+<p><b>順手做埋：</b>impact ratio 同四分之五法則係<b>純算術</b>，你完全擁有 —— 唔好講到好似要交出去。</p>
+
+<h3>星期日 3　薪酬　<span class="tag">連繫：因果推論，同「無法解釋」到底解釋緊咩</span></h3>
+<p><b>幾時：</b>講授 C（第 55–72 分鐘）入面 2 分鐘講 residual；300 萬個案（第 77–103 分鐘）入面 3 分鐘講 DiD。<b>合共 5 分鐘。</b></p>
+<h4>講 unexplained gap 嗰陣</h4>
+<div class="say en">"When you hear 'unexplained pay gap', understand what that number is. It is a residual — what is left over after you account for level, tenure and performance. It is not proof of discrimination. It is also not proof of innocence. It is the part your model cannot account for, and that is exactly why it is worth looking at."</div>
+<h4>300 萬個案入面</h4>
+<div class="say en">"Difference-in-differences is not complicated. You need a group that got the money, a group that did not, and you need to know what both were doing beforehand. Then you compare the change, not the level. Everything genuinely hard about it is choosing those two groups — and that is an HR decision, not a statistical one."</div>
+<div class="note"><b>呢一句就係你成堂嘅論點：</b>技術上最難嗰部分（因果推論），佢個難處係喺 HR 判斷嗰邊，唔係喺數學嗰邊。所以呢一堂唔應該交俾 Dr Lee 講。</div>
+
+<h3>星期日 4　流失　<span class="tag">連繫：呢堂技術密度最高，而且大部分都係你嘅</span></h3>
+<p><b>幾時：</b>講授 B（第 51–68 分鐘），17 分鐘。下面係點分：</p>
+<table>
+<tr><th style="width:9%">分鐘</th><th style="width:22%">講咩</th><th>英文原話 / 做法</th></tr>
+<tr><td><b>6</b></td><td>Confusion matrix，<b>用港元計</b></td><td>畫四格。<span class="en">"Predicted to leave and left. Predicted to leave and stayed. Predicted to stay and left. Predicted to stay and stayed."</span> 然後叫全班替兩格錯嘅出價：留唔必要嘅人幾錢？走咗一個冇預到嘅工程師幾錢？<b>打入共享文件。</b></td></tr>
+<tr><td><b>4</b></td><td><b>Threshold 係管理決定</b></td><td><span class="en">"The model gives a score between zero and one. Where you cut is not in the model. Cut low and you spend money on people who were never leaving. Cut high and you lose people you could have kept. There is no correct answer — there is only your cost on each side. That decision is yours, not the data scientist's."</span></td></tr>
+<tr><td><b>2</b></td><td>Class imbalance</td><td><span class="en">"If twelve per cent leave, a model predicting nobody leaves is eighty-eight per cent accurate. Anyone who quotes accuracy at you has told you nothing."</span></td></tr>
+<tr><td><b>3</b></td><td><b>Data leakage</b></td><td><span class="en">"Someone puts 'exit interview scheduled' into the training data. The model hits ninety-nine per cent. It is worthless — it is reading the answer. Now: who in an organisation is capable of spotting that? Not the modeller. The person who knows the HR process. That is the job."</span></td></tr>
+<tr><td><b>2</b></td><td>Feature importance ≠ cause</td><td>鋪定路俾活動個轉折：<span class="en">"The model will tell you which variables predict. It will not tell you that changing them changes anything."</span></td></tr>
+</table>
+<p><b>然後活動個轉折（「上司到職少於 12 個月」）就變成上面最後一格嘅實例</b> —— 學生會自己講出「咁即係要換／訓練經理，唔係派錢」。呢個就係 predictive 行到 prescriptive 嗰一步，而且係佢哋自己行嘅。</p>
+<p><b>邊度交俾 Dr Lee：</b>用邊個演算法、點樣訓練、cross-validation、AUC／ROC 點睇、hyperparameter。</p>
+
+<h2>四、六個唔好交出去嘅時刻</h2>
+<table>
+<tr><th style="width:5%"></th><th style="width:26%">時刻</th><th style="width:12%">邊堂</th><th>點解係你嘅</th></tr>
+<tr><td><span class="num">1</span></td><td><b>Threshold 係管理決定</b></td><td>第四堂</td><td>個 trade-off 兩邊都係港元同人，唔係數學。全系列最重要嘅一句</td></tr>
+<tr><td><span class="num">2</span></td><td><b>Proxy variable</b></td><td>第二堂</td><td>要答佢，你要知道履歷入面實際有咩欄、香港會問啲乜。數據科學家唔知</td></tr>
+<tr><td><span class="num">3</span></td><td><b>Data leakage</b></td><td>第四堂</td><td>純粹係流程知識。識 HR 嗰個先揀得出</td></tr>
+<tr><td><span class="num">4</span></td><td><b>兩種錯嘅港元價</b></td><td>第四堂</td><td>重置成本、招聘前置期、能力損失 —— 全部係你嘅專業</td></tr>
+<tr><td><span class="num">5</span></td><td><b>Unexplained gap 係 residual</b></td><td>第三堂</td><td>個統計係簡單嘅；難嘅係「控制咗啲乜、點解」，而嗰個係職級架構問題</td></tr>
+<tr><td><span class="num">6</span></td><td><b>假設 vs 結構、model risk</b></td><td>第一堂</td><td>啲假設全部係 HR 假設。你係房入面唯一有資格質疑佢哋嘅人</td></tr>
+</table>
+<div class="warn">呢六個全部係技術問題，但<b>答案全部喺 HR 嗰邊</b>。交咗出去，你就交走咗成個系列最好嘅六個時刻，而且交咗之後 Dr Lee 亦都答唔到 —— 因為佢冇你嗰啲知識。</div>
+
+<h2>五、交棒點做先啱：先答 HR 嗰半，再交機器嗰半</h2>
+<p>原本嗰三句係「點樣避開」。真正做得好嘅交棒係<b>兩段式</b>：<b>我答到你嘅 X，Y 就要問 Dr Lee。</b>咁樣你唔係退，你係劃界。</p>
+<table>
+<tr><th style="width:26%">學生問</th><th>你答</th></tr>
+<tr><td>"What algorithm should we use?"</td><td class="en">"For this decision the algorithm matters far less than where you set the threshold — and that one is ours. Which algorithm, and why, is Dr Lee's, and he will take it further than I can."</td></tr>
+<tr><td>"How accurate is it?"</td><td class="en">"Accuracy is the wrong question here, and I can show you why in thirty seconds. <span style="font-style:normal">[講 class imbalance]</span> The right question is what each kind of error costs you. How to measure it properly — Dr Lee."</td></tr>
+<tr><td>"How does it weight that variable?"</td><td class="en">"I can't tell you the weighting. I can tell you that weighting is not the same as cause, and I can tell you exactly what happens when a manager receives that number and has to act on it — which is the part that goes wrong."</td></tr>
+<tr><td>"Can we just use AI for this?"</td><td class="en">"You can. Then you still have to choose the threshold, decide who sees the list, and answer a data access request. None of those go away. <span style="font-style:normal">[然後入私隱條例]</span>"</td></tr>
+<tr><td>真係唔識嗰啲</td><td class="en">"I don't know. My instinct is X, but don't quote me — I'll check and come back to you next Sunday."</td><td></td></tr>
+</table>
+<div class="note"><b>下星期真係要返返嚟講。</b>四堂之間隔一個星期，呢個係你最抵用嘅資產：查完，第二堂開場三十秒答返上星期條問題。全班會記住呢件事，多過記住答案本身。</div>
+
+<h2>六、同 Dr Lee 講：唔係「避開重疊」，係「我鋪路，你落深」</h2>
+<p>原本嗰個協調問題係「有冇嘢我唔應該講」。改做：<b>明確話俾佢知你會用非技術語言 set 起邊幾個概念</b>，佢就可以直接接住落去，唔使由頭嚟過。呢個對佢係著數，唔係麻煩。</p>
+<div class="say"><b>Email 大意（英文）：</b><br>
+<span class="en">"Rather than avoid the technical material, I'd like to set it up for you in plain language and stop there. Across my four Sundays I'll introduce, conceptually and without any maths: model structure versus assumptions; validity of selection methods; proxy variables; the confusion matrix priced in dollars; the decision threshold as a management choice; class imbalance; data leakage; and the difference between a predictive feature and a cause. I won't touch algorithms, training, tuning or validation — those are yours, and students will arrive at them already knowing why they matter. Tell me if you'd rather I left any of these alone, or if you'd like me to frame one of them differently so it lands where you need it."</span></div>
+
+<h2>七、你自己要準備啲乜（一個下午搞得掂）</h2>
+<table>
+<tr><th style="width:22%">唔使做</th><th>要做</th></tr>
+<tr><td>學 Python<br>學統計<br>睇演算法</td><td><b>把上面十個術語，每個用日常英文講一次，限時三十秒，唔准睇稿。</b>錄低自己。講唔順嗰個，就係你未真正明嗰個 —— 淨係練嗰幾個</td></tr>
+</table>
+<div class="warn"><b>唯一要動手嘅一件事（做咗，第四堂會完全唔同）：</b><br>
+喺 Excel 開一張四十行嘅表，加一欄 0 至 1 嘅風險分數，再加一欄「實際有冇走」。然後自己拉個 threshold：0.5、0.3、0.7。
+每次數吓：捉錯咗幾多個（白花錢）、走漏咗幾多個（走咗但冇預到）。
+<b>你親手見過嗰兩個數字係點樣反方向郁</b>，你堂上就講得出，而且唔會虛。呢個就係全份指南入面最重要嗰一句嘅實物版。</div>
+
+<div class="foot">FINT 508 客席講者．技術連繫指南　|　你講第二層（連繫），Dr Lee 講第三層（機制）　|　取代《教學安排》第十章原本嘅分工寫法</div>
+
+</body>
+</html>
