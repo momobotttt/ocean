@@ -104,6 +104,31 @@ test.describe.serial("權限隔離", () => {
     await expect(page.locator('[data-stage="NR1"]')).toContainText(CLIENT_2);
   });
 
+  test("員工 A 喺四季頁拖拉客人", async ({ page }) => {
+    await login(page, A);
+    await page.goto("/seasons");
+    await expect(page.locator('[data-stage="NONE"]')).toContainText(CLIENT_1);
+    const card = page.getByTestId("client-card").filter({ hasText: CLIENT_1 });
+    const target = page.locator('[data-stage="SUMMER"]');
+    const from = (await card.boundingBox())!;
+    const to = (await target.boundingBox())!;
+    await page.mouse.move(from.x + 20, from.y + 15);
+    await page.mouse.down();
+    await page.mouse.move(from.x + 40, from.y + 30, { steps: 5 });
+    await page.mouse.move(to.x + to.width / 2, to.y + 100, { steps: 15 });
+    await page.mouse.up();
+    await expect(target).toContainText(CLIENT_1);
+    await page.reload();
+    await expect(page.locator('[data-stage="SUMMER"]')).toContainText(CLIENT_1);
+    // 客戶頁顯示同一個季節，亦可以用選單改
+    await page.getByTestId("client-card").filter({ hasText: CLIENT_2 }).click();
+    await page.waitForURL(/\/clients\//);
+    await page.getByLabel("四季").selectOption("AUTUMN");
+    await expect(page.getByText("已更新四季")).toBeVisible();
+    await page.goto("/seasons");
+    await expect(page.locator('[data-stage="AUTUMN"]')).toContainText(CLIENT_2);
+  });
+
   test("員工 B 睇唔到、攞唔到、改唔到員工 A 嘅客", async ({ page }) => {
     await login(page, B);
     await page.goto("/board");
@@ -127,6 +152,10 @@ test.describe.serial("權限隔離", () => {
     expect(one).toEqual([]);
     const { data: upd } = await sb.from("clients").update({ stage: "ISSUED" }).eq("id", client1Id).select("id");
     expect(upd).toEqual([]);
+    const { data: seas } = await sb.from("clients").update({ season: "WINTER" }).eq("id", client1Id).select("id");
+    expect(seas).toEqual([]);
+    await page.goto("/seasons");
+    await expect(page.getByText(CLIENT_1)).toHaveCount(0);
     const { data: del } = await sb.from("clients").delete().eq("id", client1Id).select("id");
     expect(del).toEqual([]);
     const { data: audit } = await sb.from("audit_log").select("id").eq("record_id", client1Id);
@@ -150,6 +179,14 @@ test.describe.serial("權限隔離", () => {
     const sb = await apiAs(ADMIN);
     const { data: upd } = await sb.from("clients").update({ stage: "ISSUED" }).eq("id", client1Id).select("id");
     expect(upd).toEqual([]);
+
+    // 主管睇員工 A 嘅四季（唯讀，拖唔到）
+    const { data: me } = await sb.auth.getUser();
+    const { data: amy } = await sb.from("clients").select("owner_id").eq("id", client1Id).single();
+    expect(amy!.owner_id).not.toBe(me.user!.id);
+    await page.goto(`/seasons?agent=${amy!.owner_id}`);
+    await expect(page.getByText("唯讀")).toBeVisible();
+    await expect(page.locator('[data-stage="SUMMER"]')).toContainText(CLIENT_1);
 
     await page.goto("/admin/audit");
     await expect(page.getByText(`客戶：${CLIENT_1}`).first()).toBeVisible();

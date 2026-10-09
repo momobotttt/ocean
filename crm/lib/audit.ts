@@ -1,3 +1,4 @@
+import { seasonLabel } from "./seasons";
 import { ALL_CHECKS, FORMS, STAGES, type Stage } from "./stages";
 
 const INFO_LABELS: Record<string, string> = {
@@ -10,6 +11,7 @@ const INFO_LABELS: Record<string, string> = {
 
 const COLUMN_LABELS: Record<string, string> = {
   stage: "階段",
+  season: "四季",
   owner_id: "負責員工",
   id: "記錄",
   full_name: "員工姓名",
@@ -36,8 +38,10 @@ export function fieldLabel(key: string): string {
 }
 
 function valueLabel(col: string, v: unknown): string {
+  if (col === "season" && (v === null || v === undefined)) return "未分類";
   if (v === null || v === undefined) return "—";
   if (col === "stage") return STAGES.find((s) => s.key === (v as Stage))?.short ?? String(v);
+  if (col === "season") return seasonLabel(v as string);
   if (col === "active") return v ? "啟用" : "停用";
   if (col === "role") return v === "admin" ? "主管" : "員工";
   if (typeof v === "boolean") return v ? "✓" : "✗";

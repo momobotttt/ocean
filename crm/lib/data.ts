@@ -1,6 +1,7 @@
 import "server-only";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { decryptColumn } from "./secure";
+import { NO_SEASON, type SeasonColumn } from "./seasons";
 import { CHECK_KEYS, FORMS, type Checks, type FormColumn, type Stage } from "./stages";
 
 export type ClientInfo = { name: string; age: string; gender: string; occupation: string; marital: string };
@@ -9,6 +10,7 @@ export type ClientCard = {
   id: string;
   owner_id: string;
   stage: Stage;
+  season: SeasonColumn;
   ready_to_sign: boolean;
   checks: Checks;
   info: ClientInfo;
@@ -20,7 +22,7 @@ export type ClientFull = ClientCard & {
   created_at: string;
 };
 
-const CARD_COLS = ["id", "owner_id", "stage", "ready_to_sign", "info", "updated_at", ...CHECK_KEYS].join(", ");
+const CARD_COLS = ["id", "owner_id", "stage", "season", "ready_to_sign", "info", "updated_at", ...CHECK_KEYS].join(", ");
 
 type Row = Record<string, unknown> & { id: string };
 
@@ -41,6 +43,7 @@ function toCard(r: Row): ClientCard {
     id: r.id,
     owner_id: r.owner_id as string,
     stage: r.stage as Stage,
+    season: ((r.season as string | null) ?? NO_SEASON) as SeasonColumn,
     ready_to_sign: Boolean(r.ready_to_sign),
     checks,
     info: toInfo(r.id, r.info),
@@ -71,6 +74,7 @@ export function toBoardCards(cards: ClientCard[]) {
   return cards.map((c) => ({
     id: c.id,
     stage: c.stage,
+    season: c.season,
     ready: c.ready_to_sign,
     checks: c.checks,
     name: c.info.name,

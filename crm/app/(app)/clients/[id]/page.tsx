@@ -49,7 +49,7 @@ export default async function ClientPage({ params }: { params: Promise<{ id: str
         <Link href={readOnly ? `/admin/agents/${client.owner_id}` : "/board"}>← 返回看板</Link>
       </p>
       <ClientEditor
-        client={{ id: client.id, stage: client.stage, info: client.info, checks: client.checks, forms: client.forms }}
+        client={{ id: client.id, stage: client.stage, season: client.season, info: client.info, checks: client.checks, forms: client.forms }}
         readOnly={readOnly}
       />
       <h2>修改記錄</h2>

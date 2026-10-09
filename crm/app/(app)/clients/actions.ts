@@ -5,6 +5,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { requireUser } from "@/lib/auth";
 import { encryptColumn } from "@/lib/secure";
+import { isSeason } from "@/lib/seasons";
 import {
   FORMS,
   GENDERS,
@@ -109,6 +110,13 @@ export async function saveFormAction(
 export async function moveStageAction(id: string, stage: string): Promise<ActionResult> {
   if (!isStage(stage)) return { ok: false, error: "階段無效" };
   return updateOwn(id, { stage });
+}
+
+export async function moveSeasonAction(id: string, season: string | null): Promise<ActionResult> {
+  if (season !== null && !isSeason(season)) return { ok: false, error: "季節無效" };
+  const res = await updateOwn(id, { season });
+  revalidatePath("/seasons");
+  return res;
 }
 
 export async function deleteClientAction(id: string): Promise<ActionResult> {

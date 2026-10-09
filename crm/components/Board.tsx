@@ -16,12 +16,14 @@ import {
   type DragEndEvent,
   type DragStartEvent,
 } from "@dnd-kit/core";
-import { moveStageAction } from "@/app/(app)/clients/actions";
+import { moveSeasonAction, moveStageAction } from "@/app/(app)/clients/actions";
 import { GENDERS, STAGES, missingChecks, type Checks, type Stage } from "@/lib/stages";
+import { NO_SEASON, type SeasonColumn } from "@/lib/seasons";
 
 export type BoardCard = {
   id: string;
   stage: Stage;
+  season: SeasonColumn;
   ready: boolean;
   checks: Checks;
   name: string;
@@ -70,15 +72,15 @@ function DraggableCard({ c, readOnly }: { c: BoardCard; readOnly: boolean }) {
   );
 }
 
-function Column({ stage, label, cards, readOnly }: { stage: Stage; label: string; cards: BoardCard[]; readOnly: boolean }) {
-  const { setNodeRef, isOver } = useDroppable({ id: stage, disabled: readOnly });
-  const done = stage === "SIGNED" || stage === "ISSUED";
+function Column({ col, cards, readOnly }: { col: BoardColumn; cards: BoardCard[]; readOnly: boolean }) {
+  const { setNodeRef, isOver } = useDroppable({ id: col.key, disabled: readOnly });
   return (
-    <section ref={setNodeRef} className={`column${isOver ? " over" : ""}${done ? " column-done" : ""}`} data-stage={stage}>
+    <section ref={setNodeRef} className={`column${isOver ? " over" : ""}${col.done ? " column-done" : ""}`} data-stage={col.key}>
       <div className="column-head">
-        <span>{label}</span>
+        <span>{col.label}</span>
         <span className="badge badge-grey">{cards.length}</span>
       </div>
+      {col.hint && <p className="column-hint">{col.hint}</p>}
       {cards.map((c) => (
         <DraggableCard key={c.id} c={c} readOnly={readOnly} />
       ))}
@@ -87,7 +89,26 @@ function Column({ stage, label, cards, readOnly }: { stage: Stage; label: string
   );
 }
 
-export default function Board({ cards: initial, readOnly = false }: { cards: BoardCard[]; readOnly?: boolean }) {
+export type BoardColumn = { key: string; label: string; hint?: string; done?: boolean };
+
+const STAGE_COLUMNS: BoardColumn[] = STAGES.map((s) => ({
+  key: s.key,
+  label: s.short,
+  done: s.key === "SIGNED" || s.key === "ISSUED",
+}));
+
+/** 看板：groupBy="stage" 按階段（預設），groupBy="season" 按四季 */
+export default function Board({
+  cards: initial,
+  readOnly = false,
+  groupBy = "stage",
+  columns = STAGE_COLUMNS,
+}: {
+  cards: BoardCard[];
+  readOnly?: boolean;
+  groupBy?: "stage" | "season";
+  columns?: BoardColumn[];
+}) {
   const router = useRouter();
   const [cards, setCards] = useState(initial);
   useEffect(() => setCards(initial), [initial]);
@@ -107,18 +128,18 @@ export default function Board({ cards: initial, readOnly = false }: { cards: Boa
   const onDragEnd = (e: DragEndEvent) => {
     setActiveId(null);
     const id = String(e.active.id);
-    const to = e.over?.id as Stage | undefined;
+    const to = e.over ? String(e.over.id) : undefined;
     const card = cards.find((c) => c.id === id);
-    if (!card || !to || card.stage === to) return;
-    if ((to === "SIGNED" || to === "ISSUED") && !card.ready) {
+    if (!card || !to || card[groupBy] === to) return;
+    if (groupBy === "stage" && (to === "SIGNED" || to === "ISSUED") && !card.ready) {
       const n = missingChecks(card.checks).length;
       if (!window.confirm(`「${card.name}」仲差 ${n} 格先具備簽單條件，確定移去「${STAGES.find((s) => s.key === to)?.short}」？`)) return;
     }
     const prev = cards;
-    setCards((cs) => cs.map((c) => (c.id === id ? { ...c, stage: to } : c)));
+    setCards((cs) => cs.map((c) => (c.id === id ? { ...c, [groupBy]: to } : c)));
     setError(null);
     startTransition(async () => {
-      const res = await moveStageAction(id, to);
+      const res = groupBy === "stage" ? await moveStageAction(id, to) : await moveSeasonAction(id, to === NO_SEASON ? null : to);
       if (!res.ok) {
         setCards(prev);
         setError(res.error);
@@ -135,8 +156,8 @@ export default function Board({ cards: initial, readOnly = false }: { cards: Boa
       {error && <p className="error">{error}</p>}
       <DndContext sensors={sensors} onDragStart={onDragStart} onDragEnd={onDragEnd} onDragCancel={() => setActiveId(null)}>
         <div className="board">
-          {STAGES.map((s) => (
-            <Column key={s.key} stage={s.key} label={s.short} cards={cards.filter((c) => c.stage === s.key)} readOnly={readOnly} />
+          {columns.map((col) => (
+            <Column key={col.key} col={col} cards={cards.filter((c) => c[groupBy] === col.key)} readOnly={readOnly} />
           ))}
         </div>
         <DragOverlay>

@@ -2,8 +2,9 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState, useTransition } from "react";
-import { deleteClientAction, moveStageAction, saveFormAction, updateInfoAction, type ActionResult } from "@/app/(app)/clients/actions";
+import { deleteClientAction, moveSeasonAction, moveStageAction, saveFormAction, updateInfoAction, type ActionResult } from "@/app/(app)/clients/actions";
 import InfoFields from "./InfoFields";
+import { NO_SEASON, SEASONS, type SeasonColumn } from "@/lib/seasons";
 import {
   FORMS,
   STAGES,
@@ -22,6 +23,7 @@ type Info = { name: string; age: string; gender: string; occupation: string; mar
 export type EditorClient = {
   id: string;
   stage: Stage;
+  season: SeasonColumn;
   info: Info;
   checks: Checks;
   forms: Record<FormColumn, Record<string, string>>;
@@ -82,6 +84,7 @@ export default function ClientEditor({ client, readOnly }: { client: EditorClien
   const [forms, setForms] = useState(client.forms);
   const [checks, setChecks] = useState<Checks>(client.checks);
   const [stage, setStage] = useState<Stage>(client.stage);
+  const [season, setSeason] = useState<SeasonColumn>(client.season);
   const [dirty, setDirty] = useState<Set<Tab>>(new Set());
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);
   const [pending, startTransition] = useTransition();
@@ -145,6 +148,22 @@ export default function ClientEditor({ client, readOnly }: { client: EditorClien
         setMsg({ ok: false, text: res.error });
       } else {
         setMsg({ ok: true, text: "已轉階段" });
+        router.refresh();
+      }
+    });
+  };
+
+  const changeSeason = (to: SeasonColumn) => {
+    const prev = season;
+    setSeason(to);
+    setMsg(null);
+    startTransition(async () => {
+      const res = await moveSeasonAction(client.id, to === NO_SEASON ? null : to);
+      if (!res.ok) {
+        setSeason(prev);
+        setMsg({ ok: false, text: res.error });
+      } else {
+        setMsg({ ok: true, text: "已更新四季" });
         router.refresh();
       }
     });
@@ -250,6 +269,23 @@ export default function ClientEditor({ client, readOnly }: { client: EditorClien
             {STAGES.map((s) => (
               <option key={s.key} value={s.key}>
                 {s.short}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className="row small">
+          四季
+          <select
+            value={season}
+            disabled={readOnly || pending}
+            onChange={(e) => changeSeason(e.target.value as SeasonColumn)}
+            style={{ width: "auto" }}
+            aria-label="四季"
+          >
+            <option value={NO_SEASON}>未分類</option>
+            {SEASONS.map((s) => (
+              <option key={s.key} value={s.key}>
+                {s.emoji} {s.label}（{s.focus}）
               </option>
             ))}
           </select>

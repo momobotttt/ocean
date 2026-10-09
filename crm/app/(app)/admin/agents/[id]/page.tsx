@@ -21,6 +21,10 @@ export default async function AgentBoard({ params }: { params: Promise<{ id: str
         <span className="badge badge-grey">{cards.length} 個客</span>
         {ready > 0 && <span className="badge badge-green">{ready} 個具備簽單條件</span>}
         {!agent.active && <span className="badge badge-red">已停用</span>}
+        <span className="spacer" />
+        <Link className="btn btn-sm" href={`/seasons?agent=${agent.id}`}>
+          睇四季人脈
+        </Link>
       </div>
       {agent.id !== me.id && <p className="notice">👁 唯讀 — 撳卡片睇詳情</p>}
       <Board cards={toBoardCards(cards)} readOnly={agent.id !== me.id} />

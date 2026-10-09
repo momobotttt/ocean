@@ -1,6 +1,6 @@
 -- =====================================================================
 -- 權限（RLS）自動測試
--- 用法：Supabase → SQL Editor → 貼晒成個檔案 → Run。
+-- 用法：Supabase → SQL Editor → 貼晒成個檔案 → Run（要先行晒 migrations 入面所有 .sql）。
 --   * 會臨時建立 4 個測試帳戶（員工 A、員工 B、管理員 R、已停用員工 C）同測試客，
 --     逐項驗證權限，最後「刻意」以 error 結束，等所有測試資料自動還原（唔會留低任何嘢）。
 --   * 見到「✅ 全部 RLS 測試通過」= 正常。
@@ -73,6 +73,14 @@ begin
   update public.clients set stage = 'NR1', info = '{"name":"v1.aaa2"}' where id = '00000000-0000-4000-c000-0000000000a1';
   get diagnostics n = row_count;
   if n <> 1 then raise exception '❌ FAIL: 員工 A 改唔到自己嘅客'; end if;
+
+  -- 四季：自己嘅客可以標，員工 B 嘅改唔到
+  update public.clients set season = 'SUMMER' where id = '00000000-0000-4000-c000-0000000000a1';
+  get diagnostics n = row_count;
+  if n <> 1 then raise exception '❌ FAIL: 員工 A 標唔到自己客嘅四季'; end if;
+  update public.clients set season = 'WINTER' where id = '00000000-0000-4000-c000-0000000000b1';
+  get diagnostics n = row_count;
+  if n <> 0 then raise exception '❌ FAIL: 員工 A 改到員工 B 客嘅四季'; end if;
 
   -- 唔可以將自己嘅客轉俾其他人
   begin
@@ -200,6 +208,13 @@ do $$ begin
       and changes ? 'info.name'
   ) then
     raise exception '❌ FAIL: 審計記錄冇正確記低「邊個改咗乜」';
+  end if;
+  if not exists (
+    select 1 from public.audit_log
+    where record_id = '00000000-0000-4000-c000-0000000000a1'
+      and changes -> 'season' ->> 'new' = 'SUMMER'
+  ) then
+    raise exception '❌ FAIL: 審計記錄冇記低四季變更';
   end if;
   if exists (select 1 from public.audit_log where changes::text like '%v1.aaa%') then
     raise exception '❌ FAIL: 審計記錄抄低咗密文';

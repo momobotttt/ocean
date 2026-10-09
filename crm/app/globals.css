@@ -183,3 +183,25 @@ td.wrap { white-space: normal; min-width: 220px; }
   .board { grid-auto-columns: 82%; }
   h1 { font-size: 1.2rem; }
 }
+
+/* ---------- 四季 ---------- */
+.season-legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom: 14px; }
+.season-tile { border-radius: var(--radius); padding: 10px 12px; border: 1px solid var(--border); background: var(--surface); }
+.season-tile .season-name { font-weight: 700; font-size: 1.05rem; display: flex; justify-content: space-between; align-items: center; }
+.season-tile ol { margin: 6px 0 0; padding-left: 20px; }
+.season-spring { border-top: 4px solid #3fa66b; }
+.season-summer { border-top: 4px solid #e0a100; }
+.season-autumn { border-top: 4px solid #c8642c; }
+.season-winter { border-top: 4px solid #4a86c5; }
+.column-hint { margin: -4px 6px 8px; font-size: 0.78rem; color: var(--muted); }
+.column[data-stage="SPRING"] { background: #e9f6ee; }
+.column[data-stage="SUMMER"] { background: #fff6dc; }
+.column[data-stage="AUTUMN"] { background: #fbece2; }
+.column[data-stage="WINTER"] { background: #e7f0fa; }
+.column[data-stage="SPRING"].over, .column[data-stage="SUMMER"].over,
+.column[data-stage="AUTUMN"].over, .column[data-stage="WINTER"].over { border-color: var(--primary); }
+@media (max-width: 720px) {
+  .season-legend { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .season-tile { padding: 8px 10px; }
+  .season-tile .season-name { font-size: 0.95rem; }
+}
