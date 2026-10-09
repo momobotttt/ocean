@@ -205,3 +205,6 @@ td.wrap { white-space: normal; min-width: 220px; }
   .season-tile { padding: 8px 10px; }
   .season-tile .season-name { font-size: 0.95rem; }
 }
+.season-tile details { margin-top: 6px; }
+.season-tile summary { cursor: pointer; color: var(--muted); }
+.season-tile ol { line-height: 1.6; }

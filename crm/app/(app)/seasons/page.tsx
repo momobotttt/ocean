@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Board, { type BoardColumn } from "@/components/Board";
+import WideOpenDetails from "@/components/WideOpenDetails";
 import { requireUser, displayName, type Profile } from "@/lib/auth";
 import { listClientCards, toBoardCards } from "@/lib/data";
 import { NO_SEASON, SEASONS } from "@/lib/seasons";
@@ -56,14 +57,13 @@ export default async function SeasonsPage({ searchParams }: { searchParams: Prom
               {s.state} → <b>{s.focus}</b>
             </div>
             {s.actions.length > 0 && (
-              <details>
-                <summary className="small">行動清單</summary>
+              <WideOpenDetails summary={`行動清單（${s.actions.length} 點）`}>
                 <ol className="small">
                   {s.actions.map((a) => (
                     <li key={a}>{a}</li>
                   ))}
                 </ol>
-              </details>
+              </WideOpenDetails>
             )}
           </div>
         ))}
