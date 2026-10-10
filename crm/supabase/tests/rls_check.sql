@@ -168,6 +168,57 @@ do $$ begin
   end if;
 end $$;
 
+-- ---------- WhatsApp 草稿同代寫函數 ----------
+reset role;
+select set_config('request.jwt.claims', '', true);  -- 模擬伺服器（冇登入身份）
+insert into public.wa_drafts (owner_id, payload) values ('00000000-0000-4000-a000-00000000000a', 'v1.secret');
+-- 伺服器代員工 A 寫入自己嘅客：成功，審計記錄標明 whatsapp 同員工 A
+select public.wa_save_client('00000000-0000-4000-a000-00000000000a', '00000000-0000-4000-c000-0000000000a1', '{"season": "AUTUMN"}'::jsonb, false);
+do $$ begin
+  if not exists (
+    select 1 from public.audit_log
+    where record_id = '00000000-0000-4000-c000-0000000000a1' and via = 'whatsapp'
+      and actor_id = '00000000-0000-4000-a000-00000000000a' and changes -> 'season' ->> 'new' = 'AUTUMN'
+  ) then
+    raise exception '❌ FAIL: WhatsApp 寫入冇正確記審計（via／actor）';
+  end if;
+  -- 代員工 B 改員工 A 嘅客：一定要失敗
+  begin
+    perform public.wa_save_client('00000000-0000-4000-a000-00000000000b', '00000000-0000-4000-c000-0000000000a1', '{"stage": "PC"}'::jsonb, false);
+    raise exception '❌ FAIL: WhatsApp 函數可以改其他員工嘅客';
+  exception when raise_exception then
+    if sqlerrm like '❌%' then raise; end if;
+  end;
+end $$;
+set local role authenticated;
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-a000-00000000000b","role":"authenticated"}', true);
+do $$
+declare n int;
+begin
+  if exists (select 1 from public.wa_drafts) then
+    raise exception '❌ FAIL: 員工 B 睇到員工 A 嘅 WhatsApp 草稿';
+  end if;
+  begin
+    perform public.wa_save_client('00000000-0000-4000-a000-00000000000b', '00000000-0000-4000-c000-0000000000b1', '{}'::jsonb, false);
+    raise exception '❌ FAIL: 員工可以直接呼叫 WhatsApp 代寫函數';
+  exception when insufficient_privilege then null;
+  end;
+  begin
+    insert into public.wa_drafts (owner_id, payload) values ('00000000-0000-4000-a000-00000000000b', 'x');
+    raise exception '❌ FAIL: 員工可以直接寫 WhatsApp 草稿';
+  exception when insufficient_privilege then null;
+  end;
+  update public.profiles set whatsapp = '85299999999' where id = '00000000-0000-4000-a000-00000000000b';
+  get diagnostics n = row_count;
+  if n <> 0 then raise exception '❌ FAIL: 員工可以自己改 WhatsApp 號碼（應該由主管設定）'; end if;
+end $$;
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-a000-00000000000a","role":"authenticated"}', true);
+do $$ begin
+  if (select count(*) from public.wa_drafts) <> 1 then
+    raise exception '❌ FAIL: 員工 A 睇唔到自己嘅 WhatsApp 草稿';
+  end if;
+end $$;
+
 -- ---------- 已停用員工 C ----------
 select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-a000-00000000000c","role":"authenticated"}', true);
 do $$ begin
@@ -209,13 +260,18 @@ begin
   if not exists (select 1 from public.audit_log where record_id = '00000000-0000-4000-c000-0000000000b1') then
     raise exception '❌ FAIL: 管理員睇唔到員工嘅審計記錄';
   end if;
-  if (select count(*) from public.activity_days) <> 2 or (select count(*) from public.pdca_weeks) <> 1 or (select count(*) from public.okrs) <> 1 then
+  if (select count(*) from public.activity_days where owner_id::text like '00000000-0000-4000-a000-%') <> 2
+     or (select count(*) from public.pdca_weeks where owner_id::text like '00000000-0000-4000-a000-%') <> 1
+     or (select count(*) from public.okrs where owner_id::text like '00000000-0000-4000-a000-%') <> 1 then
     raise exception '❌ FAIL: 管理員睇唔晒員工嘅活動／PDCA／OKR';
   end if;
-  update public.activity_days set r = 50;
+  update public.activity_days set r = 50 where owner_id::text like '00000000-0000-4000-a000-%';
   get diagnostics n = row_count;
   if n <> 0 then raise exception '❌ FAIL: 管理員改到員工嘅活動分（應該唯讀）'; end if;
-  update public.pdca_weeks set focus = '{}';
+  update public.profiles set whatsapp = '85291234567' where id = '00000000-0000-4000-a000-00000000000a';
+  get diagnostics n = row_count;
+  if n <> 1 then raise exception '❌ FAIL: 管理員設定唔到員工 WhatsApp 號碼'; end if;
+  update public.pdca_weeks set focus = '{}' where owner_id::text like '00000000-0000-4000-a000-%';
   get diagnostics n = row_count;
   if n <> 0 then raise exception '❌ FAIL: 管理員改到員工嘅 PDCA（應該唯讀）'; end if;
 end $$;

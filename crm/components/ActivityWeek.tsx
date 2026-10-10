@@ -35,13 +35,29 @@ function Stepper({
   onChange,
   disabled,
   label,
+  compact,
 }: {
   value: number;
   onChange: (v: number) => void;
   disabled: boolean;
   label: string;
+  compact?: boolean;
 }) {
   const set = (v: number) => onChange(Math.max(0, Math.min(99, v)));
+  if (compact)
+    return (
+      <input
+        className={`num-cell${value > 0 ? " has" : ""}`}
+        type="text"
+        inputMode="numeric"
+        aria-label={label}
+        value={value === 0 ? "" : value}
+        placeholder="0"
+        disabled={disabled}
+        onFocus={(e) => e.target.select()}
+        onChange={(e) => set(parseInt(e.target.value.replace(/\D/g, "") || "0", 10))}
+      />
+    );
   return (
     <div className="stepper">
       <button type="button" disabled={disabled || value <= 0} onClick={() => set(value - 1)} aria-label={`${label} 減一`}>
@@ -125,41 +141,38 @@ export default function ActivityWeek({ days: initial, today, readOnly }: { days:
   return (
     <div>
       {/* 本週總結 */}
-      <div className="table-wrap" style={{ marginBottom: 16 }}>
-        <table data-testid="week-summary">
-          <thead>
-            <tr>
-              <th>活動（每次分數）</th>
-              <th className="num">本週次數</th>
-              <th className="num">本週分數／完美</th>
-            </tr>
-          </thead>
-          <tbody>
-            {ACTIVITIES.map((a) => (
-              <tr key={a.key}>
-                <td className="wrap">
-                  <b>{a.code}</b> <span className="muted small">{a.label}（{a.points} 分）</span>
-                </td>
-                <td className="num">{weekCounts[a.key]}</td>
-                <td className="num">
-                  <b className={weekPoints[a.key] >= a.perfect ? "pos" : undefined}>{weekPoints[a.key]}</b>
-                  <span className="muted"> ／{a.perfect}</span>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colSpan={2}>每週總分</td>
-              <td className="num">
-                <KpiBadge total={weekTotal} />
-                <span className="muted"> ／{PERFECT_TOTAL}</span>
-              </td>
-            </tr>
-          </tfoot>
-        </table>
+      <div className="week-summary" data-testid="week-summary">
+        <div className="wk-total">
+          <div className="muted small">本週總分</div>
+          <div className="wk-total-num">
+            {weekTotal}
+            <span className="muted"> ／{PERFECT_TOTAL}</span>
+          </div>
+          <KpiBadge total={weekTotal} />
+          <div className="muted small" style={{ marginTop: 6 }}>綠 70+ · 黃 40–69 · 紅 0–39</div>
+        </div>
+        {ACTIVITIES.map((a) => {
+          const pct = Math.min(100, (weekPoints[a.key] / a.perfect) * 100);
+          return (
+            <div className="wk-tile" key={a.key}>
+              <div className="row">
+                <b>{a.code}</b>
+                <span className="spacer" />
+                <span className="small">
+                  <b>{weekPoints[a.key]}</b>
+                  <span className="muted">／{a.perfect} 分</span>
+                </span>
+              </div>
+              <div className="muted small wk-label">
+                {a.label} · 每次 {a.points} 分 · 本週 {weekCounts[a.key]} 次
+              </div>
+              <div className="progress">
+                <div style={{ width: `${pct}%` }} className={pct >= 100 ? "full" : undefined} />
+              </div>
+            </div>
+          );
+        })}
       </div>
-      <p className="muted small">KPI：綠 70–100 · 黃 40–69 · 紅 0–39</p>
 
       {/* 電腦：一週表格 */}
       <div className="table-wrap week-grid">
@@ -204,6 +217,7 @@ export default function ActivityWeek({ days: initial, today, readOnly }: { days:
                 {days.map((d, i) => (
                   <td key={d.day} className={`num${d.day === today ? " today" : ""}`}>
                     <Stepper
+                      compact
                       value={d.counts[a.key]}
                       disabled={readOnly}
                       label={`${WEEKDAY_LABELS[i]} ${a.code}`}

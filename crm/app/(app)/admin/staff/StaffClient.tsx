@@ -1,9 +1,9 @@
 "use client";
 
 import { useActionState, useState, useTransition } from "react";
-import { createStaffAction, renameAction, resetPasswordAction, setActiveAction, type StaffResult } from "./actions";
+import { createStaffAction, renameAction, resetPasswordAction, setActiveAction, setWhatsappAction, type StaffResult } from "./actions";
 
-type Staff = { id: string; email: string; full_name: string; role: string; active: boolean };
+type Staff = { id: string; email: string; full_name: string; role: string; active: boolean; whatsapp: string | null };
 
 function randomPassword() {
   const chars = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789";
@@ -60,6 +60,7 @@ export function StaffTable({ staff, meId }: { staff: Staff[]; meId: string }) {
             <tr>
               <th>姓名</th>
               <th>電郵</th>
+              <th>WhatsApp</th>
               <th>角色</th>
               <th>狀態</th>
               <th>操作</th>
@@ -70,6 +71,19 @@ export function StaffTable({ staff, meId }: { staff: Staff[]; meId: string }) {
               <tr key={s.id}>
                 <td>{s.full_name || "—"}</td>
                 <td>{s.email}</td>
+                <td>
+                  <button
+                    className="btn btn-sm"
+                    disabled={pending}
+                    title="設定 WhatsApp 號碼（用嚟同 WhatsApp 助手對話）"
+                    onClick={() => {
+                      const v = prompt("WhatsApp 號碼（香港號碼打 8 位數；其他地區連國家碼）。留空 = 清除", s.whatsapp ?? "");
+                      if (v !== null) run(() => setWhatsappAction(s.id, v));
+                    }}
+                  >
+                    {s.whatsapp ? `+${s.whatsapp}` : "設定"}
+                  </button>
+                </td>
                 <td>{s.role === "admin" ? "主管" : "員工"}</td>
                 <td>{s.active ? <span className="badge badge-green">啟用中</span> : <span className="badge badge-red">已停用</span>}</td>
                 <td>

@@ -22,7 +22,7 @@ export default async function ClientPage({ params }: { params: Promise<{ id: str
     supabase.from("profiles").select("id, email, full_name"),
     supabase
       .from("audit_log")
-      .select("id, at, actor_id, action, changes")
+      .select("id, at, actor_id, action, changes, via")
       .eq("record_id", id)
       .order("at", { ascending: false })
       .limit(50),
@@ -35,6 +35,7 @@ export default async function ClientPage({ params }: { params: Promise<{ id: str
     actor: names.get(a.actor_id) ?? "系統",
     action: a.action,
     changes: a.changes,
+    via: a.via,
   }));
 
   return (
@@ -52,8 +53,10 @@ export default async function ClientPage({ params }: { params: Promise<{ id: str
         client={{ id: client.id, stage: client.stage, season: client.season, info: client.info, checks: client.checks, forms: client.forms }}
         readOnly={readOnly}
       />
-      <h2>修改記錄</h2>
-      <AuditList rows={rows} />
+      <details className="history">
+        <summary>修改記錄（{rows.length}）</summary>
+        <AuditList rows={rows} />
+      </details>
     </div>
   );
 }

@@ -75,3 +75,15 @@ export async function resetPasswordAction(userId: string, password: string): Pro
   if (error) return { ok: false, message: "重設失敗：" + error.message };
   return { ok: true, message: "已重設密碼，請私下交俾員工" };
 }
+
+export async function setWhatsappAction(userId: string, phone: string): Promise<StaffResult> {
+  const { supabase } = await requireAdmin();
+  const digits = phone.replace(/[^0-9]/g, "");
+  const value = digits === "" ? null : digits.length === 8 ? `852${digits}` : digits; // 8 位數當香港號碼
+  if (value && !/^[0-9]{8,15}$/.test(value)) return { ok: false, message: "號碼格式唔啱" };
+  const { data, error } = await supabase.from("profiles").update({ whatsapp: value }).eq("id", userId).select("id");
+  if (error) return { ok: false, message: error.message.includes("unique") || error.code === "23505" ? "呢個號碼已經俾其他員工用咗" : "更新失敗：" + error.message };
+  if (!data?.length) return { ok: false, message: "更新失敗" };
+  revalidatePath("/admin/staff");
+  return { ok: true, message: value ? `已設定 WhatsApp：+${value}` : "已清除 WhatsApp 號碼" };
+}

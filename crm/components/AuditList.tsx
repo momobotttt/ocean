@@ -6,6 +6,7 @@ export type AuditRow = {
   actor: string;
   action: string;
   subject?: string;
+  via?: string | null;
   changes: Record<string, unknown>;
 };
 
@@ -33,7 +34,10 @@ export default function AuditList({ rows, showSubject }: { rows: AuditRow[]; sho
               <tr key={r.id}>
                 <td>{fmt(r.at)}</td>
                 <td>{r.actor}</td>
-                <td>{ACTION_LABELS[r.action] ?? r.action}</td>
+                <td>
+                  {ACTION_LABELS[r.action] ?? r.action}
+                  {r.via === "whatsapp" && <span className="badge badge-green" style={{ marginLeft: 4 }}>WhatsApp</span>}
+                </td>
                 {showSubject && <td>{r.subject}</td>}
                 <td className="wrap">
                   {ch.length === 0

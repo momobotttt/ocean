@@ -241,3 +241,59 @@ td.wrap { white-space: normal; min-width: 220px; }
   [data-testid="week-summary"] td.wrap { min-width: 0; }
   [data-testid="week-summary"] th, [data-testid="week-summary"] td { white-space: normal; }
 }
+
+/* ---------- 客戶頁（整潔版） ---------- */
+.client-head { display: grid; grid-template-columns: 1fr auto; gap: 12px 16px; align-items: start; }
+.client-title h1 { margin: 0 0 2px; }
+.client-controls { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+.ctl { display: flex; flex-direction: column; gap: 2px; font-size: 0.78rem; color: var(--muted); }
+.ctl select { width: auto; min-width: 120px; font-size: 0.95rem; color: var(--text); }
+.readiness { grid-column: 1 / -1; background: var(--yellow-bg); color: #6b4c00; border-radius: 8px; padding: 10px 12px; }
+.readiness.ok { background: var(--green-bg); color: var(--green); }
+.progress { height: 6px; background: rgba(0, 0, 0, 0.08); border-radius: 99px; margin: 8px 0 6px; overflow: hidden; }
+.progress > div { height: 100%; background: var(--yellow); border-radius: 99px; transition: width 0.2s; }
+.readiness.ok .progress > div { background: var(--green); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { background: rgba(255, 255, 255, 0.7); border: 1px solid #ecd9a3; border-radius: 99px; padding: 1px 9px; font-size: 0.8rem; }
+.tab-count { font-size: 0.72rem; color: var(--muted); margin-left: 5px; font-weight: 400; }
+.form-section { border-top: 1px solid var(--surface-2); padding-top: 4px; margin-top: 8px; }
+.form-section:first-of-type { border-top: none; margin-top: 0; }
+.form-section h3 { font-size: 0.95rem; color: var(--primary); }
+.form-grid { display: grid; grid-template-columns: 1fr; gap: 0 16px; }
+@media (min-width: 720px) { .form-grid { grid-template-columns: 1fr 1fr; } }
+textarea { field-sizing: content; min-height: 2.8em; max-height: 50vh; }
+details.history > summary { cursor: pointer; font-weight: 600; margin: 20px 0 10px; }
+@media (max-width: 720px) {
+  .client-head { grid-template-columns: 1fr; }
+  .client-controls { justify-content: flex-start; }
+}
+
+/* ---------- 活動分（整潔版） ---------- */
+.week-summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin-bottom: 16px; }
+.wk-total, .wk-tile { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 12px; }
+.wk-total { grid-row: span 2; display: flex; flex-direction: column; justify-content: center; }
+.wk-total-num { font-size: 2rem; font-weight: 700; line-height: 1.2; margin-bottom: 4px; }
+.wk-label { margin: 2px 0 0; min-height: 2.4em; }
+.wk-tile .progress > div { background: var(--primary); }
+.wk-tile .progress > div.full { background: var(--green); }
+.num-cell { width: 52px !important; text-align: center; padding: 5px 4px !important; }
+.num-cell.has { font-weight: 700; border-color: var(--primary); background: #f3f7ff; }
+.week-grid td { text-align: center; }
+.week-grid td:first-child { text-align: left; white-space: nowrap; }
+@media (max-width: 720px) {
+  .week-summary { grid-template-columns: 1fr 1fr; }
+  .wk-total { grid-column: 1 / -1; grid-row: auto; flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; }
+}
+
+/* ---------- WhatsApp ---------- */
+.steps { margin: 0 0 8px; padding-left: 20px; line-height: 1.7; }
+.wa-draft { margin-bottom: 12px; }
+.wa-text { white-space: pre-wrap; font-size: 0.9rem; background: var(--surface-2); border-radius: 8px; padding: 10px 12px; margin: 8px 0; }
+.week-summary { grid-template-columns: 210px repeat(3, 1fr); }
+@media (max-width: 900px) { .week-summary { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 720px) {
+  .client-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .ctl select { min-width: 0; width: 100%; }
+  .chip { font-size: 0.74rem; padding: 0 7px; }
+  .client-head h1 { font-size: 1.15rem; }
+}

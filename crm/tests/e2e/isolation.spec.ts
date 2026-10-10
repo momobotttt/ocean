@@ -11,6 +11,7 @@ const B = cred(process.env.E2E_AGENT_B);
 const stamp = Date.now().toString().slice(-5);
 const CLIENT_1 = `測試陳大文${stamp}`;
 const CLIENT_2 = `測試李小美${stamp}`;
+const WEEK = "2025-01-06"; // 固定用一個過去星期，唔受其他測試（例如 WhatsApp）影響
 
 async function login(page: Page, who: { email: string; password: string }) {
   await page.context().clearCookies();
@@ -98,8 +99,10 @@ test.describe.serial("權限隔離", () => {
     await page.mouse.down();
     await page.mouse.move(from.x + 40, from.y + 30, { steps: 5 });
     await page.mouse.move(to.x + to.width / 2, to.y + 80, { steps: 15 });
+    const saved = page.waitForResponse((r) => r.request().method() === "POST" && r.url().includes("/board"));
     await page.mouse.up();
     await expect(target).toContainText(CLIENT_2);
+    await saved;
     await page.reload();
     await expect(page.locator('[data-stage="NR1"]')).toContainText(CLIENT_2);
   });
@@ -116,8 +119,10 @@ test.describe.serial("權限隔離", () => {
     await page.mouse.down();
     await page.mouse.move(from.x + 40, from.y + 30, { steps: 5 });
     await page.mouse.move(to.x + to.width / 2, to.y + 100, { steps: 15 });
+    const saved = page.waitForResponse((r) => r.request().method() === "POST" && r.url().includes("/seasons"));
     await page.mouse.up();
     await expect(target).toContainText(CLIENT_1);
+    await saved;
     await page.reload();
     await expect(page.locator('[data-stage="SUMMER"]')).toContainText(CLIENT_1);
     // 客戶頁顯示同一個季節，亦可以用選單改
@@ -174,6 +179,7 @@ test.describe.serial("權限隔離", () => {
     await expect(page.getByRole("button", { name: "儲存" })).toHaveCount(0);
     await page.getByRole("tab", { name: "RR" }).click();
     await expect(page.getByLabel("家庭")).toHaveValue("已婚，一個仔讀小學");
+    await page.getByText(/^修改記錄/).click();
     await expect(page.getByText("RR・1) 家庭").first()).toBeVisible(); // 修改記錄
 
     const sb = await apiAs(ADMIN);
@@ -194,21 +200,21 @@ test.describe.serial("權限隔離", () => {
 
   test("活動分：員工 A 記活動、自動計分、約會加密儲存", async ({ page }) => {
     await login(page, A);
-    await page.goto("/activity");
+    await page.goto(`/activity?week=${WEEK}`);
     await page.getByLabel("星期一 A", { exact: true }).fill("3");
-    await page.getByLabel("星期一 N", { exact: true }).fill("0");
-    await page.getByLabel("星期一 N 加一").click();
+    await page.getByLabel("星期一 N", { exact: true }).fill("1");
     await page.getByLabel("星期一 午餐約會").fill(`${CLIENT_1} 中環`);
     await expect(page.getByTestId("week-summary").getByTestId("kpi")).toContainText("11 分 · 紅");
     await page.getByRole("button", { name: "儲存", exact: true }).click();
     await expect(page.getByText("已儲存")).toBeVisible();
     await page.reload();
     await expect(page.getByLabel("星期一 A", { exact: true })).toHaveValue("3");
+    await expect(page.getByLabel("星期一 N", { exact: true })).toHaveValue("1");
     await expect(page.getByLabel("星期一 午餐約會")).toHaveValue(`${CLIENT_1} 中環`);
     await expect(page.getByTestId("week-summary").getByTestId("kpi")).toContainText("11 分 · 紅");
 
-    // PDCA：今週分數自動帶入，寫焦點
-    await page.goto("/pdca");
+    // PDCA：嗰週分數自動帶入，寫焦點
+    await page.goto("/pdca?year=2025&q=1");
     const thisWeek = page.locator("tbody tr").filter({ has: page.getByTestId("kpi").filter({ hasText: "11 分" }) });
     await expect(thisWeek).toHaveCount(1);
     await thisWeek.locator('textarea[aria-label$="宣告焦點"]').fill(`開口${stamp}個人`);
@@ -222,11 +228,11 @@ test.describe.serial("權限隔離", () => {
     await expect(page.getByLabel("O 目標")).toHaveValue(`全年目標${stamp}`);
   });
 
-  test("活動分／PDCA：員工 B 睇唔到員工 A；主管總覽顯示 A 今週分數", async ({ page }) => {
+  test("活動分／PDCA：員工 B 睇唔到員工 A；主管可以唯讀睇 A 嘅活動分", async ({ page }) => {
     await login(page, B);
-    await page.goto("/activity");
+    await page.goto(`/activity?week=${WEEK}`);
     await expect(page.getByLabel("星期一 午餐約會")).not.toHaveValue(`${CLIENT_1} 中環`);
-    await page.goto("/pdca");
+    await page.goto("/pdca?year=2025&q=1");
     await expect(page.locator("textarea").filter({ hasText: `開口${stamp}個人` })).toHaveCount(0);
     const sb = await apiAs(B);
     const { data: me } = await sb.auth.getUser();
@@ -238,9 +244,11 @@ test.describe.serial("權限隔離", () => {
     await login(page, ADMIN);
     await page.goto("/admin");
     const amyRow = page.getByTestId("team-table").getByRole("row").filter({ hasText: "Amy" });
-    await expect(amyRow.getByTestId("kpi")).toContainText("11 分");
+    await expect(amyRow.getByTestId("kpi")).toContainText("分");
     await amyRow.getByTestId("kpi").click();
     await expect(page.getByText("唯讀")).toBeVisible();
+    await page.goto(page.url() + `&week=${WEEK}`);
+    await expect(page.getByTestId("week-summary").getByTestId("kpi")).toContainText("11 分 · 紅");
     await expect(page.getByLabel("星期一 A", { exact: true })).toBeDisabled();
     await expect(page.getByRole("button", { name: "儲存", exact: true })).toHaveCount(0);
   });

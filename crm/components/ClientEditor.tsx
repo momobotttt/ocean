@@ -7,7 +7,10 @@ import InfoFields from "./InfoFields";
 import { NO_SEASON, SEASONS, type SeasonColumn } from "@/lib/seasons";
 import {
   FORMS,
+  GENDERS,
+  MARITAL,
   MEETING_TIPS,
+  formFieldKeys,
   STAGES,
   fnaSummary,
   missingChecks,
@@ -75,7 +78,7 @@ function FieldInput({
       />
     );
   }
-  return <textarea value={value} disabled={disabled} onChange={(e) => onChange(e.target.value)} />;
+  return <textarea rows={2} value={value} disabled={disabled} onChange={(e) => onChange(e.target.value)} />;
 }
 
 export default function ClientEditor({ client, readOnly }: { client: EditorClient; readOnly: boolean }) {
@@ -196,9 +199,10 @@ export default function ClientEditor({ client, readOnly }: { client: EditorClien
           </ul>
         )}
         {def.sections.map((s, i) => (
-          <div key={i}>
+          <section key={i} className="form-section">
             {s.title && <h3>{s.title}</h3>}
             {s.note && <div className="section-note">{s.note}</div>}
+            <div className={s.fields.some((f) => f.type === "rating") ? undefined : "form-grid"}>
             {s.fields.map((f) => (
               <label className="field" key={f.key}>
                 <span>
@@ -208,7 +212,8 @@ export default function ClientEditor({ client, readOnly }: { client: EditorClien
                 <FieldInput f={f} value={values[f.key] ?? ""} disabled={readOnly} onChange={(v) => setField(def.column, f.key, v)} />
               </label>
             ))}
-          </div>
+            </div>
+          </section>
         ))}
         {fna && (
           <div className="calc">
@@ -258,70 +263,79 @@ export default function ClientEditor({ client, readOnly }: { client: EditorClien
     );
   };
 
-  const tabs: { key: Tab; label: string }[] = [
+  const filled = (col: FormColumn) => {
+    const def = FORMS.find((f) => f.column === col)!;
+    const keys = formFieldKeys(def);
+    return { n: keys.filter((k) => (forms[col]?.[k] ?? "").trim() !== "").length, total: keys.length };
+  };
+  const tabs: { key: Tab; label: string; count?: string }[] = [
     { key: "info", label: "基本資料" },
-    ...FORMS.map((f) => ({ key: f.column as Tab, label: f.stage })),
+    ...FORMS.map((f) => {
+      const c = filled(f.column);
+      return { key: f.column as Tab, label: f.stage, count: `${c.n}/${c.total}` };
+    }),
   ];
+  const genderText = GENDERS.find((g) => g.value === info.gender)?.label;
+  const maritalText = MARITAL.find((m) => m.value === info.marital)?.label;
+  const meta = [info.age && `${info.age}歲`, genderText, info.occupation, maritalText].filter(Boolean).join(" · ");
+  const doneChecks = 8 - missing.length;
 
   return (
     <div>
-      <div className="row">
-        <h1 style={{ margin: 0 }}>{client.info.name || "（未命名）"}</h1>
-        <span className="spacer" />
-        <label className="row small">
-          階段
-          <select
-            value={stage}
-            disabled={readOnly || pending}
-            onChange={(e) => changeStage(e.target.value as Stage)}
-            style={{ width: "auto" }}
-            aria-label="階段"
-          >
-            {STAGES.map((s) => (
-              <option key={s.key} value={s.key}>
-                {s.short}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className="row small">
-          四季
-          <select
-            value={season}
-            disabled={readOnly || pending}
-            onChange={(e) => changeSeason(e.target.value as SeasonColumn)}
-            style={{ width: "auto" }}
-            aria-label="四季"
-          >
-            <option value={NO_SEASON}>未分類</option>
-            {SEASONS.map((s) => (
-              <option key={s.key} value={s.key}>
-                {s.emoji} {s.label}（{s.focus}）
-              </option>
-            ))}
-          </select>
-        </label>
+      <div className="card client-head">
+        <div className="client-title">
+          <h1>{client.info.name || "（未命名）"}</h1>
+          {meta && <div className="muted small">{meta}</div>}
+        </div>
+        <div className="client-controls">
+          <label className="ctl">
+            <span>階段</span>
+            <select value={stage} disabled={readOnly || pending} onChange={(e) => changeStage(e.target.value as Stage)} aria-label="階段">
+              {STAGES.map((s) => (
+                <option key={s.key} value={s.key}>
+                  {s.short}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="ctl">
+            <span>四季</span>
+            <select
+              value={season}
+              disabled={readOnly || pending}
+              onChange={(e) => changeSeason(e.target.value as SeasonColumn)}
+              aria-label="四季"
+            >
+              <option value={NO_SEASON}>未分類</option>
+              {SEASONS.map((s) => (
+                <option key={s.key} value={s.key}>
+                  {s.emoji} {s.label}（{s.focus}）
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+        <div className={`readiness${ready ? " ok" : ""}`} data-testid="ready-box">
+          <div className="row">
+            <b>{ready ? "✅ 具備簽單條件" : `簽單條件 ${doneChecks}/8 · 仲差 ${missing.length} 格`}</b>
+            {checksDirty && <span className="muted small">（未儲存）</span>}
+          </div>
+          <div className="progress" aria-hidden>
+            <div style={{ width: `${(doneChecks / 8) * 100}%` }} />
+          </div>
+          {!ready && (
+            <div className="chips">
+              {missing.map((m) => (
+                <span key={m.label} className="chip">
+                  {m.stage}・{m.label}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
-      {ready ? (
-        <div className="ready-box ok" data-testid="ready-box">
-          ✅ 具備簽單條件{checksDirty && "（未儲存）"}
-        </div>
-      ) : (
-        <div className="ready-box no" data-testid="ready-box">
-          <b>未具備簽單條件 — 仲差 {missing.length} 格</b>
-          {checksDirty && "（未儲存）"}
-          <ul>
-            {missing.map((m) => (
-              <li key={m.label}>
-                {m.stage}：{m.label}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      <p className="muted small" style={{ margin: "0 0 4px" }}>{MEETING_TIPS}</p>
+      <p className="muted small" style={{ margin: "12px 0 0" }}>{MEETING_TIPS}</p>
       <div className="tabs" role="tablist">
         {tabs.map((t) => (
           <button
@@ -335,6 +349,7 @@ export default function ClientEditor({ client, readOnly }: { client: EditorClien
             }}
           >
             {t.label}
+            {t.count && <span className="tab-count">{t.count}</span>}
             {dirty.has(t.key) && <span className="dot" title="未儲存" />}
           </button>
         ))}
