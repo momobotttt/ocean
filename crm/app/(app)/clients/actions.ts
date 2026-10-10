@@ -119,6 +119,14 @@ export async function moveSeasonAction(id: string, season: string | null): Promi
   return res;
 }
 
+/** 由「已簽」撤回：一次過將階段改返 PC 同設定季節 */
+export async function unsignAction(id: string, season: string | null): Promise<ActionResult> {
+  if (season !== null && !isSeason(season)) return { ok: false, error: "季節無效" };
+  const res = await updateOwn(id, { stage: "PC", season });
+  revalidatePath("/seasons");
+  return res;
+}
+
 export async function deleteClientAction(id: string): Promise<ActionResult> {
   const { supabase } = await requireUser();
   const { data, error } = await supabase.from("clients").delete().eq("id", id).select("id");

@@ -31,6 +31,9 @@ export default async function AgentBoard({ params }: { params: Promise<{ id: str
         <Link className="btn btn-sm" href={`/pdca?agent=${agent.id}`}>
           PDCA
         </Link>
+        <Link className="btn btn-sm" href={`/business?agent=${agent.id}`}>
+          生意表
+        </Link>
       </div>
       {agent.id !== me.id && <p className="notice">👁 唯讀 — 撳卡片睇詳情</p>}
       <Board cards={toBoardCards(cards)} readOnly={agent.id !== me.id} />

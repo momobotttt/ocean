@@ -5,15 +5,19 @@ import { STAGES } from "@/lib/stages";
 import { KpiBadge } from "@/components/ActivityWeek";
 import { totalPoints } from "@/lib/activity";
 import { loadWeeklyCounts } from "@/lib/activity-data";
+import { hkd, pct } from "@/lib/business";
+import { loadTeamMonth } from "@/lib/business-data";
 import { addDays, hkToday, mondayOf } from "@/lib/weeks";
 
 export default async function AdminOverview() {
   const { supabase } = await requireAdmin();
   const monday = mondayOf(hkToday());
-  const [{ data: people }, cards, weekly] = await Promise.all([
+  const ym = hkToday().slice(0, 7);
+  const [{ data: people }, cards, weekly, biz] = await Promise.all([
     supabase.from("profiles").select("id, email, full_name, role, active").order("full_name"),
     listClientCards(supabase),
     loadWeeklyCounts(supabase, monday, addDays(monday, 6)),
+    loadTeamMonth(supabase, ym),
   ]);
   const weekScore = (id: string) => {
     const c = weekly.get(id)?.get(monday);
@@ -95,7 +99,28 @@ export default async function AdminOverview() {
                   </Link>
                 </td>
                 <td className="num">
-                  <span className="badge badge-grey" title="功能四（四季紅簿）上線後顯示">未啟用</span>
+                  <Link href={`/business?agent=${p.id}`} className="biz-cell" data-testid="biz-cell">
+                    {(() => {
+                      const b = biz.get(p.id);
+                      if (!b) return <span className="muted">—</span>;
+                      const ap = pct(b.done.afyp, b.target.afyp);
+                      const cp = pct(b.done.commission, b.target.commission);
+                      return (
+                        <>
+                          <span>
+                            AFYP {hkd(b.done.afyp)}
+                            {b.target.afyp > 0 && <span className="muted">／{hkd(b.target.afyp)}</span>}
+                            {ap !== null && <b className={`biz-pct ${ap >= 100 ? "full" : ap >= 50 ? "mid" : "low"}`}> {ap}%</b>}
+                          </span>
+                          <span className="small">
+                            佣金 {hkd(b.done.commission)}
+                            {b.target.commission > 0 && <span className="muted">／{hkd(b.target.commission)}</span>}
+                            {cp !== null && <b className={`biz-pct ${cp >= 100 ? "full" : cp >= 50 ? "mid" : "low"}`}> {cp}%</b>}
+                          </span>
+                        </>
+                      );
+                    })()}
+                  </Link>
                 </td>
               </tr>
             ))}

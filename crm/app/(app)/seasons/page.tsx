@@ -3,11 +3,12 @@ import Board, { type BoardColumn } from "@/components/Board";
 import WideOpenDetails from "@/components/WideOpenDetails";
 import { requireUser, displayName, type Profile } from "@/lib/auth";
 import { listClientCards, toBoardCards } from "@/lib/data";
-import { NO_SEASON, SEASONS } from "@/lib/seasons";
+import { NO_SEASON, SEASONS, SIGNED_ZONE } from "@/lib/seasons";
 
 const COLUMNS: BoardColumn[] = [
   { key: NO_SEASON, label: "未分類", hint: "拖去右邊四季" },
   ...SEASONS.map((s) => ({ key: s.key, label: `${s.emoji} ${s.label}`, hint: `${s.state} · ${s.focus}` })),
+  { key: SIGNED_ZONE, label: "✍️ 已簽", hint: "簽得就拖嚟呢度", done: true },
 ];
 
 export default async function SeasonsPage({ searchParams }: { searchParams: Promise<{ agent?: string }> }) {
@@ -42,7 +43,7 @@ export default async function SeasonsPage({ searchParams }: { searchParams: Prom
         <p className="notice">👁 唯讀</p>
       ) : (
         <p className="muted small" style={{ marginTop: 0 }}>
-          拖拉卡片去對應季節（手機：長按卡片再拖）。撳卡片入去睇詳情。
+          拖拉卡片去對應季節；簽咗單就拖去最右「✍️ 已簽」（手機：長按卡片再拖）。撳卡片入去睇詳情。
         </p>
       )}
 

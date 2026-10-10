@@ -168,6 +168,50 @@ do $$ begin
   end if;
 end $$;
 
+-- ---------- 每月生意表 ----------
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-a000-00000000000a","role":"authenticated"}', true);
+insert into public.business_cases (month, client_id, data, afyp, revenue, commission)
+  values ('2026-10-01', '00000000-0000-4000-c000-0000000000a1', '{"client_name":"v1.aaa"}', 12000, 9000, 3600);
+insert into public.monthly_targets (month, cases, afyp) values ('2026-10-01', 3, 50000);
+do $$ begin
+  -- 唔可以連去其他員工嘅客
+  begin
+    insert into public.business_cases (month, client_id, afyp) values ('2026-10-01', '00000000-0000-4000-c000-0000000000b1', 1);
+    raise exception '❌ FAIL: 生意表可以連去其他員工嘅客';
+  exception when raise_exception then
+    if sqlerrm like '❌%' then raise; end if;
+  end;
+  begin
+    insert into public.business_cases (month, afyp) values ('2026-10-15', 1);
+    raise exception '❌ FAIL: 生意表月份唔係 1 號都收';
+  exception when check_violation then null;
+  end;
+end $$;
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-a000-00000000000b","role":"authenticated"}', true);
+do $$
+declare n int;
+begin
+  if exists (select 1 from public.business_cases) or exists (select 1 from public.monthly_targets) then
+    raise exception '❌ FAIL: 員工 B 睇到員工 A 嘅生意表／目標';
+  end if;
+  update public.business_cases set afyp = 999999;
+  get diagnostics n = row_count;
+  if n <> 0 then raise exception '❌ FAIL: 員工 B 改到員工 A 嘅生意表'; end if;
+  begin
+    insert into public.business_cases (owner_id, month, afyp) values ('00000000-0000-4000-a000-00000000000a', '2026-10-01', 1);
+    raise exception '❌ FAIL: 員工 B 可以幫員工 A 加生意';
+  exception when insufficient_privilege then null;
+  end;
+end $$;
+reset role;
+do $$ begin
+  if not exists (select 1 from public.audit_log where table_name = 'business_cases' and changes ? 'data.client_name'
+                 and client_owner_id = '00000000-0000-4000-a000-00000000000a') then
+    raise exception '❌ FAIL: 生意表冇寫審計記錄';
+  end if;
+end $$;
+set local role authenticated;
+
 -- ---------- WhatsApp 草稿同代寫函數 ----------
 reset role;
 select set_config('request.jwt.claims', '', true);  -- 模擬伺服器（冇登入身份）
@@ -274,6 +318,12 @@ begin
   update public.pdca_weeks set focus = '{}' where owner_id::text like '00000000-0000-4000-a000-%';
   get diagnostics n = row_count;
   if n <> 0 then raise exception '❌ FAIL: 管理員改到員工嘅 PDCA（應該唯讀）'; end if;
+  if (select count(*) from public.business_cases where owner_id::text like '00000000-0000-4000-a000-%') <> 1 then
+    raise exception '❌ FAIL: 管理員睇唔到員工嘅生意表';
+  end if;
+  update public.business_cases set afyp = 1 where owner_id::text like '00000000-0000-4000-a000-%';
+  get diagnostics n = row_count;
+  if n <> 0 then raise exception '❌ FAIL: 管理員改到員工嘅生意表（應該唯讀）'; end if;
 end $$;
 
 -- 員工 B 被停用後即刻睇唔到自己嘅客

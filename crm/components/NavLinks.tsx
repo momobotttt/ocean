@@ -11,6 +11,7 @@ export default function NavLinks({ isAdmin }: { isAdmin: boolean }) {
     { href: "/seasons", label: "四季人脈" },
     { href: "/activity", label: "活動分" },
     { href: "/pdca", label: "PDCA" },
+    { href: "/business", label: "生意表" },
     { href: "/whatsapp", label: "WhatsApp" },
     { href: "/clients/new", label: "＋ 新增客戶" },
     ...(isAdmin

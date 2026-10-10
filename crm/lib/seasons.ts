@@ -90,3 +90,6 @@ export const seasonLabel = (s: string | null | undefined) => {
   const d = SEASONS.find((x) => x.key === s);
   return d ? `${d.emoji} ${d.label}` : "未分類";
 };
+
+/** 四季頁嘅「已簽」欄：階段係已簽／已出單嘅客會喺呢欄 */
+export const SIGNED_ZONE = "SIGNED_ZONE";

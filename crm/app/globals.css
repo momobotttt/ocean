@@ -297,3 +297,43 @@ details.history > summary { cursor: pointer; font-weight: 600; margin: 20px 0 10
   .chip { font-size: 0.74rem; padding: 0 7px; }
   .client-head h1 { font-size: 1.15rem; }
 }
+.column[data-stage="SIGNED_ZONE"] { background: var(--green-bg); border: 2px dashed #9fd3b3; }
+.column[data-stage="SIGNED_ZONE"].over { border-color: var(--green); border-style: solid; }
+
+/* ---------- 每月生意表 ---------- */
+.biz-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 12px; }
+@media (max-width: 720px) { .biz-summary { grid-template-columns: 1fr 1fr; } }
+.biz-num { font-size: 1.4rem; font-weight: 700; line-height: 1.3; }
+.biz-pct.full { color: var(--green); }
+.biz-pct.mid { color: var(--yellow); }
+.biz-pct.low { color: var(--red); }
+.biz-tile .progress > div { background: var(--red); }
+.biz-tile .progress > div.mid { background: var(--yellow); }
+.biz-tile .progress > div.full { background: var(--green); }
+.biz-target { margin-bottom: 12px; padding: 10px 16px; }
+.biz-target summary { cursor: pointer; }
+.biz-target-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 12px; margin-top: 10px; }
+@media (max-width: 720px) { .biz-target-grid { grid-template-columns: 1fr 1fr; } }
+.biz-suggest { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 12px; }
+.biz-table td { vertical-align: top; }
+.biz-table input { min-width: 110px; padding: 5px 8px; }
+.biz-table input.money { width: 110px; min-width: 90px; text-align: right; }
+.biz-table input.bad { border-color: var(--red); background: var(--red-bg); }
+.biz-cell { display: flex; flex-direction: column; align-items: flex-end; color: var(--text); }
+.board { grid-auto-columns: minmax(200px, 1fr); }
+@media (max-width: 720px) { .board { grid-auto-columns: 82%; } }
+@media (max-width: 720px) {
+  .biz-table thead { display: none; }
+  .biz-table, .biz-table tbody, .biz-table tr, .biz-table td { display: block; width: 100%; }
+  .biz-table tbody tr { position: relative; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+  .biz-table td { border: none; padding: 3px 0; white-space: normal; text-align: left; }
+  .biz-table td[data-label] { display: grid; grid-template-columns: 70px 1fr; align-items: center; gap: 8px; }
+  .biz-table td[data-label]::before { content: attr(data-label); font-size: 0.8rem; color: var(--muted); }
+  .biz-table input, .biz-table input.money { width: 100%; min-width: 0; }
+  .biz-table .biz-no { font-weight: 700; color: var(--text); }
+  .biz-table .biz-del { position: absolute; top: 8px; right: 12px; width: auto; }
+  .biz-table tfoot tr { display: flex; flex-wrap: wrap; gap: 4px 12px; padding: 10px 12px; }
+  .biz-table tfoot td { width: auto; padding: 0; }
+  .biz-table tfoot td[data-label] { display: inline; }
+  .biz-table tfoot td[data-label]::before { content: attr(data-label) " "; }
+}
