@@ -1,4 +1,5 @@
 import { seasonLabel } from "./seasons";
+import { ACTIVITIES, APPT_SLOTS } from "./activity";
 import { ALL_CHECKS, FORMS, STAGES, type Stage } from "./stages";
 
 const INFO_LABELS: Record<string, string> = {
@@ -19,12 +20,21 @@ const COLUMN_LABELS: Record<string, string> = {
   active: "帳戶狀態",
   email: "電郵",
   created_by: "建立者",
+  day: "日期",
+  points: "每日總分",
+  week_start: "週",
+  year: "年份",
 };
 
 /** 將審計記錄嘅欄位名轉成中文，例如 form_rr.family → RR・家庭 */
 export function fieldLabel(key: string): string {
   const [col, sub] = key.split(".");
   if (col === "info" && sub) return `基本資料・${INFO_LABELS[sub] ?? sub}`;
+  if (col === "appts" && sub) return `${APPT_SLOTS.find((s) => s.key === sub)?.label ?? sub}約會`;
+  if (col === "focus" && sub) return sub === "plan" ? "宣告 PDCA 焦點" : "PDCA 焦點進度";
+  if (col === "okr" && sub) return sub === "objective" ? "OKR 目標" : "OKR 關鍵結果";
+  const act = ACTIVITIES.find((a) => a.key === col);
+  if (act) return `${act.code} 次數`;
   const form = FORMS.find((f) => f.column === col);
   if (form && sub) {
     const field =

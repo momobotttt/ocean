@@ -7,6 +7,7 @@ import InfoFields from "./InfoFields";
 import { NO_SEASON, SEASONS, type SeasonColumn } from "@/lib/seasons";
 import {
   FORMS,
+  MEETING_TIPS,
   STAGES,
   fnaSummary,
   missingChecks,
@@ -185,15 +186,25 @@ export default function ClientEditor({ client, readOnly }: { client: EditorClien
     return (
       <div>
         <p className="muted small" style={{ marginTop: 0 }}>
-          {def.title}（{def.timing}）
+          <b>{def.title}</b> — {def.timing}
         </p>
+        {def.tips && (
+          <ul className="form-tips">
+            {def.tips.map((t) => (
+              <li key={t}>＊{t}</li>
+            ))}
+          </ul>
+        )}
         {def.sections.map((s, i) => (
           <div key={i}>
             {s.title && <h3>{s.title}</h3>}
             {s.note && <div className="section-note">{s.note}</div>}
             {s.fields.map((f) => (
               <label className="field" key={f.key}>
-                <span>{f.label}</span>
+                <span>
+                  {f.label}
+                  {f.hint && <em className="field-hint">{f.hint}</em>}
+                </span>
                 <FieldInput f={f} value={values[f.key] ?? ""} disabled={readOnly} onChange={(v) => setField(def.column, f.key, v)} />
               </label>
             ))}
@@ -310,6 +321,7 @@ export default function ClientEditor({ client, readOnly }: { client: EditorClien
         </div>
       )}
 
+      <p className="muted small" style={{ margin: "0 0 4px" }}>{MEETING_TIPS}</p>
       <div className="tabs" role="tablist">
         {tabs.map((t) => (
           <button

@@ -14,8 +14,8 @@ describe("簽單條件", () => {
   it("列出仲差邊幾格", () => {
     const c = { ...all(true), rr_relationship: false, nr2_budget_set: false };
     expect(missingChecks(c)).toEqual([
-      { stage: "RR", label: "與你有交情或共同經歷" },
-      { stage: "NR2", label: "確立預算" },
+      { stage: "RR", label: "客人與你有交情／共同經歷" },
+      { stage: "NR2", label: "確立客人預算金額" },
     ]);
   });
 });
@@ -44,10 +44,13 @@ describe("表格定義", () => {
 
 describe("審計顯示", () => {
   it("欄位名轉中文", () => {
-    expect(fieldLabel("form_rr.family")).toBe("RR・家庭");
+    expect(fieldLabel("form_rr.family")).toBe("RR・1) 家庭");
+    expect(fieldLabel("appts.lunch")).toBe("午餐約會");
+    expect(fieldLabel("focus.plan")).toBe("宣告 PDCA 焦點");
+    expect(fieldLabel("nr")).toBe("NR 次數");
     expect(fieldLabel("form_nr2.budget_text")).toBe("NR2・金額");
     expect(fieldLabel("info.name")).toBe("基本資料・姓名");
-    expect(fieldLabel("nr2_budget_set")).toBe("NR2 條件・確立預算");
+    expect(fieldLabel("nr2_budget_set")).toBe("NR2 條件・確立客人預算金額");
   });
   it("階段變更顯示前後", () => {
     expect(describeChanges({ stage: { old: "RR", new: "SIGNED" } }, "UPDATE")).toEqual([{ label: "階段", detail: "RR → 已簽" }]);

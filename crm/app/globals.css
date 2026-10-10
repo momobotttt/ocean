@@ -208,3 +208,36 @@ td.wrap { white-space: normal; min-width: 220px; }
 .season-tile details { margin-top: 6px; }
 .season-tile summary { cursor: pointer; color: var(--muted); }
 .season-tile ol { line-height: 1.6; }
+
+/* ---------- WARS 活動分 ---------- */
+.stepper { display: inline-flex; align-items: center; gap: 2px; }
+.stepper button {
+  width: 30px; height: 30px; border-radius: 6px; border: 1px solid var(--border); background: var(--surface);
+  font: inherit; cursor: pointer; line-height: 1;
+}
+.stepper button:disabled { opacity: 0.35; cursor: default; }
+.stepper input { width: 40px; text-align: center; padding: 4px; }
+.week-grid td, .week-grid th { padding: 6px; }
+.week-grid input.appt { min-width: 110px; padding: 4px 6px; font-size: 0.85rem; }
+.week-grid .today { background: #eef4ff; }
+.week-cards { display: none; }
+.act-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--surface-2); }
+.act-row .stepper button { width: 38px; height: 38px; }
+.act-row .stepper input { width: 46px; }
+@media (max-width: 900px) {
+  .week-grid { display: none; }
+  .week-cards { display: block; }
+}
+.tab .dot { margin-left: 3px; }
+.dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--yellow); margin-left: 4px; vertical-align: middle; }
+
+/* ---------- PDCA ---------- */
+.pdca-table td { vertical-align: top; }
+.pdca-text { min-width: 220px; min-height: 56px; font-size: 0.88rem; }
+.form-tips { margin: 0 0 14px; padding: 8px 12px 8px 14px; list-style: none; background: var(--surface-2); border-radius: 8px; font-size: 0.88rem; }
+.form-tips li { padding: 2px 0; }
+.field-hint { display: block; font-style: normal; font-weight: 400; color: var(--muted); font-size: 0.82rem; }
+@media (max-width: 720px) {
+  [data-testid="week-summary"] td.wrap { min-width: 0; }
+  [data-testid="week-summary"] th, [data-testid="week-summary"] td { white-space: normal; }
+}

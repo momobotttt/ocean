@@ -2,10 +2,12 @@ import AuditList, { type AuditRow } from "@/components/AuditList";
 import { requireAdmin, displayName, type Profile } from "@/lib/auth";
 import { decryptColumn } from "@/lib/secure";
 
+const TABLE_LABELS: Record<string, string> = { activity_days: "活動分", pdca_weeks: "PDCA", okrs: "OKR" };
+
 export default async function AuditPage() {
   const { supabase } = await requireAdmin();
   const [{ data: audit }, { data: people }, { data: clients }] = await Promise.all([
-    supabase.from("audit_log").select("id, at, actor_id, action, table_name, record_id, changes").order("at", { ascending: false }).limit(300),
+    supabase.from("audit_log").select("id, at, actor_id, action, table_name, record_id, client_owner_id, changes").order("at", { ascending: false }).limit(300),
     supabase.from("profiles").select("id, email, full_name"),
     supabase.from("clients").select("id, info"),
   ]);
@@ -21,7 +23,9 @@ export default async function AuditPage() {
     subject:
       a.table_name === "profiles"
         ? `員工：${names.get(a.record_id) ?? "—"}`
-        : `客戶：${clientNames.get(a.record_id) ?? "（已刪除）"}`,
+        : a.table_name === "clients"
+          ? `客戶：${clientNames.get(a.record_id) ?? "（已刪除）"}`
+          : `${TABLE_LABELS[a.table_name] ?? a.table_name}：${names.get(a.client_owner_id) ?? "—"}`,
     changes: a.changes,
   }));
   return (

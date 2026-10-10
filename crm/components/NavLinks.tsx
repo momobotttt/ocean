@@ -9,6 +9,8 @@ export default function NavLinks({ isAdmin }: { isAdmin: boolean }) {
     ...(isAdmin ? [{ href: "/admin", label: "主管總覽" }] : []),
     { href: "/board", label: "我的看板" },
     { href: "/seasons", label: "四季人脈" },
+    { href: "/activity", label: "活動分" },
+    { href: "/pdca", label: "PDCA" },
     { href: "/clients/new", label: "＋ 新增客戶" },
     ...(isAdmin
       ? [

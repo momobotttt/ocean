@@ -128,6 +128,46 @@ begin
   end;
 end $$;
 
+-- ---------- 活動分／PDCA／OKR ----------
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-a000-00000000000a","role":"authenticated"}', true);
+insert into public.activity_days (day, r, n, a, rr, nr, pc) values ('2026-10-05', 1, 1, 2, 1, 1, 1);
+insert into public.pdca_weeks (week_start, focus) values ('2026-10-05', '{"plan":"v1.aaa"}');
+insert into public.okrs (year, okr) values (2026, '{"objective":"v1.aaa"}');
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-a000-00000000000b","role":"authenticated"}', true);
+insert into public.activity_days (day, a) values ('2026-10-05', 3);
+do $$
+declare n int;
+begin
+  if (select points from public.activity_days) <> 6 then
+    raise exception '❌ FAIL: 活動分計錯（A 3 次應該 6 分）';
+  end if;
+  if (select count(*) from public.activity_days) <> 1 or exists (select 1 from public.pdca_weeks) or exists (select 1 from public.okrs) then
+    raise exception '❌ FAIL: 員工 B 睇到員工 A 嘅活動／PDCA／OKR';
+  end if;
+  update public.activity_days set pc = 9 where owner_id = '00000000-0000-4000-a000-00000000000a';
+  get diagnostics n = row_count;
+  if n <> 0 then raise exception '❌ FAIL: 員工 B 改到員工 A 嘅活動分'; end if;
+  begin
+    insert into public.activity_days (owner_id, day, pc) values ('00000000-0000-4000-a000-00000000000a', '2026-10-06', 9);
+    raise exception '❌ FAIL: 員工 B 可以幫員工 A 記活動';
+  exception when insufficient_privilege then null;
+  end;
+  begin
+    update public.activity_days set points = 999;
+    raise exception '❌ FAIL: 可以直接改分數';
+  exception when insufficient_privilege or generated_always then null;
+  end;
+end $$;
+select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-a000-00000000000a","role":"authenticated"}', true);
+do $$ begin
+  if (select points from public.activity_days) <> 1 + 5 + 4 + 2 + 4 + 5 then
+    raise exception '❌ FAIL: 活動分計錯（R1 N5 A2 RR2 NR4 PC5）';
+  end if;
+  if not exists (select 1 from public.audit_log where table_name = 'activity_days' and client_owner_id = '00000000-0000-4000-a000-00000000000a') then
+    raise exception '❌ FAIL: 活動分冇寫審計記錄';
+  end if;
+end $$;
+
 -- ---------- 已停用員工 C ----------
 select set_config('request.jwt.claims', '{"sub":"00000000-0000-4000-a000-00000000000c","role":"authenticated"}', true);
 do $$ begin
@@ -169,6 +209,15 @@ begin
   if not exists (select 1 from public.audit_log where record_id = '00000000-0000-4000-c000-0000000000b1') then
     raise exception '❌ FAIL: 管理員睇唔到員工嘅審計記錄';
   end if;
+  if (select count(*) from public.activity_days) <> 2 or (select count(*) from public.pdca_weeks) <> 1 or (select count(*) from public.okrs) <> 1 then
+    raise exception '❌ FAIL: 管理員睇唔晒員工嘅活動／PDCA／OKR';
+  end if;
+  update public.activity_days set r = 50;
+  get diagnostics n = row_count;
+  if n <> 0 then raise exception '❌ FAIL: 管理員改到員工嘅活動分（應該唯讀）'; end if;
+  update public.pdca_weeks set focus = '{}';
+  get diagnostics n = row_count;
+  if n <> 0 then raise exception '❌ FAIL: 管理員改到員工嘅 PDCA（應該唯讀）'; end if;
 end $$;
 
 -- 員工 B 被停用後即刻睇唔到自己嘅客
@@ -191,6 +240,11 @@ do $$ begin
   begin
     perform 1 from public.profiles;
     raise exception '❌ FAIL: 未登入都讀到員工表';
+  exception when insufficient_privilege then null;
+  end;
+  begin
+    perform 1 from public.activity_days;
+    raise exception '❌ FAIL: 未登入都讀到活動分';
   exception when insufficient_privilege then null;
   end;
 end $$;

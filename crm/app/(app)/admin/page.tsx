@@ -2,13 +2,23 @@ import Link from "next/link";
 import { requireAdmin, displayName, type Profile } from "@/lib/auth";
 import { listClientCards } from "@/lib/data";
 import { STAGES } from "@/lib/stages";
+import { KpiBadge } from "@/components/ActivityWeek";
+import { totalPoints } from "@/lib/activity";
+import { loadWeeklyCounts } from "@/lib/activity-data";
+import { addDays, hkToday, mondayOf } from "@/lib/weeks";
 
 export default async function AdminOverview() {
   const { supabase } = await requireAdmin();
-  const [{ data: people }, cards] = await Promise.all([
+  const monday = mondayOf(hkToday());
+  const [{ data: people }, cards, weekly] = await Promise.all([
     supabase.from("profiles").select("id, email, full_name, role, active").order("full_name"),
     listClientCards(supabase),
+    loadWeeklyCounts(supabase, monday, addDays(monday, 6)),
   ]);
+  const weekScore = (id: string) => {
+    const c = weekly.get(id)?.get(monday);
+    return c ? totalPoints(c) : 0;
+  };
   const staff = ((people as Profile[] | null) ?? []).filter((p) => p.active || cards.some((c) => c.owner_id === p.id));
 
   const openStage = (s: string) => s !== "SIGNED" && s !== "ISSUED";
@@ -80,7 +90,9 @@ export default async function AdminOverview() {
                   {ready > 0 ? <span className="badge badge-green">{ready}</span> : <span className="muted">0</span>}
                 </td>
                 <td className="num">
-                  <span className="badge badge-grey" title="功能二（每週活動分）上線後顯示">未啟用</span>
+                  <Link href={`/activity?agent=${p.id}`}>
+                    <KpiBadge total={weekScore(p.id)} />
+                  </Link>
                 </td>
                 <td className="num">
                   <span className="badge badge-grey" title="功能四（四季紅簿）上線後顯示">未啟用</span>

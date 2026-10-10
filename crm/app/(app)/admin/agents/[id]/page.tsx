@@ -23,7 +23,13 @@ export default async function AgentBoard({ params }: { params: Promise<{ id: str
         {!agent.active && <span className="badge badge-red">已停用</span>}
         <span className="spacer" />
         <Link className="btn btn-sm" href={`/seasons?agent=${agent.id}`}>
-          睇四季人脈
+          四季人脈
+        </Link>
+        <Link className="btn btn-sm" href={`/activity?agent=${agent.id}`}>
+          活動分
+        </Link>
+        <Link className="btn btn-sm" href={`/pdca?agent=${agent.id}`}>
+          PDCA
         </Link>
       </div>
       {agent.id !== me.id && <p className="notice">👁 唯讀 — 撳卡片睇詳情</p>}
