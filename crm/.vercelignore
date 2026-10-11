@@ -1,8 +1,0 @@
-.env*
-!.env.example
-.deploy-output.json
-test-results
-playwright-report
-tests
-.next
-node_modules
