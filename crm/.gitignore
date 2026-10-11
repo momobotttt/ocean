@@ -6,4 +6,3 @@ next-env.d.ts
 *.tsbuildinfo
 test-results/
 playwright-report/
-.deploy-output.json

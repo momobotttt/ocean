@@ -8,17 +8,6 @@
 
 ---
 
-## 一鍵部署（建議）
-
-有 Supabase 同 Vercel 嘅 access token 就可以一句過搞掂下面第 1–8 步（開新加坡項目、建資料庫、驗證權限、部署、開 Ryan 帳戶）：
-
-```bash
-cd crm
-SUPABASE_ACCESS_TOKEN=… VERCEL_TOKEN=… node scripts/deploy.mjs --admin-email ryan@你的公司.com
-```
-
-完成後網址、Ryan 臨時密碼同加密鑰匙會寫入 `crm/.deploy-output.json`（已 gitignore）。⚠️ 加密鑰匙要另外收好。
-
 ## 一次性設定（手動，大約 20 分鐘，全部喺瀏覽器做）
 
 ### 1. 開 Supabase 項目
