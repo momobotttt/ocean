@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FINT 508 Lesson 4 Predicting Turnover in FinTech — Teaching Script</title>
+<style>
+@page { size:A4; margin:12mm 12mm 14mm 12mm; }
+* { box-sizing:border-box; }
+html { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+body { font-family:Calibri,Carlito,"Liberation Sans",Arial,sans-serif; font-size:10pt; line-height:1.4; color:#1F2933; margin:0; }
+h1 { font-family:Cambria,Caladea,"Liberation Serif",Georgia,serif; font-size:19pt; margin:0 0 2mm 0; color:#1F2933; }
+h1 .sub { display:block; font-size:10.5pt; font-weight:normal; color:#52606D; margin-top:1.5mm; font-family:Calibri,Carlito,Arial,sans-serif; }
+h2 { font-family:Cambria,Caladea,Georgia,serif; font-size:13pt; margin:6mm 0 2mm 0; padding:1.2mm 2mm; background:#1F2933; color:#fff; break-after:avoid; page-break-after:avoid; }
+h3 { font-family:Cambria,Caladea,Georgia,serif; font-size:11pt; margin:4mm 0 1.5mm 0; color:#1F2933; break-after:avoid; page-break-after:avoid; }
+p { margin:0 0 1.6mm 0; }
+ul { margin:0 0 1.8mm 0; padding-left:5mm; } li { margin:0 0 .8mm 0; }
+table { width:100%; border-collapse:collapse; margin:0 0 2.5mm 0; font-size:9.3pt; line-height:1.35; }
+thead { display:table-header-group; }
+th { background:#E4EAEE; text-align:left; font-weight:bold; }
+th,td { border:.4pt solid #9AA5B8; padding:1.1mm 1.6mm; vertical-align:top; }
+tr { break-inside:avoid; page-break-inside:avoid; }
+.hdr { border:.9pt solid #1F2933; padding:3mm 3.5mm; margin-bottom:3mm; }
+.meta { font-size:9.3pt; color:#1F2933; } .meta b { color:#5C7A8A; }
+.say { border-left:2pt solid #C8553D; background:#FBF3F0; padding:1.6mm 2.4mm; margin:0 0 2mm 0; font-family:Cambria,Caladea,Georgia,serif; font-size:10.2pt; }
+.say b { color:#C8553D; font-family:Calibri,Carlito,Arial,sans-serif; font-size:8.5pt; letter-spacing:.06em; }
+.do { border-left:2pt solid #5C7A8A; background:#F3F6F8; padding:1.4mm 2.4mm; margin:0 0 2mm 0; }
+.do b { color:#5C7A8A; font-size:8.5pt; letter-spacing:.06em; }
+.watch { border-left:2pt solid #3C7A5A; background:#F0F6F2; padding:1.4mm 2.4mm; margin:0 0 2mm 0; }
+.watch b { color:#3C7A5A; font-size:8.5pt; letter-spacing:.06em; }
+.slide { display:inline-block; background:#5C7A8A; color:#fff; font-size:8.3pt; padding:.3mm 1.6mm; margin-right:1.5mm; border-radius:1mm; }
+.clock { display:inline-block; background:#E4EAEE; color:#1F2933; font-size:8.3pt; padding:.3mm 1.6mm; margin-right:1.5mm; border-radius:1mm; font-weight:bold; }
+.tag { font-size:8.3pt; color:#52606D; letter-spacing:.04em; }
+.note { background:#F3F6F8; padding:1.6mm 2.4mm; margin:0 0 2.5mm 0; border:.4pt solid #C9D3DA; }
+.foot { border-top:.5pt solid #999; margin-top:4mm; padding-top:1.5mm; font-size:8.3pt; color:#52606D; }
+</style>
+</head>
+<body>
+
+<div class="hdr">
+<h1>FINT 508 · Lesson 4 · Predicting Turnover in FinTech
+<span class="sub">Teaching script for the guest lecturer · Sunday 4 of 4 · 120 minutes · pairs with the 28-slide deck <i>FINT508_L4_Predicting_Turnover_Slides.pptx</i></span></h1>
+<div class="meta"><b>Course</b> Human Resource Analytics for FinTech Management, Hong Kong Shue Yan University · <b>Room</b> computer lab, fixed rows, one PC each; about 13 master’s students, local and overseas · <b>Language</b> English throughout · <b>Your lane</b> the HR decision and the connection to the model; algorithms, training and validation belong to Dr Lee · <b>Sources</b> course outline; textbook Diez, Bussin &amp; Lee (2019), Chapter 5 (page numbers are the printed ones); Ma et al. (2020), Khera &amp; Divya (2018), Al Akasheh et al. (2023) from the outline’s reading list</div>
+</div>
+
+<div class="note"><b>How to read this script.</b> <span class="say" style="padding:.3mm 1.5mm;margin:0"><b>SAY</b></span> is wording you can read aloud as it stands; it is written for a room where most people listen in a second language — short sentences, one idea each, a pause after every question. <span class="do" style="padding:.3mm 1.5mm;margin:0"><b>DO</b></span> is what you do with the screen, the sheets, the shared document. <span class="watch" style="padding:.3mm 1.5mm;margin:0"><b>WATCH FOR</b></span> is what goes wrong at that minute and what to do about it. Clock stamps are minutes from the start; the deck shows the same stamps top-right. Every fact you state has a provenance mark on the slide: TEXTBOOK (with chapter and page), PAPER (on the students’ reading list), IMPORTED THEORY (author and year only), INSTRUCTOR (yours). Keep those distinctions when you speak; the group project marks students on exactly this.</div>
+
+<h2>Before the room fills (T-30)</h2>
+<ul>
+<li><b>Screen.</b> Slide 1 up. Your laptop, not the room PC: the video is a downloaded file, English subtitles on, cut to 6–8 minutes, tested once on this machine.</li>
+<li><b>Paper.</b> Quiz sheets (five questions, slide 3) on every desk. Forty-row employee sheets face down on each of the four group tables, plus the replacement-cost worksheet. All names and figures are fictional; say so when you hand them out.</li>
+<li><b>Shared document.</b> Sections pre-built and empty: Video · Terms (the eight words already typed, with their tags) · Ledger (two theories, two columns) · Discussion (three lines per group). Link on the whiteboard.</li>
+<li><b>Sunday 1 spreadsheet</b> open in a second window, one group’s tab, ready to change 22% to 26% live.</li>
+<li><b>Whiteboard.</b> Write the clock time for the end of the break as soon as you know your start time.</li>
+<li><b>Legal wording you will quote today</b> — check the current text before you say it: Employment Ordinance notice provisions; General Employment Policy and IANG conditions; Personal Data (Privacy) Ordinance, Data Protection Principle 6; the post-1 May 2025 severance and long service payment basis on the cost worksheet. Say “commonly one month”, “employment-tied”, “the person can ask to see it” — not numbers you have not checked this term.</li>
+</ul>
+
+<h2>0–8 · Step 0 · Quiz, hook, roadmap</h2>
+<p><span class="clock">0:00</span><span class="slide">Slide 1 → 3</span></p>
+<div class="say"><b>SAY</b> “Good morning. Sheets on your desk: five questions, two minutes, on your own. Everything is from last Sunday. Write your name at the top — this is also today’s attendance. Go.”</div>
+<div class="do"><b>DO</b> Show slide 3 while they write. Two minutes by the clock, then collect. Answers: (1) ex-ante — a bonus on last year’s results is paid on past performance; (2) cost against perceived value, and strategic alignment is not on that curve (textbook Ch.9 p.203); (3) the 60/40 mix won, the firm had been on 40/60 (Ch.9 p.199–200); (4) any two of deferral, malus, clawback — do not quote a number of years unless you have checked the current CG-5; (5) false (Ch.9 p.188). Do not go through the answers now; one sentence at 28:00 if there is slack, otherwise in the shared document tonight.</div>
+<p><span class="clock">2:30</span><span class="slide">Slide 4</span></p>
+<div class="say"><b>SAY</b> “Three Sundays ago you planned Kestrel Pay’s hiring. You used one number for attrition: twenty-two per cent. Here is that plan.” <i>(screen: Sunday 1 sheet)</i> “Kestrel Pay is now running at twenty-six. Watch what happens to your plan when I change one cell.”</div>
+<div class="do"><b>DO</b> Change the cell. Let the numbers move. Say nothing for five seconds. Then read out the three things that changed — hires needed, cost, months to full strength — from the sheet, not from memory.</div>
+<div class="say"><b>SAY</b> “That is the average. Today is not about the average. Today is about the names behind it: who is likely to leave, what you do about it, and — in Hong Kong — who is allowed to know.”</div>
+<p><span class="clock">5:00</span><span class="slide">Slide 2</span></p>
+<div class="say"><b>SAY</b> “Same six steps as every Sunday. One change today: we end with fifteen minutes of group discussion, three questions, three lines from each group, instead of the one-minute paper. Break is at —” <i>(read the clock time from the whiteboard)</i> “— and we restart at that time, not ‘in ten minutes’. Screens off unless a slide says otherwise. The shared document is our board.”</div>
+<div class="watch"><b>WATCH FOR</b> Latecomers. Hand them a quiz sheet without stopping; they do it in the break. If the spreadsheet refuses to open, skip it: say the three numbers from your notes and move on. Do not fight a file in front of the room for more than ninety seconds — today or at any other point.</div>
+
+<h2>8–20 · Step 1 · Video</h2>
+<p><span class="clock">8:00</span><span class="slide">Slide 5</span></p>
+<div class="say"><b>SAY</b> “In ninety minutes you will be handed forty named people with a risk score next to each name, and you will decide what happens to them. Before that, watch this. She is a mathematician. She gives conditions that turn an ordinary model into what she calls a weapon of math destruction. Write them down. That is your only job while you watch.”</div>
+<div class="do"><b>DO</b> Play the cut (Cathy O’Neil, TED 2017, 6–8 minutes, subtitles on). If you chose a different clip, the slide carries the alternative one-liners: for Lindor, “write down what she says people actually quit”; for Low-Kramen, “count her reasons and ask whether an exit interview would ever record them”. The three debrief questions for those clips are in the lesson-plan document, section 4.</div>
+<p><span class="clock">16:00</span><span class="slide">Slide 6</span></p>
+<div class="do"><b>DO</b> Stop the video. Count three full seconds of silence before you speak. Show slide 6.</div>
+<div class="say"><b>SAY</b> “Type first, then talk. Question one: what are her conditions? Now hold our attrition model up against them — how many does it meet?” <i>(wait; take one typed answer, read it aloud)</i> “Question two: she says a model encodes the past. What past would a Hong Kong attrition model be encoding?” <i>(wait)</i> “Question three: she wants audits. Who audits yours — and what would they look at? Keep that one. We answer it at the very end.”</div>
+<div class="say"><b>SAY</b> “One more thing. She is a critic. Is any of her criticism overstated? You are allowed to say so.”</div>
+<div class="watch"><b>WATCH FOR</b> The room answering question one with a list and question two with silence. Question two is the hard one for overseas students; rephrase once — “what happened to people in this company’s past that the data remembers?” — then move on. Do not resolve question three; it is the close of the whole series. If the video would not play: ask the three questions as a think-pair-share, ninety seconds each, and you are on time.</div>
+
+<h2>20–28 · Step 2 · Eight words</h2>
+<p><span class="clock">20:00</span><span class="slide">Slides 7–8</span></p>
+<div class="say"><b>SAY</b> “Eight words. They are already in the shared document under Terms. One sentence each from me; you will use all eight before the end.”</div>
+<div class="say"><b>SAY</b> “One. Regretted and avoidable turnover. Voluntary or involuntary is the first split. But the only box worth managing is the one where you were sorry to lose the person and could have kept them. A top engineer who leaves over a stalled promotion — yes. A retirement — no.<br>
+Two. Turnover intention. ‘I plan to leave.’ It is the commonest thing turnover research measures, for a simple reason: the people who actually left are no longer in your data.<br>
+Three. Turnover drivers — external, organisational, individual. Those are the textbook’s three buckets from a real case, page 106. Pay and competition outside; the manager and promotion inside; study, relocation and tenure in the person.<br>
+Four. Quick exits. Leaving soon after joining. The textbook’s Singapore bank lost forty per cent of new sales hires within eight months. Page 112.”</div>
+<div class="say"><b>SAY</b> “Five. Symptom versus problem. Early attrition was the symptom. The problem was ‘is the bank losing revenue?’ How you define the problem decides what you are predicting.<br>
+Six. Confusion matrix. Four boxes. Flagged and left; flagged and stayed — a false positive; not flagged and left — a false negative; not flagged and stayed. The textbook’s version, page 118: a wrong hire is a false positive, and the right person you never hired is never known.<br>
+Seven. Decision threshold. The model gives a score between zero and one. Where you cut is not in the model. It is a management decision with a cost on each side. That is the most important sentence you will hear from me in four weeks.<br>
+Eight. Class imbalance. If twelve per cent of people leave, a model that says ‘nobody leaves’ is eighty-eight per cent accurate. So ‘accuracy’ by itself tells you nothing. We come back to that with a published number.”</div>
+<div class="watch"><b>WATCH FOR</b> Yourself. Words six to eight are the technical bridge; the temptation is to teach them now. Don’t. Name them, tag them, move on. The pictures come at 60:00. Theory A starts at 28:00 on the clock.</div>
+
+<h2>28–42 · Step 3 · Theory A — turnover process models</h2>
+<p><span class="clock">28:00</span><span class="slide">Slide 9</span></p>
+<div class="say"><b>SAY</b> “Theory A. Two lines, as always. Line one, the claim: turnover equals perceived desirability of movement — do I want to go? — multiplied by perceived ease of movement — can I go? — and between ‘unhappy’ and ‘gone’ there is a chain of steps. Line two, the source: March and Simon, 1958; the chain is Mobley, 1977; the limit is Lee and Mitchell, 1994. This theory is <i>not</i> on your reading list. I am importing it, so on your slides you write the authors and the years, nothing more.”</div>
+<p><span class="clock">30:00</span><span class="slide">Slide 10</span></p>
+<div class="say"><b>SAY</b> “Two questions, multiplied. First: do I want to go? That is perceived desirability of movement. It usually tracks job satisfaction and organisational commitment. The 1958 original said: how satisfied the person is with the job, and whether a move inside the firm looks possible. Second: can I go? Perceived ease of movement. It tracks the outside economy and the job market — in the original, how many outside options the person can see, and their own age, tenure and skills.”</div>
+<div class="say"><b>SAY</b> “Multiplied, not added. If either is zero, nobody moves. Look at the four boxes. Wants to go and can go: leaves. Wants to go and cannot: stays — trapped. Does not want to go and can: that is the person you must keep. Does not want to go and cannot: no risk, and no signal either.” <i>(point at one student)</i> “The twenty-six per cent from the start — which box are most of them in?”</div>
+<div class="say"><b>SAY</b> “Notice the word ‘perceived’ on both axes. Both are what the employee believes. The model has neither. It has proxies.”</div>
+<p><span class="clock">34:00</span><span class="slide">Slide 11</span></p>
+<div class="say"><b>SAY</b> “Mobley took the first axis and stretched it into a chain. Dissatisfaction. Thoughts of quitting. Weighing the cost of a search. Searching. Comparing offers. Intention to quit. Quitting. Every link is a place a person can stop.”</div>
+<div class="say"><b>SAY</b> “Here is the sentence that matters for a model. Your HR data sees the right-hand end of the chain. Sick leave rising, overtime falling, a LinkedIn profile refreshed, a rating slipping. Those are traces of the late links. They are not the cause at the start. One example: an engineer stops doing overtime three months before resigning. Which link is that?” <i>(wait)</i> “That is why turnover intention is the strongest single predictor — it is the second-last link. And it is why a model usually answers <i>whether</i>, not <i>when</i>. There is no clock on the chain.”</div>
+<p><span class="clock">38:00</span><span class="slide">Slide 12</span></p>
+<div class="say"><b>SAY</b> “Now the limit, and it is an honest one. Some people never walk the chain. A spouse is relocated. The manager is replaced. An offer arrives that they never asked for. The textbook has one from its India case, page 106: the future mother-in-law arrives and says it is time to marry. Lee and Mitchell called these shocks. There is no dissatisfaction stage. The person was fine on Monday. So there was nothing to measure — and nothing in your data.”</div>
+<div class="say"><b>SAY</b> “That gives every attrition model a ceiling. It is not a tuning problem. No algorithm recovers a signal that was never recorded. So: the theory explains why intention predicts, why ease matters as much as wanting, why whether is easier than when. It does not explain the leaver who was happy last week — and neither will your model.”</div>
+<div class="watch"><b>WATCH FOR</b> The clock. Theory A is fourteen minutes and it is the one you know best, which is exactly why it runs long. One mechanism, one example, stop. If you are past 42:00, drop the mother-in-law line — it comes back at 90:00 anyway.</div>
+
+<h2>42–50 · Step 4 · Check A — your case, the textbook, Hong Kong</h2>
+<p><span class="clock">42:00</span><span class="tag">no slide — screens stay off</span></p>
+<div class="say"><b>SAY</b> “Does it hold? Three checks. First, mine.” <i>(three minutes: your own case — the meeting where the brief was ‘reduce turnover’, management had already decided the cause, and the real driver was something else. Anonymised: no firm name, no identifying detail. Say which axis the real driver was on.)</i></div>
+<p><span class="clock">45:00</span><span class="slide">Slide 13</span></p>
+<div class="say"><b>SAY</b> “Second, the textbook. A semiconductor company in India, chapter five. Management said pay was the whole story — and HR’s fault. HR re-interviewed the leavers through an outside firm, because the exit interviews were not credible. Fewer than ten per cent had left for pay. The three buckets you see are theirs. Two findings to keep: the fifteen managers with the highest attrition had been rated top by their own bosses; and promotion had slowed so far below the firm’s own guideline that people left and came back at higher pay — ‘the best way to get a raise here is to resign and return’. Turnover fell thirty per cent after the fixes.”</div>
+<div class="say"><b>SAY</b> “Map the buckets onto the two axes. External — pay, competition, overseas openings — that is <i>ease</i>. Organisational and individual — the manager, promotion, study, relocation — that is <i>desirability</i>. The book does not cite March and Simon. I am doing that mapping, so mark it as mine.”</div>
+<p><span class="clock">47:00</span><span class="slide">Slide 14</span></p>
+<div class="say"><b>SAY</b> “Third, Hong Kong. Same firm, same desk, two people. A local hire: notice period commonly one month. Leaving is cheap and fast. Ease of movement is structurally high; the chain can run in weeks. Next to them, a non-local hire on an employment-tied visa. For the same person, ease is pushed down. Wants to go, cannot go — the trapped box. The model sees ‘tenure’ and ‘nationality’. It does not see this layer.”</div>
+<div class="say"><b>SAY</b> “So, in one sentence: does the theory hold in Hong Kong?”</div>
+<div class="do"><b>DO</b> Take two answers, one from a local student and one from an overseas student. Ask each for <i>a view</i> — never for what “Hong Kong people” or “mainland students” think. Type the two sentences into the shared document.</div>
+<p><span class="clock">50:00</span><span class="slide">Slide 15</span></p>
+<div class="say"><b>SAY</b> “Break. Back at —” <i>(read the whiteboard)</i> “Second half is the model side: risk, the four boxes, the threshold, and forty names.”</div>
+<div class="do"><b>DO</b> During the break, turn the forty-row sheets face down on each group table if they are not there already. Check the video file is closed so it does not reopen on the projector.</div>
+<div class="watch"><b>WATCH FOR</b> Legal wording. “Commonly one month”, “employment-tied”: those are safe. Minimum notice periods, probation rules, exact visa conditions — only if you have read the current text this term. If a student asks for the detail you have not checked, say so and put it in the shared document as a question for the tutorial.</div>
+
+<h2>60–73 · Step 3 · Theory B — turnover risk quantification, and the bridge</h2>
+<p><span class="clock">60:00</span><span class="slide">Slide 16</span></p>
+<div class="say"><b>SAY</b> “Theory B. Line one: turnover risk equals uncertainty times loss, and a person’s importance is computed from work records rather than assumed from the job title — so a prediction becomes a priced decision. Line two: Ma and colleagues, 2020, in <i>Soft Computing</i>. This one <i>is</i> on your reading list. And it is a framework for measuring, not a theory of why people leave. Theory A does that job. Write ‘framework’ next to it.”</div>
+<p><span class="clock">61:00</span><span class="slide">Slide 17</span></p>
+<div class="say"><b>SAY</b> “Risk is two things multiplied. Uncertainty: will they go? Loss: what breaks if they do? That gives you two different rankings. Ranking one: most likely to leave — the attrition model’s score. Ranking two: hurts most if they leave — importance, computed from who touched which parts of the system, how often, how recently. A high score on list one but fully replaceable? Not worth a retention payment. A low score on list one but on top of list two? Start the knowledge transfer today.”</div>
+<div class="say"><b>SAY</b> “Think of your last team. Name someone — silently — who was on list two but never on list one. Everyone has one. That is the whole point of the framework.” <i>(pause)</i> “And the catch: ‘work records’ means commit logs. Computing importance from them is employee monitoring. Hold that thought for the last fifteen minutes.”</div>
+<p><span class="clock">64:00</span><span class="slide">Slide 18</span></p>
+<div class="say"><b>SAY</b> “Now the bridge — three pictures, no maths. Four boxes. Predicted to leave and left: the model earned its keep. Predicted to leave and stayed: a false positive — you spent money on someone who was never leaving. Predicted to stay and left: a false negative — the engineer nobody saw coming. Predicted to stay and stayed: nothing to do. The textbook’s advice, page 118: decide up front which mistake you can live with.”</div>
+<div class="say"><b>SAY</b> “Put a Hong Kong dollar figure on the two wrong boxes. What does it cost to keep someone who was never leaving — the payment, the precedent? What does an unplanned engineer exit cost — recruiting, ramp-up, the project that slips?”</div>
+<div class="do"><b>DO</b> Take two numbers from the room and type them into the shared document. They reuse them at 105:00. If nobody offers a number, use the replacement-cost worksheet’s midpoint and say it is synthetic.</div>
+<p><span class="clock">67:30</span><span class="slide">Slide 19</span></p>
+<div class="say"><b>SAY</b> “Picture two. The model gives a score between zero and one. Where you cut is not in the model. Cut low: more names, more money and conversations spent on people who were never leaving — more false positives. Cut high: fewer names, and you lose people you could have kept — more false negatives.” <i>(slowly, twice)</i> “There is no correct answer. There is only your cost on each side. That decision is yours, not the data scientist’s.”</div>
+<p><span class="clock">70:00</span><span class="slide">Slide 20</span></p>
+<div class="say"><b>SAY</b> “Picture three. A hundred employees, one year. Eighty-eight stayed, twelve left. A model that predicts ‘nobody leaves’ is right eighty-eight times out of a hundred. Eighty-eight per cent accurate. Leavers found: none. So anyone who quotes accuracy at you has told you nothing. The right question is what each kind of error costs you. How to measure it properly — precision, recall, validation — that is Dr Lee’s, and he will take it further than I can.”</div>
+<div class="watch"><b>WATCH FOR</b> “Which algorithm should we use?” Answer once and hand it off: “For this decision the algorithm matters far less than where you set the threshold — and that one is ours. Which algorithm, and why, is Dr Lee’s.” “Can we just use AI for this?” — “You can. Then you still choose the threshold, decide who sees the list, and answer a data access request. None of those go away.” Do not draw an ROC curve. Do not say ‘AUC’.</div>
+
+<h2>73–80 · Step 4 · Check B — three numbers and a bank</h2>
+<p><span class="clock">73:00</span><span class="slide">Slide 21</span></p>
+<div class="say"><b>SAY</b> “Three numbers. Same question of each. Eighty-five per cent: the reported accuracy of a support-vector-machine turnover model — three Indian IT firms, twenty-two input features, on your reading list. Accurate at what?” <i>(wait; someone should say class imbalance — if not, point back at the eighty-eight)</i> “How many of the eighty-five were simply ‘stayed’? The paper is worth reading precisely to ask that.”</div>
+<div class="say"><b>SAY</b> “Ninety-five per cent: IBM’s chief executive told a CNBC summit in 2019 that their AI predicts who will quit with ninety-five per cent accuracy, had saved nearly three hundred million US dollars in retention, and declined to explain how. That is a claim by a CEO at a conference. It is not a study. On how many leavers? Who checked? We do not know.”</div>
+<div class="say"><b>SAY</b> “Fifty-two studies: a ten-year review of turnover prediction — on your list. Over twenty techniques, ninety-six per cent supervised learning, random forest most common. And the two strongest predictors across all of it: pay and overtime. Last Sunday was about the first one. Today is about the second. Now — are those causes, or traces? Where do they sit on the two axes?” <i>(they are both desirability)</i> “Hong Kong’s two institutions — notice and visa — both sit on the ease axis. The model sees the first axis. Institutions move the second.”</div>
+<p><span class="clock">77:00</span><span class="slide">Slide 22</span></p>
+<div class="say"><b>SAY</b> “And one bank, from the textbook, pages 112 to 116. Forty per cent of new sales hires gone within eight months, despite multiple interviews and psychometric tests. First pass: the team correlated everything, and found distance from home, interviewer bias — supervisors overriding the test scores with their own picks — and this: new hires spent up to six weeks in product training and learned how their bonus worked only on day one in the branch. Then they reframed. Early attrition was the symptom. The problem was revenue. One hypothesis: hiring quality. And then the part I want you to keep: they built a predictive model that flags a new hire who is missing target and showing distress — and the action was to take that person <i>out</i> of the incentive scheme and support them. Not a payment. Quick exits down, cost to hire down, sales up, and the process now runs without the analytics team.”</div>
+<div class="say"><b>SAY</b> “Of the eight steps from the first lesson, which one did that team reach?” <i>(execute and evaluate — it became a recurring process)</i> “Sheets face up.”</div>
+
+<h2>80–98 · Step 5 · Activity — from score to action</h2>
+<p><span class="clock">80:00</span><span class="slide">Slide 23</span></p>
+<div class="say"><b>SAY</b> “Screens off. Four groups, same as before; roles rotate — speaker, challenger, recorder. On your sheet: forty named employees at Kestrel Pay. All fictional. For each one: a risk score from zero to one, role, tenure, how many months their manager has been in post, how many months since their last promotion, and an estimated replacement cost in Hong Kong dollars.”</div>
+<div class="say"><b>SAY</b> “Four decisions and one price. Where do you draw the line — which score? What is the intervention, concretely — a payment, a move, a conversation with whom? Who is told? What do you measure in six months? And price both mistakes, using the numbers from the four boxes: keeping someone who was never leaving; losing someone you did not flag. Ten minutes.”</div>
+<div class="do"><b>DO</b> Walk the room. Answer questions about the sheet; do not answer “what would you do”. Listen for the group that draws the line by budget rather than by score — that is the right instinct, note it for 105:00. At 90:00 by the clock, stop them mid-sentence.</div>
+<p><span class="clock">90:00</span><span class="slide">Slide 24</span></p>
+<div class="say"><b>SAY</b> “Stop. One more piece of information. The two strongest drivers in this model are: the manager has been in post less than twelve months; and thirty months since the last promotion. What changes? Eight minutes.”</div>
+<div class="do"><b>DO</b> Let them work six minutes. Then two minutes of you, steering to the answer without giving it as a lecture:</div>
+<div class="say"><b>SAY</b> “What did most of you just do? You stopped looking at forty names. The problem stopped being forty individual retention payments and became one management-capability problem and one promotion-path problem. A system fix, not forty awkward conversations. Read it back through Theory A: both drivers sit on the desirability axis. Read it back through the textbook: the India firm was promoting below its own fifteen-per-cent guideline, page 110, and its highest-attrition managers were rated top by their bosses, page 109. This is the difference between predictive and prescriptive. It is also the difference between a model that is used and a list that is filed.”</div>
+<div class="watch"><b>WATCH FOR</b> A group that wants to keep paying the forty. Do not argue; ask them what happens to the forty-first person, next quarter, under the same manager. The room will finish the thought.</div>
+
+<h2>98–105 · Step 6 · What each theory explains — and does not</h2>
+<p><span class="clock">98:00</span><span class="slide">Slide 25</span></p>
+<div class="say"><b>SAY</b> “Shared document, Ledger section. Two theories, two columns: what it explains, what it does not. You fill first. Four minutes. Then we compare.”</div>
+<div class="do"><b>DO</b> At 102:00 read the room’s columns aloud and add what is missing. Answer key — Process models. Explains: why intention predicts; why ease matters as much as wanting; why <i>whether</i> is easier than <i>when</i>. Does not: shock-driven exits — the ceiling; it assumes a deliberate sequence; it says nothing about staying. Risk quantification. Explains: turns a prediction into a priced decision; separates “likely to leave” from “hurts most if they leave”; plugs straight into the threshold and the four boxes. Does not: it needs event logs, which is monitoring; the loss figures are human assumptions; it never answers <i>why</i>; it covers only roles that leave a data trail.</div>
+<div class="say"><b>SAY</b> “For the essay: three papers on the limits of the whole enterprise are on your reading list — Sarstedt and Danks, 2022, on how much HR research says ‘prediction’ and does explanation; Giermindl and colleagues, 2022, on the dark side of people analytics; Edwards and colleagues, 2024, on the ethics nobody has resolved. Cite them.”</div>
+
+<h2>105–120 · Group discussion — fifteen minutes, three questions, three lines</h2>
+<p><span class="clock">105:00</span><span class="slide">Slide 26</span></p>
+<div class="say"><b>SAY</b> “Fifteen minutes. Same four groups. Three questions on the screen; your recorder types three lines — one per question — into the Discussion section by seventeen minutes past. At seventeen past, each group reads its answer to question two aloud, forty seconds each. I will not comment between groups.”</div>
+<div class="say"><b>SAY</b> “Question one. Decide. Your group has six hundred thousand Hong Kong dollars for retention this quarter and forty names. Where do you draw the line, how many people is that, and what does each kind of mistake cost you in dollars? Use the two numbers we typed at the four boxes.”</div>
+<div class="say"><b>SAY</b> “Question two. Take a position. Who is allowed to see this list — HR only, the line manager, the person named? Under the Personal Data (Privacy) Ordinance, that risk score is personal data about an identifiable person. Under Data Protection Principle 6, that person can ask to see it. If an employee files a data access request tomorrow, what exactly do you hand over — the score, the inputs, the model? And if the score was computed from that person’s own work records — Theory B — then the inputs are their data too.”</div>
+<div class="say"><b>SAY</b> “Question three. Rehearse your interview. You will sit across from a senior manager at a Hong Kong FinTech firm for your group project. Write one question that tests today’s theory — does the firm know who <i>wants</i> to leave, who <i>can</i> leave, and who would <i>hurt</i> most if they left? Predict the answer. And say which of the eight steps their HR function stops at. ‘We don’t know’ is a good predicted answer. Go.”</div>
+<div class="do"><b>DO</b> 105–117: circulate; keep them typing, not only talking. Push question two toward a concrete list — “score only”, “score and the six inputs”, “score, inputs and a plain-language description of how it was computed” — and toward the monitoring point from Theory B. Do not recite the Ordinance’s exemptions unless you have read the current text. 117–120: four groups, forty seconds each, line two only. No comment from you between groups.</div>
+<div class="watch"><b>WATCH FOR</b> Question two turning into a debate about whether models are good or bad. Cut it with: “Not whether. What. The letter arrives tomorrow. What is in the envelope you send back?” — and the quiet student who has been typing rather than speaking; ask the recorder to read their line.</div>
+<p><span class="clock">119:00</span><span class="slide">Slide 27</span></p>
+<div class="say"><b>SAY</b> “Four Sundays. You planned for people, hired them, paid them, and today you predicted who would leave. The model gave you a list. Hong Kong law gives the person on the list the right to ask what you know about them. Before you build the next model, decide what you are prepared to hand over. Thank you.”</div>
+<div class="do"><b>DO</b> Stop on the clock. Leave slide 28 on the screen while they pack up — readings, the essay milestone, and what Dr Lee covers next. Do not add a summary; the last sentence is the summary.</div>
+
+<h2>If you are running late — cut in this order</h2>
+<table>
+<thead><tr><th style="width:24%">Cut</th><th style="width:16%">Saves</th><th>Why this and not something else</th></tr></thead>
+<tr><td>Quiz answers at 28:00</td><td>1–2 min</td><td>They go into the shared document tonight; the sheets are already collected.</td></tr>
+<tr><td>The mother-in-law example, slide 12</td><td>1 min</td><td>It returns at 90:00 through the India case.</td></tr>
+<tr><td>Your own case at 42:00 to two minutes</td><td>1 min</td><td>Never to zero — the story is the one thing in the room nobody can read in the book.</td></tr>
+<tr><td>Slide 22 to the last two steps only</td><td>1.5 min</td><td>Steps 4–5 carry the point (a score used to support, not to pay).</td></tr>
+<tr><td>Activity part one to eight minutes</td><td>2 min</td><td>The twist needs its full eight; part one does not.</td></tr>
+<tr><td colspan="3"><b>Never cut:</b> the twist (90:00), the ledger columns, or the fifteen-minute discussion. If the video fails, you gain eight minutes; give them to the discussion.</td></tr>
+</table>
+
+<h2>Abbreviations to define on first use (they are new to half the room)</h2>
+<table>
+<thead><tr><th style="width:16%">Term</th><th>Say it once, in full, then use the short form</th></tr></thead>
+<tr><td>Kestrel Pay</td><td>“Our fictional Hong Kong payments company — the same one from Sunday 1. None of its people are real.”</td></tr>
+<tr><td>IANG · GEP</td><td>“Two Hong Kong immigration routes: IANG, the arrangement for non-local graduates, which after a job-search window attaches to employment; GEP, the General Employment Policy, sponsored by an employer.” Conditions change; describe, do not quote.</td></tr>
+<tr><td>Cap. 57 · Cap. 486</td><td>“Chapter numbers in Hong Kong’s statute book: the Employment Ordinance and the Personal Data (Privacy) Ordinance.”</td></tr>
+<tr><td>DPP6</td><td>“Data Protection Principle 6 — the right of access and correction: a person can ask what personal data you hold about them.”</td></tr>
+<tr><td>CG-5</td><td>“A module of the HKMA’s Supervisory Policy Manual on remuneration for banks — last Sunday’s deferral, malus and clawback.”</td></tr>
+<tr><td>AT1 · AT3 · AT4</td><td>“Your assessment tasks: participation; the essay; the group interview project.”</td></tr>
+<tr><td>false positive · false negative · threshold · class imbalance</td><td>Defined on slides 8, 18–20; do not use them before slide 8.</td></tr>
+</table>
+
+<div class="foot">
+<b>Provenance.</b> TEXTBOOK page numbers are the printed ones in Diez, Bussin &amp; Lee (2019), Chapter 5 unless stated. PAPER items are on the course reading list and were verified at abstract level in the reading audit. IMPORTED THEORY: March &amp; Simon (1958), Mobley (1977), Lee &amp; Mitchell (1994) — authors and years only; volume and page locators have not been library-checked, so they are not printed. The IBM figure is a press claim reported by CNBC on 3 April 2019, not a study. The three video candidates could not be opened from the environment that produced this script: watch your chosen clip end to end, confirm its length, and carry a local copy. Legal wording (Employment Ordinance notice; GEP and IANG; DPP6; the severance and long service payment basis on the cost worksheet) must be checked against the current text before it is spoken. All employee names, scores and costs used in class are synthetic; the course uses no real employee data.
+</div>
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>FINT 508 第 4 堂 流失預測 課堂安排</title>
+<style>
+@page { size:A4; margin:9mm 8mm 10mm 8mm; }
+* { box-sizing:border-box; }
+html { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+body { font-family:"WenQuanYi Zen Hei","Noto Sans CJK TC",sans-serif;
+       font-size:8.2pt; line-height:1.38; color:#000; margin:0; }
+h1 { font-size:14.5pt; margin:0 0 1mm 0; }
+h1 .sub { font-size:9.4pt; font-weight:normal; display:block; margin-top:1mm; }
+h2 { font-size:9.8pt; margin:3.2mm 0 1.4mm 0; padding:.7mm 1.5mm;
+     background:#1f3864; color:#fff; break-after:avoid; page-break-after:avoid; }
+h3 { font-size:8.9pt; margin:2.4mm 0 1mm 0; color:#1f3864;
+     border-bottom:.5pt solid #1f3864; padding-bottom:.4mm; break-after:avoid; page-break-after:avoid; }
+p { margin:0 0 1.1mm 0; }
+ul,ol { margin:0 0 1.2mm 0; padding-left:4.2mm; }
+li { margin:0 0 .5mm 0; }
+table { width:100%; border-collapse:collapse; margin:0 0 1.8mm 0; font-size:7.6pt; line-height:1.3; }
+thead { display:table-header-group; }
+th { background:#e4e9f2; text-align:left; font-weight:bold; }
+th,td { border:.4pt solid #9aa5b8; padding:.7mm 1.05mm; vertical-align:top; }
+tr { break-inside:avoid; page-break-inside:avoid; }
+.hdr { border:.8pt solid #1f3864; padding:2mm 2.5mm; margin-bottom:2mm; }
+.meta { font-size:8.2pt; } .meta b { color:#1f3864; }
+.note { background:#f0f2f6; border-left:1.4pt solid #1f3864; padding:1.2mm 1.8mm; margin:0 0 1.6mm 0; }
+.warn { background:#fff4e0; border-left:1.4pt solid #b06000; padding:1.2mm 1.8mm; margin:0 0 1.6mm 0; }
+.fix { background:#eaf3ea; border:.8pt solid #2d6a2d; padding:1.6mm 2mm; margin:0 0 2mm 0; }
+.say { border-left:1.4pt solid #7d8aa0; padding:1mm 1.8mm; margin:0 0 1.4mm 0; background:#fafafa; }
+.en { font-family:Georgia,"Times New Roman",serif; font-style:italic; }
+.cite { font-family:Georgia,"Times New Roman",serif; font-size:7.3pt; }
+.pg { color:#1f3864; font-size:7pt; white-space:nowrap; }
+.step { display:inline-block; background:#1f3864; color:#fff; padding:.2mm 1.2mm; font-size:7pt; margin-right:.8mm; }
+.V { color:#1a6b1a; font-weight:bold; } .I { color:#8a3a00; font-weight:bold; } .T { color:#5a2d82; font-weight:bold; }
+.foot { border-top:.5pt solid #999; margin-top:2mm; padding-top:1mm; font-size:7pt; color:#444; }
+</style>
+</head>
+<body>
+
+<div class="hdr">
+<h1>FINT 508 第 4 堂　Predicting Turnover in FinTech　課堂安排
+<span class="sub">客席星期日 4「流失」· 120 分鐘 · 六步循環 · 兩個理論寫足 · 三條 YouTube 片揀一條 · 落堂前 15 分鐘小組討論</span></h1>
+<div class="meta"><b>大綱課題原文</b> Predicting Turnover in FinTech — Employee turnover in FinTech industry · Predictive models of employee turnover · Case study: Predicting employee turnover · Implications to turnover in FinTech industry　·　<b>學期位置</b> 第 4 週（導修：APA + Turnitin + AT3 診所；里程碑：AT3 題目 + 兩篇期刊文章）　·　<b>主要 CILO</b> 3　·　<b>課前讀</b> 課本 Ch.5 Turnover（p.101–120，約 30 分鐘）+ Ma et al. (2020)　·　<b>其他文件</b> 理論配對照《課程重新設計》第六節；技術連繫台詞照《技術連繫指南》</div>
+</div>
+
+<div class="note"><b>只用兩樣嘢：</b>（1）大綱 docx —— 課題原文、四個學習成果、評核、essential readings；（2）課本 Diez, Bussin &amp; Lee 三份 PDF —— 本堂用 <b>Ch.5 Turnover（p.101–120）</b>做骨幹，全部頁碼係印刷頁碼。期刊只用大綱書目本身有嘅：Ma et al. (2020) 做 Theory B 出處；Khera &amp; Divya (2018)、Al Akasheh et al. (2023) 做驗證材料（《大綱文獻理論總表》摘要層面核過）。冇搵其他課本。<br><b>同舊文件嘅關係：</b>《客席講者教學安排》舊版把 Theory B 寫做 Job Embeddedness —— 已被《課程重新設計》取代（Theory B ＝ 流失風險量化，出自大綱）。Embeddedness 保留做選用嘅第三個理論（第三節末）。</div>
+
+<h2>一、成堂一句話，同埋 120 分鐘點行</h2>
+<div class="say"><b>核心一句（英文照讀）：</b><span class="en">“The model tells you who is likely to leave. It does not tell you what to do, who is allowed to know, or whether you should have looked in the first place. In Hong Kong the last question has a legal answer.”</span></div>
+
+<table>
+<thead><tr><th style="width:8%">分鐘</th><th style="width:12%">步</th><th style="width:52%">做咩</th><th>螢幕／要準備</th></tr></thead>
+<tr><td>0–8</td><td><span class="step">0</span> 呼應</td><td>五題入門小測（上堂薪酬：ex-ante／ex-post、efficient frontier、pay mix、CG-5、感知價值 vs 成本）—— 同時係出席同 AT1 紀錄。呼應：投返星期日 1 張人力規劃試算表：「三個星期前你哋按 22% 流失率請 60 人。而家係 26%。」當場用 26% 重跑一組。投出今日六步路線圖 + 螢幕規矩</td><td>screens off · 星期日 1 試算表 · 小測 5 題</td></tr>
+<tr><td>8–20</td><td><span class="step">1</span> 片</td><td>播第四節揀定嗰條（剪到 6–8 分鐘）。播之前一條問題（第四節有台詞）；播完停三秒，三條 debrief 問題，答案打入共享文件。呢步唔解釋，只收</td><td>預先下載 · 英文字幕 · 共享文件開「Video」一節</td></tr>
+<tr><td>20–28</td><td><span class="step">2</span> HR 字</td><td>八個預填術語（第二節），每個一句定義一個例，已經打好喺共享文件術語區，你只係逐個指一次</td><td>術語區預填</td></tr>
+<tr><td>28–42</td><td><span class="step">3</span> Theory A</td><td><b>Turnover process models</b>（第三節 A）：March &amp; Simon 兩條軸 → Mobley 條鏈 → 「模型抓到嘅係鏈條後段」→ Lee &amp; Mitchell 嘅震撼事件係天花板。≤14 分鐘，一個機制、一個例、停</td><td>兩行投影片規則（外借理論）</td></tr>
+<tr><td>42–50</td><td><span class="step">4</span> 驗證 A</td><td>你嘅個案（3 分鐘）+ 課本印度半導體個案嘅驅動因素表 p.106–107（2 分鐘）+ 香港兩條軸（3 分鐘）：一個月通知期壓低「走嘅代價」；IANG／GEP 簽證掛鈎推高同一批人嘅代價。問全班：呢個理論成唔成立？</td><td>[FROM THE TEXTBOOK Ch.5 p.106–107] · 香港錨投影</td></tr>
+<tr><td>50–60</td><td>—</td><td>小休（回來時間用鐘面時間投出）</td><td></td></tr>
+<tr><td>60–73</td><td><span class="step">3</span> Theory B</td><td><b>Turnover risk quantification</b>（第三節 B）：風險 ＝ 不確定性 × 損失；員工重要性由數據計出嚟；「預測」變成「有價錢牌嘅決定」。同場插入你嘅技術連繫四句（confusion matrix 用港元計；threshold 係管理決定；class imbalance；feature ≠ cause）</td><td>四格 confusion matrix 空表投影</td></tr>
+<tr><td>73–80</td><td><span class="step">4</span> 驗證 B</td><td>三個具體發現：Khera &amp; Divya 報稱 85% 準確 →「呢個數字告訴咗你乜？」（等，然後講 class imbalance）；Al Akasheh 52 項研究、96% 監督式、最強兩個預測因子係薪酬同加班；課本新加坡銀行 p.115–116：預測模型標記「未達標 + 有壓力跡象」嘅新人 → 暫時抽離花紅制度 —— 預測第一次變成一個動作</td><td>[FROM THE PAPER] × 2 · [FROM THE TEXTBOOK Ch.5 p.115–116]</td></tr>
+<tr><td>80–98</td><td><span class="step">5</span> 活動</td><td><b>由分數到行動</b>（第五節）：四組，各攞 40 個虛構具名員工（風險分數、職位、年資、上司、預估重置成本）。第一部分 10 分鐘：劃線、介入措施、通知邊個、六個月後量度乜。第 90 分鐘轉折：模型最強兩個驅動因素係「上司到職少於 12 個月」同「30 個月未有晉升」—— 改變咗乜？</td><td>screens off · 40 行印刷表 · 重置成本工作紙</td></tr>
+<tr><td>98–105</td><td><span class="step">6</span> 好處壞處</td><td>共享文件開兩欄，學生自己填兩個理論嘅「解釋到／解釋唔到」（第三節末有答案）。理論帳寫入固定位置</td><td>共享文件「Ledger」一節</td></tr>
+<tr><td><b>105–120</b></td><td><b>小組討論</b></td><td><b>落堂前 15 分鐘（第六節）：</b>三條問題、四組、每組交三行入共享文件；117–120 每組讀出自己嗰一行。最後一句係私隱條例查閱權 —— 四個星期日嘅收結</td><td>三條問題投影 · DPP6 一版投影</td></tr>
+</table>
+<div class="warn"><b>今個星期唔做一分鐘紙：</b>個人書面證據由開場五題小測承擔；落堂前嘅 15 分鐘俾晒小組討論（你要求嘅）。每組交入共享文件嗰三行就係 AT1 口頭＋書面證據，同 AT4 答問排練。四堂入面呢堂最逼 —— 趕就剪片頭、唔好剪討論。</div>
+
+<h2>二、八個預填術語（第 2 步；標明出處）</h2>
+<table>
+<thead><tr><th style="width:4%">#</th><th style="width:24%">術語（英文，投影原字）</th><th style="width:48%">一句定義 + 一個例</th><th>出處標記</th></tr></thead>
+<tr><td>1</td><td>voluntary vs involuntary; <b>regretted &amp; avoidable</b></td><td>自願／非自願；「可惋惜而且本來避得到」嗰格先值得管理。例：頂級評級工程師因為冇晉升而走 ＝ regretted &amp; avoidable；退休 ＝ 唔係</td><td>[INSTRUCTOR CONSTRUCTION]（HRM 通用分類）</td></tr>
+<tr><td>2</td><td><b>turnover intention</b></td><td>「打算走」—— 流失研究最常用嘅因變項，因為真正走咗嘅人已經唔喺數據入面。例：問卷「我會喺 12 個月內搵工」</td><td>[THEORY A：Mobley 1977 鏈條末段]</td></tr>
+<tr><td>3</td><td><b>turnover drivers</b>: external / organisational / individual</td><td>課本印度半導體個案嘅三類：外部（薪酬水平、競爭、海外機會）／組織（職位側寫、績效評級、對經理不滿、晉升機會）／個人（進修、搬遷、院校、年資、性別）</td><td>[FROM THE TEXTBOOK Ch.5 p.106–107]</td></tr>
+<tr><td>4</td><td><b>quick exits</b> / early attrition</td><td>入職後短期內離開。例：新加坡銀行 40% 新銷售員八個月內走；課本 Ch.11：五分之二新員工一年內走</td><td>[FROM THE TEXTBOOK Ch.5 p.112–113; Ch.11 p.228]</td></tr>
+<tr><td>5</td><td><b>symptom vs problem</b></td><td>「早期流失」係徵狀；問題係「銀行有冇損失收入機會」。定義問題嘅方式決定咗 y 變項係咩</td><td>[FROM THE TEXTBOOK Ch.5 p.114; Ch.4 p.73]</td></tr>
+<tr><td>6</td><td><b>confusion matrix</b>; false positive / false negative</td><td>四格：預測走＋真走、預測走＋冇走（假陽性）、預測留＋走咗（假陰性）、預測留＋留。課本：請錯人係假陽性；請漏人永遠唔知</td><td>[FROM THE TEXTBOOK Ch.5 p.118]＋你嘅港元定價（技術連繫）</td></tr>
+<tr><td>7</td><td><b>decision threshold</b></td><td>模型俾 0 到 1 嘅分數；喺邊度切唔係模型決定，係管理決定，兩邊各有成本</td><td>[INSTRUCTOR CONSTRUCTION]（全系列最重要一句）</td></tr>
+<tr><td>8</td><td><b>class imbalance</b></td><td>如果 12% 人走，一個「預測冇人走」嘅模型已經 88% 準確。所以「準確度」本身唔係一個答案</td><td>[INSTRUCTOR CONSTRUCTION]；驗證 B 用 Khera &amp; Divya 嘅 85% 開題</td></tr>
+</table>
+
+<h2>三、兩個理論（寫足：邊個、邊年、主張、機制、預測到乜、喺邊度失效、香港錨、同模型嘅關係）</h2>
+
+<h3>Theory A　Turnover process models（流失過程模型）　<span class="I">I ＝ 外借</span>，唔喺大綱書目 → 兩行投影片規則：第一行理論，第二行出處</h3>
+<table>
+<thead><tr><th style="width:16%">項目</th><th>內容</th></tr></thead>
+<tr><td>邊個、邊年</td><td>March &amp; Simon (1958) <span class="en">Organizations</span> → Mobley (1977) <span class="en">Journal of Applied Psychology</span> → Lee &amp; Mitchell (1994) <span class="en">Academy of Management Review</span>。<b>作者同年份可信；卷期頁碼未用圖書館核，投影片只寫作者年份。</b></td></tr>
+<tr><td>一句主張</td><td><span class="en">“People leave when they want to and when they can.”</span>　離職 ＝ <b>perceived desirability of movement</b>（離職的感知合理性：想唔想走）× <b>perceived ease of movement</b>（離職的感知可行性：走唔走得到）。兩條軸係乘法：任何一條係零，人都唔走。「感知」二字唔可以慳 —— 兩條軸都係員工<b>自己覺得</b>，唔係客觀數字。</td></tr><tr><td>兩條軸（原著構念）</td><td><b>① 離職的感知合理性 <span class="en">perceived desirability of movement</span></b> —— 員工有多想離開。通常與<b>工作滿意度</b>同<b>組織承諾</b>有關。原著（1958）寫嘅決定因素係：對工作嘅滿意度（工作同自我形象是否相符、人際關係是否可預期、工作同其他角色是否相容）＋ 組織內調職嘅可能性；「組織承諾」係之後嘅文獻（1970–80 年代）加入嘅第二個預測因子，投影片可以並列，但要知道邊個係原著、邊個係後加。<br><b>② 離職的感知可行性 <span class="en">perceived ease of movement</span></b> —— 員工有多容易搵到新工。通常與<b>外部經濟環境</b>同<b>就業市場機會</b>有關。原著寫嘅決定因素係：員工見到幾多個組織外嘅選擇 —— 經濟活動水平、佢望得見嘅公司數目、佢自己嘅特徵（年齡、性別、社會地位、年資、專門技能）。<br><b>教學用法：</b>把兩條軸畫成 2×2：想走＋走得到 ＝ 走；想走＋走唔到 ＝ 留低但「困住」（活動轉折同 IANG 簽證都落喺呢格）；唔想走＋走得到 ＝ 你要留住嘅人；唔想走＋走唔到 ＝ 冇風險亦冇訊號。</td></tr>
+<tr><td>機制</td><td>Mobley 把「想走」到「走咗」中間拆成一串：不滿 → 諗住辭職 → 評估搵工嘅代價同得益 → 搵工 → 比較 offer → 意向 → 行為。每一格都可以停。<b>所以 HR 數據入面見到嘅訊號（請假多咗、加班少咗、LinkedIn 更新、績效評級跌）多數係鏈條後段嘅痕跡，唔係原因。</b></td></tr>
+<tr><td>預測到乜</td><td>（1）turnover intention 係最強嘅單一預測因子 —— 因為佢就係鏈條倒數第二格；（2）同一個「想走」嘅人，喺「易走」嘅市場走得快好多 —— 所以流失率係勞動市場嘅函數，唔止係公司嘅函數；（3）「when」同「whether」係兩條問題：模型多數答到 whether，答唔到 when。</td></tr>
+<tr><td>喺邊度失效</td><td>假設咗離職係<b>線性、循序、深思熟慮</b>嘅過程。Lee &amp; Mitchell 嘅 unfolding model 指出有一類離職由<b>震撼事件</b>（shock）觸發 —— 配偶調職、上司突然換人、一個 offer 主動搵上門 —— 冇經過不滿階段。呢類人喺你嘅 HR 數據入面<b>根本冇訊號</b>。所以每個流失模型有一個天花板，而嗰個天花板唔係調參調得返嚟。課本印度個案入面「奶奶出現話係時候結婚」p.106 就係一個 shock。</td></tr>
+<tr><td>香港錨</td><td>同一條軸、同一間公司、兩種員工、兩個相反方向：（1）《僱傭條例》（第 57 章）一個月通知期 → ease of movement 結構性偏高；（2）IANG／GEP 簽證與僱傭掛鈎 → 對同一批人 ease 被壓低。模型多數睇唔到呢一層 —— 佢只見到「年資」「國籍」呢啲代理變項。<br><b>兩條軸各自邊個郁：</b>Al Akasheh 十年回顧嘅兩個最強預測因子（薪酬、加班）都喺<b>合理性</b>軸；香港兩條制度（通知期、簽證）都喺<b>可行性</b>軸。即係模型見到嘅多數係第一條軸，而制度改變嘅係第二條軸 —— 呢句就係「模型有天花板」嘅香港版。</td></tr>
+<tr><td>同課本嘅關係</td><td>課本 Ch.5 p.106–107 嘅三類驅動因素就係呢個理論嘅實務版：external ≈ ease of movement；organisational + individual ≈ desirability。課本冇引 March &amp; Simon —— 投影片要分開標。</td></tr>
+<tr><td>投影片兩行</td><td><span class="en">Line 1: Turnover = perceived desirability of movement (do I want to go?) × perceived ease of movement (can I go?); a chain of intermediate steps sits between “unhappy” and “gone”.<br>Line 2: March &amp; Simon (1958); Mobley (1977); limit: Lee &amp; Mitchell (1994) unfolding model. Not on your reading list — imported.</span></td></tr>
+</table>
+
+<h3>Theory B　Turnover risk quantification（流失風險量化）　<span class="V">V ＝ 大綱書目核實</span>（Ma et al. 2020）；類別：框架，唔係理論</h3>
+<table>
+<thead><tr><th style="width:16%">項目</th><th>內容</th></tr></thead>
+<tr><td>出處</td><td>Ma, et al. (2020). <span class="en">A data-driven risk measurement model of software developer turnover.</span> <span class="en">Soft Computing</span>, 24.（大綱書目；審計以摘要核實；篇名同期刊經出版社頁面核對）</td></tr>
+<tr><td>一句主張</td><td><span class="en">“Turnover is a risk, and a risk has a price: uncertainty × loss.”</span>　流失唔係一個「會唔會」嘅二元問題，係一個<b>風險</b>：某個人走嘅<b>不確定性</b>，乘以佢走咗<b>對項目嘅損失</b>。</td></tr>
+<tr><td>機制</td><td>（1）用 ML／NLP／資料探勘挖軟件開發者嘅 commit 事件日誌，計出每個開發者對項目嘅<b>重要性</b>（唔係由職稱假設）；（2）用資訊熵（information entropy）量度不確定性；（3）合成每個人嘅風險水平，再加總成整個項目嘅整體風險。結果係一個<b>有排序、有價錢</b>嘅清單，唔係一個「走／唔走」嘅標籤。</td></tr>
+<tr><td>預測到乜</td><td>邊個開發者走咗項目會最傷 —— 呢個同「邊個最可能走」係兩個唔同嘅排序。一個高風險但可替代嘅人，唔值得留任付款；一個低風險但唔可替代嘅人，反而要提前做知識轉移。</td></tr>
+<tr><td>喺邊度失效</td><td>（1）「重要性」由 commit log 計出嚟 —— 即係<b>員工監控</b>；Giermindl et al. (2022) 嘅 people analytics 陰暗面直接適用；（2）只適用於有事件日誌嘅工種（軟件開發、客服）—— 前線銷售、合規、關係經理嘅「損失」冇呢種數據；（3）損失估計本身係假設：離職成本工作紙入面每一格都係人填嘅；（4）風險量化答到「留邊個」，答唔到「點解走」—— 呢個係 Theory A 嘅工作。</td></tr>
+<tr><td>香港錨</td><td>保障資料第 6 原則（查閱權）：風險分數係關於一個可識別個人嘅個人資料。如果個分數係由佢自己嘅 commit log 計出嚟，佢提出查閱要求時，你交嘅唔止係一個數字，係計嗰個數字用咗佢邊啲數據。另外：2025 年 5 月 1 日後遣散費／長期服務金唔可以用強積金對沖 —— 損失一欄要用新基礎計（<b>現行版本要核</b>，照法律出處卡規則）。</td></tr>
+<tr><td>同課本嘅關係</td><td>課本 Ch.5 p.118「先決定容忍邊種錯誤」同 p.117「HR 數據係小數據」係呢個框架嘅前提；課本 Ch.11 Fig 11.5 p.227「自願流失機率變化 %」係佢嘅輸出格式。課本自己嘅立場係「求因果唔止相關」p.116 —— 同 Ma et al. 純預測嘅立場有張力，寫入理論 vs 證據帳。</td></tr>
+<tr><td>投影片兩行</td><td><span class="en">Line 1: Turnover risk = uncertainty × loss; a person's importance is computed from work records, not assumed from job title — so prediction becomes a priced decision.<br>Line 2: Ma et al. (2020), Soft Computing 24 — on your reading list. Framework, not a theory.</span></td></tr>
+</table>
+
+<h3>選用：第三個理論 Job Embeddedness（Mitchell et al. 2001）<span class="I">I</span> —— 只喺時間有剩、或者你想「由 predictive 行到 prescriptive」多一條橋先用</h3>
+<p>唔問「點解走」，問「點解留」：links（連結）、fit（契合）、sacrifice（走要放棄乜）。價值係佢直接生得出介入措施：活動轉折入面「上司到職少於 12 個月」讀做 links，「30 個月未有晉升」讀做 sacrifice。壞處：人可以係「困住咗」而唔係「留低咗」—— IANG 簽證本身就係一種制度造成嘅 sacrifice。唔喺大綱，量度靠問卷，你多數冇嗰份問卷。課本 p.105「唔只問走嘅人，用焦點小組問留低嘅人」係佢嘅實務版。</p>
+
+<h3>第 6 步答案：好處壞處兩欄（學生填完之後對返）</h3>
+<table>
+<thead><tr><th style="width:14%">理論</th><th style="width:43%">好處：解釋到</th><th>壞處：解釋唔到</th></tr></thead>
+<tr><td>Turnover process</td><td>把「想走」同「走得到」分開，香港嘅通知期同簽證各佔一條軸；解釋到點解 intention 係最強預測因子，同埋點解模型答到 whether 答唔到 when</td><td>震撼事件觸發嘅離職冇訊號（天花板）；假設深思熟慮；對「留」冇講法</td></tr>
+<tr><td>Risk quantification</td><td>令預測變成有價錢嘅決定；分開「最可能走」同「走咗最傷」兩個排序；直接接 threshold 同 confusion matrix 定價</td><td>要事件日誌（＝監控）；損失係人填嘅假設；唔答「點解」；只覆蓋有數據嘅工種</td></tr>
+<tr><td colspan="3"><b>整個預測工程本身嘅限制（用大綱必讀收）：</b>Sarstedt &amp; Danks (2022) HRM 研究講預測、實際做解釋；Giermindl et al. (2022) people analytics 陰暗面；Edwards et al. (2024) 倫理問題未解決。叫佢哋 AT3 引呢三篇。</td></tr>
+</table>
+
+<h2>四、三條 YouTube 片（揀一條；全部我冇睇過 —— 環境封鎖 YouTube／TED，用之前請自己由頭睇一次並預先下載）</h2>
+<div class="warn"><b>我嘅建議：揀第 3 條（Cathy O'Neil）</b>，因為落堂前嗰 15 分鐘討論嘅第二條問題就係「邊個有權睇張名單」—— 開場 8 分鐘放佢，成堂由頭到尾係同一條線。如果你想開場行 HR 味多過模型味，揀第 1 條（Lindor）。第 2 條係 HR 實務人講法，最易入口但最少分析。三條都係 TED／TEDx，有官方英文字幕。</div>
+<table>
+<thead><tr><th style="width:4%">#</th><th style="width:22%">片</th><th style="width:34%">點解適合呢堂 · 剪邊段</th><th>播前一句 + 三條 debrief（英文照讀）· 風險</th></tr></thead>
+<tr><td>1</td><td><b>Christie Lindor — Why great people quit good jobs</b><br>TEDxZaragoza，2018 年，約 14 分鐘<br><span class="cite">youtube.com/watch?v=nj2c5mKGTtQ</span><br>講者係管理顧問（組織變革）</td><td>佢由「人唔係辭公司，係辭老細」出發，再推翻佢：人辭嘅係<b>成個組織文化生態</b>，老細只係一環。呢個正正係活動轉折（「上司到職少於 12 個月」）要驗證嘅命題，亦係 Theory A 嘅 desirability 軸。<br><b>剪：</b>前 2 分鐘鋪排可以跳；播「survival culture vs thriving culture」嗰段 6–7 分鐘</td><td><span class="en">“She is going to attack a sentence every one of you has heard: people leave managers, not companies. Write down what she replaces it with.”</span><br>Q1 <span class="en">What does she say people actually quit? Is that measurable in an HR system?</span><br>Q2 <span class="en">Which of her reasons would show up as a variable in an attrition model — and which never would?</span><br>Q3 <span class="en">She speaks from consulting in the US and Europe. What would she get wrong about Hong Kong?</span><br><b>風險：</b>TEDx 唔係 TED 主場，內容係經驗談，冇數據；當佢係「一個要驗證嘅命題」，唔好當結論</td></tr>
+<tr><td>2</td><td><b>Bonnie Low-Kramen — The Real Reasons People Quit</b><br>TEDxRutgersCamden；TED.com 2022 年上架；約 14 分鐘<br><span class="cite">youtube.com/watch?v=UHdoxXtOLss</span><br>講者係前 CEO 私人助理、職場培訓師</td><td>佢講「真正原因」同「令人留低嘅四件事」—— 對應課本 p.105「唔只問走嘅人，問留低嘅人」，同選用理論 embeddedness。最貼 HRM 背景嘅講者，學生最易明。<br><b>剪：</b>播佢講「四件事」嗰段 5–6 分鐘</td><td><span class="en">“She has interviewed staff in fourteen countries. Count her reasons — and for each one ask yourself: would the exit interview ever record this?”</span><br>Q1 <span class="en">Her four reasons to stay — which are ‘links’, which are ‘sacrifice’?</span><br>Q2 <span class="en">Which of them cost money, and which cost only management attention?</span><br>Q3 <span class="en">Would any of her reasons appear in the forty-row list you are about to receive?</span><br><b>風險：</b>經驗談、美國語境、冇模型 —— 開場之後成堂嘅「模型」部分要你自己接；片內數字唔好照引</td></tr>
+<tr><td>3</td><td><b>Cathy O'Neil — The era of blind faith in big data must end</b><br>TED，2017 年，約 13 分鐘<br><span class="cite">youtube.com/watch?v=_2u_eHHzRto</span>（亦喺 ted.com）<br>講者係數學家，《Weapons of Math Destruction》作者</td><td>佢講「秘密、重要、有害」嘅演算法 —— 而你呢堂做緊嘅就係一個決定 40 個人命運嘅風險分數。佢明確講到邊個攞到面試、貸款、保險 —— 直接就係 HR。係落堂前討論「邊個有權睇名單」嘅最好引子，而你嘅答案係香港嘅、法律嘅、具體嘅 —— 佢冇。<br><b>剪：</b>跳頭 5 分鐘（佢立定義嗰段），播 6–8 分鐘</td><td><span class="en">“In ninety minutes you will be handed forty named people with a risk score next to each name. Before that, watch this. She gives conditions that turn an ordinary model into what she calls a weapon of math destruction. Write them down.”</span><br>Q1 <span class="en">What are her conditions? Hold our attrition model up against them — how many does it meet?</span><br>Q2 <span class="en">She says a model encodes the past. What past would a Hong Kong attrition model encode?</span><br>Q3 <span class="en">She wants audits. Who audits yours — and what would they look at?</span><br><b>風險：</b>立場鮮明，唔係中立教材 —— 加一句 <span class="en">“She is a critic. Is any of her criticism overstated?”</span></td></tr>
+</table>
+<div class="note"><b>唔係片、但值得印一句做驗證 B 嘅開題：</b>2019 年 4 月 IBM 行政總裁 Ginni Rometty 喺 CNBC 峰會話 IBM 嘅 AI「95% 準確」預測到邊個員工會走，而且慳咗近 3 億美元留任成本，但拒絕講「秘方」（CNBC 2019-04-03 報道）。投影一句，然後問：<span class="en">“Ninety-five per cent accurate — accurate at what, on how many leavers, and who checked?”</span> 同 Khera &amp; Divya 嘅 85% 並排，class imbalance 一講即明。<b>Plan B（播唔到片）：</b>三條 debrief 照問，think-pair-share 九十秒，唔好同部機搏鬥超過九十秒。</div>
+
+<h2>五、第 5 步活動：由分數到行動（80–98 分鐘，screens off）</h2>
+<table>
+<thead><tr><th style="width:14%">分鐘</th><th>做咩</th></tr></thead>
+<tr><td>80–82</td><td>派 40 行印刷表（虛構具名員工：風險分數 0–1、職位、年資、上司到職月數、晉升距今月數、預估重置成本港元）。四組，每組 3–4 人，角色輪流：主講／質疑／記錄。</td></tr>
+<tr><td>82–90</td><td><b>第一部分：</b>（a）介入線劃喺邊個分數？（b）介入措施實際係乜（留任付款？調組？同上司傾？）；（c）通知邊個；（d）六個月後量度乜。每組要講出兩格錯嘅價錢：留咗一個本來唔走嘅人幾錢？走咗一個冇預到嘅工程師幾錢？</td></tr>
+<tr><td>90</td><td><b>轉折（你講）：</b><span class="en">“The two strongest drivers in this model are ‘manager in post less than twelve months’ and ‘thirty months since last promotion’. What changes?”</span></td></tr>
+<tr><td>90–98</td><td><b>第二部分：</b>引導到嘅答案 —— 問題由 40 次個別留任付款，變成一個管理層能力同晉升路徑嘅問題：一個系統性修正，唔係 40 次尷尬對話。用 Theory A 讀返：兩個驅動因素都係 desirability 軸；用課本讀返：印度個案「晉升率低於 15% → 走咗再返嚟人工反而高」p.110、「流失最高嘅經理自己被評為最高級」p.109。呢度就係 predictive 同 prescriptive 嘅分別，落地得比全系列任何地方都重。</td></tr>
+</table>
+<p><b>技術連繫（呢段係你嘅，唔交 Dr Lee）：</b>如果想加動手一環，用 IBM 開放流失數據集喺 Excel 開一張 40 行表：一欄 0–1 分數、一欄「實際有冇走」，叫佢哋自己拉 threshold 0.3／0.5／0.7 睇兩格錯點變 —— 五分鐘，唔使講算法。「邊個算法」同「點量度」交 Dr Lee（台詞見《技術連繫指南》）。</p>
+
+<h2>六、落堂前 15 分鐘小組討論（105–120 分鐘）</h2>
+<div class="note"><b>設計：</b>四組（同活動一樣），三條問題投影一次過出，105–117 討論、每組記錄員即時打三行入共享文件「Discussion」一節；117–120 每組主講讀出第 2 條嗰一行（每組 40 秒）；你用 DPP6 一句收結。三條問題由淺到深：第 1 條係決定，第 2 條係立場，第 3 條係 AT4 演練。冇對錯答案，但每條要有理由同一個數字。</div>
+<table>
+<thead><tr><th style="width:5%">#</th><th style="width:48%">問題（英文，投影原句）</th><th>你要引導到嘅位 · 評分</th></tr></thead>
+<tr><td>1</td><td><span class="en"><b>Decide.</b> Your group has HK$600,000 for retention this quarter and forty names. Where do you draw the line, how many people is that, and what does each kind of mistake cost you in dollars?</span></td><td>threshold 係管理決定；兩格錯要有價錢；夠錢留幾多人；有冇組揀「唔用個別付款，改系統」（轉折嘅正解）。AT1 口頭證據。</td></tr>
+<tr><td>2</td><td><span class="en"><b>Take a position.</b> Who is allowed to see this list — HR only, the line manager, the person named? Under Hong Kong's Personal Data (Privacy) Ordinance the score is personal data about an identifiable person, and under Data Protection Principle 6 that person can ask to see it. If an employee files a data access request tomorrow, what exactly do you hand over — the score, the inputs, the model?</span></td><td>唔好當開放式哲學題，要落地：目的限制、使用限制、查閱權；「交乜出嚟」要具體（分數？輸入變項？計法？）；如果分數係由佢自己嘅工作紀錄計出嚟（Theory B），輸入就係佢嘅資料。呢條係四個星期日嘅收結，亦係強報告同弱報告嘅分別。<b>「有冇處理程序豁免」呢一點要核現行條文先講</b>（法律出處卡）。</td></tr>
+<tr><td>3</td><td><span class="en"><b>Rehearse AT4.</b> You will interview a senior manager at a Hong Kong FinTech firm. Write one question that tests today's theory — does their firm know who <em>wants</em> to leave, who <em>can</em> leave, and who would <em>hurt</em> most if they left? Predict their answer, and say which of the eight steps their HR function stops at.</span></td><td>一條問題要同時踩 Theory A 兩條軸 + Theory B 嘅損失；預測答案係「唔知」係好答案；八步法第幾步（多數係第 1 步定義咗 HR 問題）。呢三行直接入 AT4 訪談大綱。</td></tr>
+</table>
+<div class="say"><b>收結一句（英文照讀，120 分鐘）：</b><span class="en">“Four Sundays. You planned for people, hired them, paid them, and today you predicted who would leave. The model gave you a list. Hong Kong law gives the person on the list the right to ask what you know about them. Before you build the next model, decide what you are prepared to hand over.”</span></div>
+
+<h2>七、要準備嘅嘢（清單）</h2>
+<ul>
+<li><b>片：</b>揀定一條，預先下載到本機／USB，開英文字幕，剪到 6–8 分鐘；Plan B 三條 debrief 問題印一張。</li>
+<li><b>投影：</b>六步路線圖；八個術語（預填共享文件）；Theory A 兩行、Theory B 兩行；香港兩條軸；四格 confusion matrix 空表；IBM 95% 一句；轉折一句；三條討論問題；DPP6 一版。</li>
+<li><b>印刷：</b>40 行員工表（虛構、合成數據，唔用真實員工資料）× 4 組；重置成本工作紙（2025 年 5 月 1 日後遣散費／長期服務金基礎 —— 現行版本要核）；五題入門小測。</li>
+<li><b>共享文件：</b>預建「Video」「Terms」「Ledger」「Discussion」四節；星期日 1 張試算表準備好當場重跑。</li>
+<li><b>可選：</b>IBM 開放流失數據集 Excel 版（40 行、分數欄、實際欄）做 threshold 拖曳。</li>
+<li><b>同 Dr Lee 確認：</b>佢嗰邊算法／驗證教到邊；AT4 掛鈎位（threshold 用成本論證 + 查閱與披露嘅明確立場）。</li>
+</ul>
+
+<div class="foot">
+<b>出處標記：</b><span class="V">V</span> 大綱書目核實（摘要層面，見《大綱文獻理論總表》）· <span class="I">I</span> 外借，附經典出處，投影片只寫作者年份（卷期頁碼未核）· [FROM THE TEXTBOOK Ch.5 p.x] 課本全文核實（見《教科書章節對應》）· [INSTRUCTOR CONSTRUCTION] 你加嘅。
+<b>影片：</b>三條片嘅片名、講者、年份、長度來自搜尋結果（TED／TEDx／YouTube 頁面標題），連結未開過；片長同內容請自己核。IBM 95% 一句出自 CNBC 2019-04-03 報道，唔係論文。
+<b>法律點：</b>第 57 章通知期、IANG／GEP、DPP6、強積金對沖廢除 —— 全部按《課程重新設計》法律出處卡規則，講之前核現行版本。
+<b>本文件取代：</b>《客席講者教學安排》第九節同《理論骨幹與每堂結構》第六節嘅星期日 4 流程（Theory B 改為風險量化；落堂前 15 分鐘改為小組討論；一分鐘紙本週停用）。
+</div>
+
+</body>
+</html>
